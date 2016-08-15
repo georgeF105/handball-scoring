@@ -1,4 +1,5 @@
 import React from 'react'
+import { Router } from 'react-router'
 
 class NewGame extends React.Component {
 
@@ -17,6 +18,7 @@ class NewGame extends React.Component {
     gameObj.timekeeper = document.getElementById('timekeeper-input').value
     gameObj.scorekeeper = document.getElementById('scorekeeper-input').value
     console.log('gameObj', gameObj)
+    this.props.history.push('/')
   }
 
   render () {
