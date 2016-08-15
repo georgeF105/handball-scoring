@@ -6,7 +6,7 @@ export default (props) => {
     <div>
       <div className='container'>
         <div className='header'>
-          <h1 className='title'>George Francis</h1>
+          <h1 className='title'>Handball Scoring</h1>
         </div>
         
       </div>

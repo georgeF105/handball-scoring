@@ -10,33 +10,8 @@
   margin-bottom: 0px;
 }
 
-.header-links {
-  display: flex;
-  justify-content: flex-end;
-  align-content: flex-end;
-    margin-top: -12px;
-}
-
-.header-links a {
-  text-decoration: none;
-  color: black;
-  min-width: 80px;
-  text-align: center;
-  font-size: 18px;
-}
-
-.header-links a.active-link {
-  text-decoration: underline;
-}
-
 hr {
   margin: 5px;
-}
-
-.projects {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .card {
@@ -46,61 +21,6 @@ hr {
   padding: 15px;
 }
 
-.project-card {
-  width: 400px;
-  max-width: 600px;
-  height: 200px;
-  flex-grow: 1;
-  position: relative;
-}
-
-.card:hover {
-  top: 2px;
-  left: 2px;
-}
-
-.project-card a {
-  text-decoration: none;
-  color: #757575;
-}
-
-.card-links {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  font-size: 20px;
-}
-
-.card-links a {
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-.resume-pdf {
-  margin-top: 5px;
+.new-game-form {
   width: 100%;
-  height: calc(100vh - 110px);
 }
-
-.contacts {
-  display: flex;
-  height: calc(100vh - 110px);
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.contact-card {
-  height: 150px;
-  flex-grow: 1;
-  width: 280px;
-  box-sizing: border-box;
-  max-width: 350px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: black;
-}
-
