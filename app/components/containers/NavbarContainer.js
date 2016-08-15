@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 
-import { logIn, logOut } from '../../redux/userActions'
+import { attemptLogIn, attemptLogOut } from '../../redux/userActions'
 import Navbar from '../Navbar'
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.get('user').toJS()
+    userName: state.user.get('userName'),
+    loggedIn: state.user.get('loggedIn')
   }
 }
 
@@ -13,10 +14,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logIn: () => {
       console.log('LOGIN')
-      dispatch(logIn())
+      dispatch(attemptLogIn())
     },
     logOut: () => {
-      dispatch(logOut())
+      dispatch(attemptLogOut())
     }
   }
 }
