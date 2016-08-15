@@ -1,23 +1,22 @@
 import { fromJS } from 'immutable'
 
+import * as gamesActions from './gamesActions'
+
 const INITAL_STATE = fromJS({
-  game: [],
+  game: {},
   fetchingGame: false,
 })
 
 export default (state = INITAL_STATE, action) => {
   switch (action.type) {
-    case 'REQUEST_GAME':
-      // console.log('REQUEST_GAME')
+    case gamesActions.REQUEST_GAME:
       return state.setIn(['fetchingGame'], true)
-    case 'RECEIVE_GAME':
-      // console.log('RECEIVE_GAME', action.list)
+    case gamesActions.RECEIVE_GAME:
       return state.setIn(['game'], fromJS(action.list)).set('fetchingGame', false)
-    case 'ERROR':
-      console.log('ERROR', action.list)
+    case gamesActions.SAVED_GAME:
+      console.log('SAVED_GAME:', action.gameObj)
       return state
     default:
-      console.log('action.type not known', action.type)
       return state
   }
 }

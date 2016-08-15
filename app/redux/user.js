@@ -1,5 +1,7 @@
 import { fromJS } from 'immutable'
 
+import * as userActions from './userActions'
+
 const INITAL_STATE = fromJS({
   user: {},
   loggedIn: false,
@@ -7,17 +9,11 @@ const INITAL_STATE = fromJS({
 
 export default (state = INITAL_STATE, action) => {
   switch (action.type) {
-    case 'LOG_IN':
-      console.log('login user')
+    case userActions.LOG_IN:
       return state
-    case 'LOG_OUT':
-      console.log('logout user')
-      return state
-    case 'ERROR':
-      console.log('ERROR', action.list)
+    case userActions.LOG_OUT:
       return state
     default:
-      console.log('action.type not known', action.type)
       return state
   }
 }

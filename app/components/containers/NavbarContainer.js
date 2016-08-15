@@ -13,10 +13,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     logIn: () => {
       console.log('LOGIN')
-      dispatch(logIn)
+      dispatch(logIn())
     },
     logOut: () => {
-      dispatch(logOut)
+      dispatch(logOut())
     }
   }
 }
