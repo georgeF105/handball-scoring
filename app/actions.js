@@ -1,10 +1,10 @@
 import Firebase from 'firebase'
 
 const firebase = Firebase.initializeApp({
-  apiKey: 'AIzaSyDQDoX9xq72czKS5Dj0lV1aOzjyGB6D7eU',
-  authDomain: 'homepage-b1191.firebaseapp.com',
-  databaseURL: 'https://homepage-b1191.firebaseio.com',
-  storageBucket: 'homepage-b1191.appspot.com'
+  apiKey: "AIzaSyCtSSC3XpY0WxucI7bm-pLbgsjWBPTUqPQ",
+    authDomain: "handball-scoring.firebaseapp.com",
+    databaseURL: "https://handball-scoring.firebaseio.com",
+    storageBucket: "handball-scoring.appspot.com"
 })
 
 export function requestGame () {
@@ -23,9 +23,19 @@ export function reciveGame (gameObj) {
 
 export function fetchGame () {
   return (dispatch) => {
-    console.log('HEERRE')
     dispatch(requestGame())
     // fetch game from firebase
+  }
+}
+
+export function submitGame (gameObj) {
+  return (dispatch) => {
+    console.log('submitGame:', gameObj)
+    const gameKey = firebase.database().ref('games').push().key
+    console.log('gameKey',gameKey)
+    let updates = {}
+    updates['/games/' + gameKey] = gameObj
+    firebase.database().ref().update(updates)
   }
 }
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { makeGame } from '../../actions'
+import { submitGame } from '../../actions'
 import NewGame from '../NewGame'
 
 const mapStateToProps = (state) => {
@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    makeGame: (gameObj) => {
-      dispatch(makeGame(gameObj))
+    submitGame: (gameObj) => {
+      dispatch(submitGame(gameObj))
     }
   }
 }

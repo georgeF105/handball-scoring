@@ -18,6 +18,7 @@ class NewGame extends React.Component {
     gameObj.timekeeper = document.getElementById('timekeeper-input').value
     gameObj.scorekeeper = document.getElementById('scorekeeper-input').value
     console.log('gameObj', gameObj)
+    this.props.submitGame(gameObj)
     this.props.history.push('/')
   }
 
