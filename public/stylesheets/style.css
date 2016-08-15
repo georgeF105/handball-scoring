@@ -24,3 +24,5 @@ hr {
 .new-game-form {
   width: 100%;
 }
+
+::-webkit-inner-spin-button { display: none; }
