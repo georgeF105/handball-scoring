@@ -1,11 +1,4 @@
-import Firebase from 'firebase'
-
-const firebase = Firebase.initializeApp({
-  apiKey: "AIzaSyCtSSC3XpY0WxucI7bm-pLbgsjWBPTUqPQ",
-    authDomain: "handball-scoring.firebaseapp.com",
-    databaseURL: "https://handball-scoring.firebaseio.com",
-    storageBucket: "handball-scoring.appspot.com"
-})
+import { saveGame } from '../../lib/gamesUtils'
 
 export function requestGame () {
   return {
@@ -30,12 +23,7 @@ export function fetchGame () {
 
 export function submitGame (gameObj) {
   return (dispatch) => {
-    console.log('submitGame:', gameObj)
-    const gameKey = firebase.database().ref('games').push().key
-    console.log('gameKey',gameKey)
-    let updates = {}
-    updates['/games/' + gameKey] = gameObj
-    firebase.database().ref().update(updates)
+    saveGame(gameObj)
   }
 }
 
