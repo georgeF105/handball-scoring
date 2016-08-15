@@ -3,9 +3,6 @@ import { fromJS } from 'immutable'
 const INITAL_STATE = fromJS({
   game: [],
   fetchingGame: false,
-  user: {
-    userName: 'Guest'
-  }
 })
 
 export default (state = INITAL_STATE, action) => {

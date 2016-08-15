@@ -5,7 +5,7 @@ import NewGame from '../NewGame'
 
 const mapStateToProps = (state) => {
   return {
-    user: state.get('user').toJS()
+    
   }
 }
 
