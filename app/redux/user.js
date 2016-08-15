@@ -8,8 +8,10 @@ const INITAL_STATE = fromJS({
 export default (state = INITAL_STATE, action) => {
   switch (action.type) {
     case 'LOG_IN':
+      console.log('login user')
       return state
     case 'LOG_OUT':
+      console.log('logout user')
       return state
     case 'ERROR':
       console.log('ERROR', action.list)

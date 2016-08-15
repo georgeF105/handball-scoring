@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from './Navbar'
+import NavbarContainer from './containers/NavbarContainer'
 
 export default React.createClass({
   render () {
     return (
       <div>
-        <Navbar />
+        <NavbarContainer />
         {this.props.children}
       </div>
     )
