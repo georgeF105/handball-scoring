@@ -2,9 +2,11 @@ import { applyMiddleware, combineReducers, createStore, compose } from 'redux'
 import thunk from 'redux-thunk'
 
 import games from './games'
+import user from './user'
 
 const combined = combineReducers({
-  games
+  games,
+  user
 })
 
 export default function (initialState) {

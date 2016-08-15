@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 
-import { submitGame } from '../../actions'
+import { submitGame } from '../../redux/gamesActions'
 import NewGame from '../NewGame'
 
 const mapStateToProps = (state) => {
   return {
-    
+    userId: state.user.get('user').toJS()
   }
 }
 
