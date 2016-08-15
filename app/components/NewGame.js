@@ -2,15 +2,22 @@ import React from 'react'
 
 class NewGame extends React.Component {
 
-  componentDidMount () {
-    console.log('fetching projects')
-    // this.props.fetchProjects()
+  submitGame = (e) => {
+    e.preventDefault()
+    console.log('Make New Game', e)
+    let gameObj = {}
+    gameObj.venue = document.getElementById('venue-input').value
+    gameObj.date = document.getElementById('date-input').value
+    gameObj.time = document.getElementById('time-input').value
+    gameObj.gender = document.getElementById('gender-input').value
+    gameObj.home_team = document.getElementById('home_team-input').value
+    gameObj.away_team = document.getElementById('away_team-input').value
+    gameObj.referee_1 = document.getElementById('referee_1-input').value
+    gameObj.referee_2 = document.getElementById('referee_2-input').value
+    gameObj.timekeeper = document.getElementById('timekeeper-input').value
+    gameObj.scorekeeper = document.getElementById('scorekeeper-input').value
+    console.log('gameObj', gameObj)
   }
-
-  // makeNewGame = (e) => {
-  //   e.preventDefault()
-  //   console.log('Make New Game', e)
-  // }
 
   render () {
     const user = this.props.user
@@ -37,29 +44,29 @@ class NewGame extends React.Component {
           </div>
           <div className='row'>
             <div className='six columns'>
-              <label>Home Team</label><input className="u-full-width" type='text' name='home_team' />
+              <label>Home Team</label><input className="u-full-width" type='text' name='home_team' id='home_team-input' />
             </div>
             <div className='six columns'>
-              <label>Away Team</label><input className="u-full-width" type='text' name='away_team' />
+              <label>Away Team</label><input className="u-full-width" type='text' name='away_team' id='away_team-input' />
             </div>
           </div>
           <div className='row'>
             <div className='six columns'>
-              <label>Referee #1</label><input className="u-full-width" type='text' name='referee_1' />
+              <label>Referee #1</label><input className="u-full-width" type='text' name='referee_1' id='referee_1-input' />
             </div>
             <div className='six columns'>
-              <label>Referee #2</label><input className="u-full-width" type='text' name='referee_2' />
+              <label>Referee #2</label><input className="u-full-width" type='text' name='referee_2' id='referee_2-input' />
             </div>
           </div>
           <div className='row'>
             <div className='six columns'>
-              <label>Timekeeper</label><input className="u-full-width" type='text' name='timekeeper' />
+              <label>Timekeeper</label><input className="u-full-width" type='text' name='timekeeper' id='timekeeper-input' />
             </div>
             <div className='six columns'>
-              <label>Scorekeeper</label><input className="u-full-width" type='text' name='scorekeeper' />
+              <label>Scorekeeper</label><input className="u-full-width" type='text' name='scorekeeper' id='scorekeeper-input' />
             </div>
           </div>
-          <input className="button-primary" type="submit" value="Make New Game" />
+          <input className="button-primary" type="submit" value="Make New Game" onClick={this.submitGame} />
         </form>
       </div>
     )
