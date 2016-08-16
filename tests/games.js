@@ -1,5 +1,5 @@
-import configureStore from '../app/redux/store'
 import test from 'tape'
+import configureStore from '../app/redux/store'
 import * as gamesActions from '../app/redux/gamesActions'
 
 test('Request Game Reducer', (t) => {
