@@ -104,3 +104,34 @@ hr {
   justify-content: center;
   align-items: center;
 }
+
+.team-table.table {
+  margin: 5px;
+}
+
+.team-table {
+  font-size: 20px;
+}
+
+.team-table.title {
+  text-align: center;
+}
+
+.team-table.row {
+  display: flex;
+}
+
+.team-table.num {
+  width: 30px;
+  text-align: center;
+}
+
+.team-table.goal {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.team-table.yellow-card {
+  flex-grow: 1;
+  text-align: center;
+}
