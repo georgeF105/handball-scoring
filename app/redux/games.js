@@ -4,7 +4,9 @@ import * as gamesActions from './gamesActions'
 
 const INITAL_STATE = fromJS({
   game: {},
-  fetchingGame: false
+  fetchingGame: false,
+  games: {},
+  fetchingGames: false,
 })
 
 export default (state = INITAL_STATE, action) => {
@@ -15,6 +17,10 @@ export default (state = INITAL_STATE, action) => {
       return state.setIn(['game'], fromJS(action.gameObj)).set('fetchingGame', false)
     case gamesActions.SAVED_GAME:
       return state.setIn(['game'], fromJS(action.gameObj)).set('fetchingGame', false)
+    case gamesActions.REQUEST_GAMES:
+      return state.setIn(['fetchingGames'], true)
+    case gamesActions.RECEIVE_GAMES:
+      return state.setIn(['games'], fromJS(action.gameObj)).set('fetchingGames', false)
     default:
       return state
   }
