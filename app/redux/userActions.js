@@ -1,6 +1,5 @@
 import { logInUser, logOutUser } from '../../lib/authUtils'
 
-
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
 
@@ -18,7 +17,7 @@ export function logOut () {
   }
 }
 
-export function attemptLogIn() {
+export function attemptLogIn () {
   return (dispatch) => {
     logInUser()
       .then(result => {
@@ -31,7 +30,7 @@ export function attemptLogIn() {
   }
 }
 
-export function attemptLogOut() {
+export function attemptLogOut () {
   return (dispatch) => {
     logOutUser()
       .then(f => {

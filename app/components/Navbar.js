@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 export default (props) => {
   const userName = props.userName
@@ -15,7 +14,7 @@ export default (props) => {
             {loggedIn ? <button onClick={logOut}>LogOut</button> : <button onClick={logIn}>LogIn</button>}
           </div>
         </div>
-        
+
       </div>
       <hr />
     </div>

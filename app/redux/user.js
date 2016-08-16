@@ -3,9 +3,9 @@ import { fromJS } from 'immutable'
 import * as userActions from './userActions'
 
 const INITAL_STATE = fromJS({
-  userName: "",
+  userName: '',
   userId: 0,
-  loggedIn: false,
+  loggedIn: false
 })
 
 export default (state = INITAL_STATE, action) => {

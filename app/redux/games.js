@@ -4,7 +4,7 @@ import * as gamesActions from './gamesActions'
 
 const INITAL_STATE = fromJS({
   game: {},
-  fetchingGame: false,
+  fetchingGame: false
 })
 
 export default (state = INITAL_STATE, action) => {
