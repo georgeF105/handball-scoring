@@ -4,9 +4,9 @@ export default (props) => {
   const players = props.players
   const teamName = props.teamName
   return (
-    <div className='team-table table'>
-      <div className='team-table row title'>
-        {teamName}
+    <div className='team-table table card'>
+      <div className='team-table row'>
+        <div className='team-table title'>{teamName}</div>
       </div>
       <div className='team-table row heading'>
         <div className='team-table col num'>#</div>

@@ -1,6 +1,7 @@
 body {
   max-height: 100vh;
   position: relative;
+  background-color: #E0E0E0;
 }
 
 header {
@@ -57,32 +58,29 @@ hr {
 
 ::-webkit-inner-spin-button { display: none; }
 
+/****    Scoreing page    ****/
 .score-game {
+  background-color: white;
   display: flex;
-  /*margin: 5px;*/
-  /*height: 100%;*/
   max-width: 1024px;
   height: 768px;
   margin-left: auto;
   margin-right: auto;
-  /*width: 100vw;*/
-  /*box-sizing: content-box;*/
-  /*position: absolute;*/
+  padding: 5px;
 }
 
 .team-table-column {
-  flex-grow: 2;
-  border: 1px solid black;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .centre-column {
-  flex-grow: 0.5;
-  border: 1px solid black;
-}
-
-.team-logo {
-  height: 140px;
-  border: 1px solid black;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .game-timer {
@@ -93,20 +91,111 @@ hr {
   width: 350px;
   height: 350px;
   border: 1px solid black;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
   border-radius: 50%;
-}
-
-.team-logo {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.score-board {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+
+.game-score {
+  border-bottom: 1px solid black;
+  margin-bottom: 0px;
+}
+
+.team-logo {
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-timer {
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-timer .timer {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+/****    Event Buttons    ****/
+.event-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  width: 90%
+}
+
+.event-button {
+  width: 80px;
+  padding: 0 5px;
+  flex-grow: 1;
+  margin: 3px;
+}
+
+/****    Event Table    ****/
+.event-table {
+  margin: 0;
+  padding: 0;
+  border: 1px solid #E0E0E0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin-bottom: 10px;
+  height: 120px;
+}
+
+.event-table .heading {
+  width: 100%;
+  border-bottom: 1px solid #E0E0E0;
+  box-shadow: 0 1px 3px #E0E0E0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.event-table .events {
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.event-table .event:hover {
+  text-decoration: underline;
+}
+
+/****    Team Table    ****/
 .team-table.table {
+  padding: 0;
   margin: 5px;
+  border: 1px solid #E0E0E0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.team-table.row {
+  display: flex;
+  border-bottom: 1px solid #E0E0E0;
+  flex-grow: 1;
+}
+
+.team-table.row:last-child {
+  border-bottom: none;
 }
 
 .team-table {
@@ -115,23 +204,24 @@ hr {
 
 .team-table.title {
   text-align: center;
-}
-
-.team-table.row {
-  display: flex;
+  flex-grow: 1;
 }
 
 .team-table.num {
   width: 30px;
   text-align: center;
+  border-right: 1px solid #E0E0E0;
 }
 
 .team-table.goal {
   flex-grow: 1;
   text-align: center;
+  width: 120px;
+  border-right: 1px solid #E0E0E0;
 }
 
 .team-table.yellow-card {
   flex-grow: 1;
   text-align: center;
+  width: 120px;
 }
