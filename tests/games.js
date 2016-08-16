@@ -11,8 +11,30 @@ test('Request Game Reducer', (t) => {
   t.end()
 })
 
-// test('Recive Game Reducer', (t) => {
-//   const store = configureStore()
-  
-// })
+test('Recive Game Reducer', (t) => {
+  const store = configureStore()
+  const gameObj = {
+    venue:'test venue',
+    gameKey: 'testGameKey'
+  }
 
+  store.dispatch(gamesActions.reciveGame(gameObj))
+
+  t.deepEqual(store.getState().games.get('game').toJS(), gameObj, 'Game = expected')
+  t.equal(store.getState().games.get('fetchingGame'), false, 'fetchingGames is false')
+  t.end()
+})
+
+test('Saved Game Reducer', (t) => {
+  const store = configureStore()
+  const gameObj = {
+    venue:'test venue',
+    gameKey: 'testGameKey'
+  }
+
+  store.dispatch(gamesActions.savedGame(gameObj))
+
+  t.deepEqual(store.getState().games.get('game').toJS(), gameObj, 'Game = expected')
+  t.equal(store.getState().games.get('fetchingGame'), false, 'fetchingGames is false')
+  t.end()
+})

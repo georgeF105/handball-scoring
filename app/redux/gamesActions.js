@@ -14,7 +14,7 @@ export function requestGame () {
 export function reciveGame (gameObj) {
   return {
     type: 'RECEIVE_GAME',
-    list: gameObj,
+    gameObj: gameObj,
     receivedAt: Date.now()
   }
 }

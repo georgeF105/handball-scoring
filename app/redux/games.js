@@ -12,10 +12,9 @@ export default (state = INITAL_STATE, action) => {
     case gamesActions.REQUEST_GAME:
       return state.setIn(['fetchingGame'], true)
     case gamesActions.RECEIVE_GAME:
-      return state.setIn(['game'], fromJS(action.list)).set('fetchingGame', false)
+      return state.setIn(['game'], fromJS(action.gameObj)).set('fetchingGame', false)
     case gamesActions.SAVED_GAME:
-      console.log('SAVED_GAME:', action.gameObj)
-      return state
+      return state.setIn(['game'], fromJS(action.gameObj)).set('fetchingGame', false)
     default:
       return state
   }
