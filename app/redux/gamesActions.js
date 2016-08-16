@@ -1,4 +1,5 @@
 import { saveGame } from '../../lib/gamesUtils'
+import { hashHistory } from 'react-router'
 
 export const SAVED_GAME = 'SAVED_GAME'
 export const REQUEST_GAME = 'REQUEST_GAME'
@@ -30,6 +31,7 @@ export function submitGame (gameObj) {
     const gameKey = saveGame(gameObj)
     gameObj.gameKey = gameKey
     dispatch(savedGame(gameObj))
+    hashHistory.push('game/' + gameKey)
   }
 }
 

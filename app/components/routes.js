@@ -10,6 +10,7 @@ export default (
     <Route path='/' component={App}>
       <IndexRoute component={Home} />
       <Route path='/game/new' component={NewGameContainer} />
+      <Route path='/game/:id' component={Home} />
     </Route>
   </Router>
 )
