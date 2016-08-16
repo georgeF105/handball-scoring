@@ -14,7 +14,7 @@ test('Request Game Reducer', (t) => {
 test('Recive Game Reducer', (t) => {
   const store = configureStore()
   const gameObj = {
-    venue:'test venue',
+    venue: 'test venue',
     gameKey: 'testGameKey'
   }
 
@@ -28,7 +28,7 @@ test('Recive Game Reducer', (t) => {
 test('Saved Game Reducer', (t) => {
   const store = configureStore()
   const gameObj = {
-    venue:'test venue',
+    venue: 'test venue',
     gameKey: 'testGameKey'
   }
 
