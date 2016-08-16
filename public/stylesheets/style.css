@@ -26,3 +26,19 @@ hr {
 }
 
 ::-webkit-inner-spin-button { display: none; }
+
+.login-bar {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.login-bar button {
+  margin: 0px;
+}

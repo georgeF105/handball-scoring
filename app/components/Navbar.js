@@ -10,9 +10,14 @@ export default (props) => {
       <div className='container'>
         <div className='header'>
           <h1 className='title'>Handball Scoring</h1>
-          <div className='login-bar'>
-            {loggedIn ? <button onClick={logOut}>LogOut</button> : <button onClick={logIn}>LogIn</button>}
-          </div>
+          {loggedIn 
+            ? <div className='login-bar'>
+                <div className='user-name'>{userName}</div>
+                <button onClick={logOut}>LogOut</button> 
+              </div>
+            : <div className='login-bar'>
+                <button onClick={logIn}>LogIn</button>
+              </div>}
         </div>
 
       </div>

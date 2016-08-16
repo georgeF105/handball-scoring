@@ -11,7 +11,7 @@ const INITAL_STATE = fromJS({
 export default (state = INITAL_STATE, action) => {
   switch (action.type) {
     case userActions.LOG_IN:
-      return state.set('user', fromJS(action.userName)).set('userId', fromJS(action.userId)).set('loggedIn', true)
+      return state.set('userName', fromJS(action.userName)).set('userId', fromJS(action.userId)).set('loggedIn', true)
     case userActions.LOG_OUT:
       return state.set('loggedIn', false)
     default:
