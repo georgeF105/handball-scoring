@@ -9,13 +9,13 @@ export const RECEIVE_GAMES = 'RECEIVE_GAMES'
 
 export function requestGame () {
   return {
-    type: 'REQUEST_GAME'
+    type: REQUEST_GAME
   }
 }
 
 export function reciveGame (gameObj) {
   return {
-    type: 'RECEIVE_GAME',
+    type: RECEIVE_GAME,
     gameObj: gameObj,
     receivedAt: Date.now()
   }
@@ -55,13 +55,13 @@ export function fetchGames (gameKey) {
 
 export function requestGames () {
   return {
-    type: 'REQUEST_GAME'
+    type: REQUEST_GAMES
   }
 }
 
 export function reciveGames (gamesObj) {
   return {
-    type: 'RECEIVE_GAME',
+    type: RECEIVE_GAMES,
     gameObj: gamesObj,
     receivedAt: Date.now()
   }
