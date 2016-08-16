@@ -1,4 +1,12 @@
+body {
+  max-height: 100vh;
+  position: relative;
+}
+
 .header {
+  /*position: absolute;*/
+}
+.navbar {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -41,3 +49,22 @@ hr {
 }
 
 ::-webkit-inner-spin-button { display: none; }
+
+.score-game {
+  display: flex;
+  margin: 5px;
+  height: 100%;
+  /*width: 100vw;*/
+  /*box-sizing: content-box;*/
+  /*position: absolute;*/
+}
+
+.team-table-column {
+  flex-grow: 2;
+  border: 1px solid black;
+}
+
+.centre-column {
+  flex-grow: 3;
+  border: 1px solid black;
+}

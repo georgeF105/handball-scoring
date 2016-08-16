@@ -7,8 +7,8 @@ export default (props) => {
   const logOut = props.logOut
   return (
     <div>
-      <div className='container'>
-        <div className='header'>
+      <div className='container header'>
+        <div className='navbar'>
           <h3 className='title'>Handball Scoring</h3>
           {loggedIn
             ? <div className='login-bar'>
