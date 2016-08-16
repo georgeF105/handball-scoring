@@ -9,7 +9,7 @@ export default (props) => {
     <div>
       <div className='container'>
         <div className='header'>
-          <h1 className='title'>Handball Scoring</h1>
+          <h3 className='title'>Handball Scoring</h3>
           {loggedIn 
             ? <div className='login-bar'>
                 <div className='user-name'>{userName}</div>
