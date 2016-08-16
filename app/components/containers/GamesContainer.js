@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     userId: state.user.get('userId'),
     loggedIn: state.user.get('loggedIn'),
-    games: state.games.get('games').toJS()
+    games: state.games.get('games').toJS(),
+    fetchingGames: state.games.get('fetchingGames')
   }
 }
 
