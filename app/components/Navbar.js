@@ -6,8 +6,8 @@ export default (props) => {
   const logIn = props.logIn
   const logOut = props.logOut
   return (
-    <div>
-      <div className='container header'>
+    <header>
+      <div className='container'>
         <div className='navbar'>
           <h3 className='title'>Handball Scoring</h3>
           {loggedIn
@@ -22,7 +22,7 @@ export default (props) => {
 
       </div>
       <hr />
-    </div>
+    </header>
   )
 }
 

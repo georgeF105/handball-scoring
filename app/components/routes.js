@@ -9,10 +9,11 @@ import ScoreGameContainer from './containers/ScoreGameContainer'
 
 export default (
   <Router history={hashHistory}>
+    <Route path='/game/:id/score' component={ScoreGameContainer} />
     <Route path='/' component={App}>
       <IndexRoute component={Home} />
       <Route path='/game/new' component={NewGameContainer} />
-      <Route path='/game/:id' component={ScoreGameContainer} />
+      <Route path='/game/:id' component={Home} />
       <Route path='/game' component={GamesContainer} />
     </Route>
   </Router>
