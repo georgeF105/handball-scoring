@@ -8,6 +8,9 @@ class ScoreGame extends React.Component {
       <div className='score-game'>
         <div className='team-table-column'>
           <div className='team-logo'>
+            <img src="http://placehold.it/250x120?text=LOGO" />
+          </div>
+          <div className='team-table'>
           </div>
         </div>
         <div className='centre-column'>
@@ -22,6 +25,9 @@ class ScoreGame extends React.Component {
         </div>
         <div className='team-table-column'>
           <div className='team-logo'>
+            <img src="http://placehold.it/250x120?text=LOGO" />
+          </div>
+          <div className='team-table'>
           </div>
         </div>
       </div>
