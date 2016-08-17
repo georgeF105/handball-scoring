@@ -3,10 +3,12 @@ import thunk from 'redux-thunk'
 
 import games from './games'
 import user from './user'
+import teams from './teams'
 
 const combined = combineReducers({
   games,
-  user
+  user,
+  teams
 })
 
 export default function (initialState) {
