@@ -26,7 +26,7 @@ class NewGame extends React.Component {
     gameObj.status_started = false
     gameObj.status_halftime_completed = false
     gameObj.status_fulltime_completed = false
-    gameObj.current_time = 1767
+    gameObj.current_time = 0
 
     console.log('gameObj', gameObj)
     this.props.submitGame(gameObj)
@@ -36,7 +36,7 @@ class NewGame extends React.Component {
   render () {
     const loggedIn = this.props.loggedIn
     return (
-      <div className='container projects'>
+      <div className='container content new-game'>
         {loggedIn
           ? <form className='new-game-form'>
             <div className='row'>
