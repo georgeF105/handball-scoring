@@ -29,6 +29,8 @@ class NewTeam extends React.Component {
 
   render () {
     const loggedIn = true//this.props.loggedIn
+    const team = this.props.teams[this.props.params.id]
+    console.log('team', team)
     const players = []
     const playersObj = this.props.players
     for (let key in playersObj) {
@@ -43,14 +45,10 @@ class NewTeam extends React.Component {
           ? <form className='new-team-form'>
             <div className='row'>
               <div className='six columns'>
-                <label>Team Name</label><input className='u-full-width' type='text' name='team-name' id='team-name-input' onBlur={this.setTeamName} />
+                {team ? <h3>{team.name}</h3> : <h3>Team Not Found</h3>}
               </div>
               <div className='two columns'>
-                <label htmlFor='gender-input' >Gender</label>
-                <select type='text' name='gender' id='gender-input' >
-                  <option value='male'>Male</option>
-                  <option value='female'>Female</option>
-                </select>
+                {team ? <h4>{team.gender}</h4> : null}
               </div>
             </div>
             {teamPlayers.map((player, key) => {
