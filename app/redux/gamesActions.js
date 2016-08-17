@@ -1,4 +1,4 @@
-import { saveGame, getGames, getGame } from '../../lib/gamesUtils'
+import { saveGame, getGames, getGame, getTeam } from '../../lib/gamesUtils'
 import { hashHistory } from 'react-router'
 
 export const SAVED_GAME = 'SAVED_GAME'
@@ -25,9 +25,29 @@ export function fetchGame (gameKey) {
   return (dispatch) => {
     dispatch(requestGame())
     console.log('fetching game HERE', gameKey)
+    let gameObj = {}
     getGame(gameKey)
       .then(game => {
-        console.log('got game',game)
+        gameObj = game
+        gameObj.gameKey = gameKey
+        return getTeam(game.home_team)
+      })
+      .then(homeTeam => {
+        let homePlayerArr = []
+        for(let key in homeTeam.players) {
+          homePlayerArr.push(homeTeam.players[key])
+        }
+        gameObj.home_players = homePlayerArr
+        return getTeam(gameObj.away_team)
+      })
+      .then(awayTeam => {
+        let awayPlayerArr = []
+        for(let key in awayTeam.players) {
+          awayPlayerArr.push(awayTeam.players[key])
+        }
+        gameObj.away_players = awayPlayerArr
+        console.log('gameObj',gameObj)
+        dispatch(reciveGame(gameObj))
       })
       .catch(err => {
         console.error(err)

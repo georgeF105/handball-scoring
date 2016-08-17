@@ -7,16 +7,17 @@ import { formatTime, formatScore } from '../../lib/formatNumber'
 class ScoreGame extends React.Component {
 
   render () {
-    if(this.props.game.gameKey !== this.props.params.id && !this.props.fetchingGame) {
+    const loading = this.props.fetchingGame
+    if(this.props.game.gameKey !== this.props.params.id && !loading) {
       this.props.fetchGame(this.props.params.id)
     }
     const game = this.props.game
     const homePlayers = this.props.game.home_players
     const awayPlayers = this.props.game.away_players
-    const currentTime = formatTime(this.props.game.current_time)
-    const homeTeamScore = formatScore(this.props.game.current_score.home)
-    const awayTeamScore = formatScore(this.props.game.current_score.away)
-    const events = this.props.game.events
+    const currentTime = formatTime(this.props.game.current_time || 0)
+    const homeTeamScore = formatScore(this.props.game.current_score && this.props.game.current_score.home || 0)
+    const awayTeamScore = formatScore(this.props.game.current_score && this.props.game.current_score.away || 0)
+    const events = this.props.game.events || []
     return (
       <div className='score-game'>
         <div className='team-table-column'>
@@ -27,16 +28,18 @@ class ScoreGame extends React.Component {
         </div>
         <div className='centre-column'>
           <div className='game-timer'>
-            <h3 className='timer' id='gameTimer'> {currentTime} </h3>
+            {!loading 
+              ? <h1 className='timer' id='gameTimer'> {currentTime} </h1>
+              : <h3>Loading Game</h3>}
             <div>Play/Pause(icon)</div>
           </div>
           <div className='scores-board'>
            <div className='score-board'>
-            <h3 className='game-score' id='homeTeamScore'>{homeTeamScore}</h3>
+            <h1 className='game-score' id='homeTeamScore'>{homeTeamScore}</h1>
             <div>home</div>
            </div>
            <div className='score-board'>
-            <h3 className='game-score' id='awayTeamScore'>{awayTeamScore}</h3>
+            <h1 className='game-score' id='awayTeamScore'>{awayTeamScore}</h1>
             <div>away</div>
            </div>
           </div>
@@ -52,7 +55,7 @@ class ScoreGame extends React.Component {
           <div className='team-logo'>
             <img src="http://placehold.it/250x120?text=LOGO" />
           </div>
-          <TeamTable teamName={'away team'} players={homePlayers}/>
+          <TeamTable teamName={'away team'} players={awayPlayers}/>
         </div>
       </div>
     )

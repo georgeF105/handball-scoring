@@ -84,6 +84,7 @@ export default (state = INITAL_STATE, action) => {
     case gamesActions.REQUEST_GAME:
       return state.setIn(['fetchingGame'], true)
     case gamesActions.RECEIVE_GAME:
+      console.log('RECEIVE_GAME', action.gameObj)
       return state.setIn(['game'], fromJS(action.gameObj)).set('fetchingGame', false)
     case gamesActions.SAVED_GAME:
       return state.setIn(['game'], fromJS(action.gameObj)).set('fetchingGame', false)
