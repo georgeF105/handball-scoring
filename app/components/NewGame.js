@@ -36,7 +36,7 @@ class NewGame extends React.Component {
   render () {
     const loggedIn = this.props.loggedIn
     const teams = []
-    for(let key in this.props.teams) {
+    for (let key in this.props.teams) {
       let team = this.props.teams[key]
       team.teamKey = key
       teams.push(team)
@@ -67,13 +67,13 @@ class NewGame extends React.Component {
               <div className='six columns'>
                 <label>Home Team</label>
                 <select className='u-full-width' type='text' name='home_team' id='home_team-input'>
-                  {teams.map((team, key) => <option key={key} value={team.teamKey}>{team.name}</option> )}
+                  {teams.map((team, key) => <option key={key} value={team.teamKey}>{team.name}</option>)}
                 </select>
               </div>
               <div className='six columns'>
                 <label>Away Team</label>
                 <select className='u-full-width' type='text' name='away_team' id='away_team-input' >
-                  {teams.map((team, key) => <option key={key} value={team.teamKey}>{team.name}</option> )}
+                  {teams.map((team, key) => <option key={key} value={team.teamKey}>{team.name}</option>)}
                 </select>
               </div>
             </div>
