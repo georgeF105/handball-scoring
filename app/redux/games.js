@@ -15,6 +15,7 @@ const INITAL_STATE = fromJS({
     timekeeper: 'TK',
     scorekeeper: 'SK',
     owner_id: 'OWNER ID',
+    gameKey: '',
     home_players: [
       {id: '_ID', number: 1},
       {id: '_ID', number: 2},

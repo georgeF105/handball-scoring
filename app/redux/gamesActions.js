@@ -1,4 +1,4 @@
-import { saveGame, getGames } from '../../lib/gamesUtils'
+import { saveGame, getGames, getGame } from '../../lib/gamesUtils'
 import { hashHistory } from 'react-router'
 
 export const SAVED_GAME = 'SAVED_GAME'
@@ -24,6 +24,14 @@ export function reciveGame (gameObj) {
 export function fetchGame (gameKey) {
   return (dispatch) => {
     dispatch(requestGame())
+    console.log('fetching game HERE', gameKey)
+    getGame(gameKey)
+      .then(game => {
+        console.log('got game',game)
+      })
+      .catch(err => {
+        console.error(err)
+      })
     // fetch game from firebase <== TODO.
   }
 }

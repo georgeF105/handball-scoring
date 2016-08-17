@@ -7,6 +7,9 @@ import { formatTime, formatScore } from '../../lib/formatNumber'
 class ScoreGame extends React.Component {
 
   render () {
+    if(this.props.game.gameKey !== this.props.params.id && !this.props.fetchingGame) {
+      this.props.fetchGame(this.props.params.id)
+    }
     const game = this.props.game
     const homePlayers = this.props.game.home_players
     const awayPlayers = this.props.game.away_players

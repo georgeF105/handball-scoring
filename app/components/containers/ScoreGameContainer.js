@@ -1,17 +1,20 @@
 import { connect } from 'react-redux'
 
-import { submitGame } from '../../redux/gamesActions'
+import { fetchGame } from '../../redux/gamesActions'
 import ScoreGame from '../ScoreGame'
 
 const mapStateToProps = (state) => {
   return {
-    game: state.games.get('game').toJS()
+    game: state.games.get('game').toJS(),
+    fetchingGame: state.games.get('fetchingGame')
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    
+    fetchGame: (gameKey) => {
+      dispatch(fetchGame(gameKey))
+    }
   }
 }
 
