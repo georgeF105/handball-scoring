@@ -34,7 +34,7 @@ export function fetchGame (gameKey) {
       })
       .then(homeTeam => {
         let homePlayerArr = []
-        for(let key in homeTeam.players) {
+        for (let key in homeTeam.players) {
           homePlayerArr.push(homeTeam.players[key])
         }
         gameObj.home_players = homePlayerArr
@@ -42,11 +42,11 @@ export function fetchGame (gameKey) {
       })
       .then(awayTeam => {
         let awayPlayerArr = []
-        for(let key in awayTeam.players) {
+        for (let key in awayTeam.players) {
           awayPlayerArr.push(awayTeam.players[key])
         }
         gameObj.away_players = awayPlayerArr
-        console.log('gameObj',gameObj)
+        console.log('gameObj', gameObj)
         dispatch(reciveGame(gameObj))
       })
       .catch(err => {

@@ -6,7 +6,7 @@ const INITAL_STATE = fromJS({
   game: {},
   fetchingGame: false,
   games: {},
-  fetchingGames: false,
+  fetchingGames: false
 })
 
 export default (state = INITAL_STATE, action) => {
