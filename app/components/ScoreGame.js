@@ -1,6 +1,7 @@
 import React from 'react'
-import TeamTable from './TeamTable'
 
+import TeamTable from './TeamTable'
+import EventsTable from './EventsTable'
 import { formatTime, formatScore } from '../../lib/formatNumber'
 
 class ScoreGame extends React.Component {
@@ -12,7 +13,7 @@ class ScoreGame extends React.Component {
     const currentTime = formatTime(this.props.game.current_time)
     const homeTeamScore = formatScore(this.props.game.current_score.home)
     const awayTeamScore = formatScore(this.props.game.current_score.away)
-    const events = this.props.events
+    const events = this.props.game.events
     return (
       <div className='score-game'>
         <div className='team-table-column'>
@@ -42,16 +43,7 @@ class ScoreGame extends React.Component {
             <button className='event-button two-min'>2 Min</button>
             <button className='event-button red-card'>RC</button>
           </div>
-          <div className='event-table card'>
-            <div className='heading'> <div>Events</div> </div>
-            <div className='events'>
-              <div className='event'> Home Team - Player 1 - Scores a goal - 25:10</div>
-              <div className='event'> Away Team - Player 6 - Scores a goal - 20:55</div>
-              <div className='event'> Home Team - Player 4 - Yellow Card - 18:32</div>
-              <div className='event'> Away Team - Player 10 - Yellow Card - 16:43</div>
-              <div className='event'> Home Team - Player 4 - Two Min - 14:12</div>
-            </div>
-          </div>
+          <EventsTable events={events} />
         </div>
         <div className='team-table-column'>
           <div className='team-logo'>
