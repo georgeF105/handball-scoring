@@ -4,11 +4,13 @@ import thunk from 'redux-thunk'
 import games from './games'
 import user from './user'
 import teams from './teams'
+import players from './players'
 
 const combined = combineReducers({
   games,
   user,
-  teams
+  teams,
+  players
 })
 
 export default function (initialState) {
