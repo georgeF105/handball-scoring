@@ -6,7 +6,8 @@ import NewGame from '../NewGame'
 const mapStateToProps = (state) => {
   return {
     userId: state.user.get('userId'),
-    loggedIn: state.user.get('loggedIn')
+    loggedIn: state.user.get('loggedIn'),
+    teams: state.teams.get('teams').toJS()
   }
 }
 
