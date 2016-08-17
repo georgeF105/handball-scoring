@@ -38,13 +38,13 @@ export function reciveTeams (teamsObj) {
 
 export function addPlayerToTeam(teamKey, playerKey, number) {
   return (dispatch) => {
-    dispatch(addTeamPlayer(teamKey, playerKey, number))
+    addTeamPlayer(teamKey, playerKey, number)
   }
 }
 
 export function addNewPlayerToTeam(teamKey, playerObj, number) {
   return (dispatch) => {
-    dispatch(addNewTeamPlayer(teamKey, playerObj, number))
+    addNewTeamPlayer(teamKey, playerObj, number)
   }
 }
 
