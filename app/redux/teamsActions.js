@@ -6,7 +6,7 @@ export const RECEIVE_TEAMS = 'RECEIVE_TEAMS'
 
 export function submitTeam (teamObj) {
   return (dispatch) => {
-    const gameKey = saveTeam(teamObj)
+    saveTeam(teamObj)
     hashHistory.push('/')
   }
 }
