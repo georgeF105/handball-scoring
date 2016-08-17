@@ -8,6 +8,8 @@ export default (props) => {
       <p> An app for scoring Handball games</p>
       <Link to='game/new'>New Game</Link>
       <br />
+      <Link to='team/new'>New Team</Link>
+      <br />
       <Link to='game'>All Games</Link>
     </div>
   )

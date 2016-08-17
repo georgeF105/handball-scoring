@@ -6,8 +6,8 @@ export const RECEIVE_TEAMS = 'RECEIVE_TEAMS'
 
 export function submitTeam (teamObj) {
   return (dispatch) => {
-    saveTeam(teamObj)
-    hashHistory.push('/')
+    const teamKey = saveTeam(teamObj)
+    hashHistory.push('/team/' + teamKey + '/edit')
   }
 }
 

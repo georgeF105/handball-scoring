@@ -4,7 +4,7 @@ import { hashHistory } from 'react-router'
 export const REQUEST_PLAYERS = 'REQUEST_PLAYERS'
 export const RECEIVE_PLAYERS = 'RECEIVE_PLAYERS'
 
-export function submitTeam (playerObj) {
+export function submitPlayer (playerObj) {
   return (dispatch) => {
     savePlayer(playerObj)
     hashHistory.push('/')
