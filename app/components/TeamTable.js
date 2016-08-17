@@ -16,7 +16,7 @@ export default (props) => {
       {players.map((player, key) => {
         return (
           <div key={key} className='team-table row player'>
-            <div className='team-table col num'>{player.num}</div>
+            <div className='team-table col num'>{player.number}</div>
             <div className='team-table col goal'></div>
             <div className='team-table col yellow-card'></div>
           </div>

@@ -1,34 +1,38 @@
 import React from 'react'
 import TeamTable from './TeamTable'
 
+import { formatTime, formatScore } from '../../lib/formatNumber'
+
 class ScoreGame extends React.Component {
 
   render () {
-    const game = this.props.games[this.props.params.id]
-    const players = [
-      {num:1},{num:2},{num:3},{num:4},{num:5},{num:6},{num:7},{num:8},
-      {num:9},{num:10},{num:11},{num:12},{num:13},{num:14},{num:15},{num:16}
-    ]
+    const game = this.props.game
+    const homePlayers = this.props.game.home_players
+    const awayPlayers = this.props.game.away_players
+    const currentTime = formatTime(this.props.game.current_time)
+    const homeTeamScore = formatScore(this.props.game.current_score.home)
+    const awayTeamScore = formatScore(this.props.game.current_score.away)
+    const events = this.props.events
     return (
       <div className='score-game'>
         <div className='team-table-column'>
           <div className='team-logo'>
             <img src="http://placehold.it/250x120?text=LOGO" />
           </div>
-          <TeamTable teamName='home team' players={players}/>
+          <TeamTable teamName='home team' players={homePlayers}/>
         </div>
         <div className='centre-column'>
           <div className='game-timer'>
-            <h3 className='timer' id='gameTimer'> 00:00 </h3>
+            <h3 className='timer' id='gameTimer'> {currentTime} </h3>
             <div>Play/Pause(icon)</div>
           </div>
           <div className='scores-board'>
            <div className='score-board'>
-            <h3 className='game-score' id='homeTeamScore'>00</h3>
+            <h3 className='game-score' id='homeTeamScore'>{homeTeamScore}</h3>
             <div>home</div>
            </div>
            <div className='score-board'>
-            <h3 className='game-score' id='awayTeamScore'>00</h3>
+            <h3 className='game-score' id='awayTeamScore'>{awayTeamScore}</h3>
             <div>away</div>
            </div>
           </div>
@@ -53,7 +57,7 @@ class ScoreGame extends React.Component {
           <div className='team-logo'>
             <img src="http://placehold.it/250x120?text=LOGO" />
           </div>
-          <TeamTable teamName={'away team'} players={players}/>
+          <TeamTable teamName={'away team'} players={homePlayers}/>
         </div>
       </div>
     )
