@@ -13,10 +13,10 @@ export default (props) => {
   }
   const fetchingGames = props.fetchingGames
   return (
-    <div className='container games'>
+    <div className='container content games'>
       {!fetchingGames
         ? (games.length
-          ? games.map(game => <GameCard game={game} />)
+          ? games.map((game, key) => <GameCard key={key} game={game} />)
           : <h3>No Games Found</h3>)
         : <h3>Loading Games...</h3>
       }
