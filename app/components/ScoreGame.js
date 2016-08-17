@@ -12,8 +12,8 @@ class ScoreGame extends React.Component {
       this.props.fetchGame(this.props.params.id)
     }
     const game = this.props.game
-    const homePlayers = this.props.game.home_players
-    const awayPlayers = this.props.game.away_players
+    const homePlayers = this.props.game.home_players || []
+    const awayPlayers = this.props.game.away_players || []
     const currentTime = formatTime(this.props.game.current_time || 0)
     const homeTeamScore = formatScore(this.props.game.current_score && this.props.game.current_score.home || 0)
     const awayTeamScore = formatScore(this.props.game.current_score && this.props.game.current_score.away || 0)

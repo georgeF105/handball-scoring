@@ -17,6 +17,17 @@ class NewGame extends React.Component {
     gameObj.timekeeper = document.getElementById('timekeeper-input').value
     gameObj.scorekeeper = document.getElementById('scorekeeper-input').value
     gameObj.owner_id = this.props.userId
+    gameObj.home_players = []
+    gameObj.away_players = []
+    gameObj.events = []
+    gameObj.current_score = {home: 0, away: 0}
+    gameObj.halftime_score = {home: 0, away: 0}
+    gameObj.fulltime_score = {home: 0, away: 0}
+    gameObj.status_started = false
+    gameObj.status_halftime_completed = false
+    gameObj.status_fulltime_completed = false
+    gameObj.current_time = 1767
+
     console.log('gameObj', gameObj)
     this.props.submitGame(gameObj)
     // this.props.history.push('/')
