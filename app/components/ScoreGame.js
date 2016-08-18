@@ -17,14 +17,8 @@ class ScoreGame extends React.Component {
     }
   }
 
-  handlEventButton = (e) => {
-    e.preventDefault()
-    const eventName = e.target.name
-    this.setState({pendingAction: eventName})
-  }
-
   componentDidMount () {
-    this.props.setInterval(this.tickTimer, 10)
+    this.props.setInterval(this.tickTimer, 1000)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -66,6 +60,14 @@ class ScoreGame extends React.Component {
     this.setState({currentTime: newCurrentTime})
   }
 
+  handlEventButton = (e) => {
+    e.preventDefault()
+    if(this.state.running) {
+      const eventName = e.target.name
+      this.setState({pendingAction: eventName})
+    }
+  }
+
   handlePlayerButton = (teamKey, playerKey) => {
     console.log('Player Button teamKey', teamKey, 'playerKey', playerKey)
     const pendingAction = this.state.pendingAction
@@ -73,6 +75,7 @@ class ScoreGame extends React.Component {
     const game = this.props.games[gameKey]
     if (this.state.pendingAction) {
       const team = teamKey === game.home_team.key ? 'home' : 'away'
+      const player = game[team + '_team'].players[playerKey]
       const eventObj = {}
       eventObj.type = pendingAction
       eventObj.team = team
@@ -81,18 +84,22 @@ class ScoreGame extends React.Component {
       this.props.addEvent(gameKey, eventObj)
       switch (pendingAction) {
         case EVENT_GOAL:
+          this.props.setGameKeyValue(gameKey, team + '_team/players/' + playerKey + '/goals', (player.goals || 0) + 1)
           this.props.setGameKeyValue(gameKey, 'current_score/' + team, game.current_score[team] + 1)
           break
         case EVENT_7_METER:
           // A 7_METER
           break
         case EVENT_YELLOW_CARD:
+          this.props.setGameKeyValue(gameKey, team + '_team/players/' + playerKey + '/yellow_cards', (player.yellow_cards || 0) + 1)
           // A YELLOW_CARD
           break
         case EVENT_2_MINUTE:
+          this.props.setGameKeyValue(gameKey, team + '_team/players/' + playerKey + '/two_minutes', (player.two_minutes || 0) + 1)
           // A 2_MINUTE
           break
         case EVENT_RED_CARD:
+          this.props.setGameKeyValue(gameKey, team + '_team/players/' + playerKey + '/red_cards', (player.red_cards || 0) + 1)
           // A RED_CARD
           break
         default:
