@@ -9,7 +9,7 @@ import { EVENT_GOAL, EVENT_7_METER, EVENT_YELLOW_CARD, EVENT_2_MINUTE, EVENT_RED
 class ScoreGame extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { 
+    this.state = {
       pendingAction: '',
       currentTime: this.props.games[this.props.params.id] && this.props.games[this.props.params.id].current_time || 0,
       running: this.props.games[this.props.params.id] && this.props.games[this.props.params.id].status_in_play || false,
@@ -24,10 +24,10 @@ class ScoreGame extends React.Component {
   componentWillReceiveProps (nextProps) {
     const game = nextProps.games[this.props.params.id]
     this.setState({running: game && game.status_in_play})
-    if(!this.state.timeSet && game) {
+    if (!this.state.timeSet && game) {
       let newCurrentTime = 0
-      if(game.status_in_play){
-        newCurrentTime = game.current_time + Math.floor((Date.now() - game.timer_last_updated)/1000)
+      if (game.status_in_play) {
+        newCurrentTime = game.current_time + Math.floor((Date.now() - game.timer_last_updated) / 1000)
       } else {
         newCurrentTime = game.current_time
       }
@@ -41,18 +41,18 @@ class ScoreGame extends React.Component {
     const firstComp = game.status_firsthalf_completed || false
     const secondComp = game.status_secondhalf_completed || false
     let newCurrentTime = this.state.currentTime
-    
+
     if (this.state.running) {
       newCurrentTime++
     }
 
     if (!firstComp && newCurrentTime > (20 * 60)) {
-      newCurrentTime = 20*60
+      newCurrentTime = 20 * 60
       this.props.setGameKeyValue(gameKey, 'status_firsthalf_completed', true)
       this.setState({running: false})
     }
     if (!secondComp && newCurrentTime > (40 * 60)) {
-      newCurrentTime = 40*60
+      newCurrentTime = 40 * 60
       this.props.setGameKeyValue(gameKey, 'status_secondhalf_completed', true)
       this.setState({running: false})
     }
@@ -62,14 +62,13 @@ class ScoreGame extends React.Component {
 
   handlEventButton = (e) => {
     e.preventDefault()
-    if(this.state.running) {
+    if (this.state.running) {
       const eventName = e.target.name
       this.setState({pendingAction: eventName})
     }
   }
 
   handlePlayerButton = (teamKey, playerKey) => {
-    console.log('Player Button teamKey', teamKey, 'playerKey', playerKey)
     const pendingAction = this.state.pendingAction
     const gameKey = this.props.params.id
     const game = this.props.games[gameKey]
@@ -88,19 +87,15 @@ class ScoreGame extends React.Component {
           this.props.setGameKeyValue(gameKey, 'current_score/' + team, game.current_score[team] + 1)
           break
         case EVENT_7_METER:
-          // A 7_METER
           break
         case EVENT_YELLOW_CARD:
           this.props.setGameKeyValue(gameKey, team + '_team/players/' + playerKey + '/yellow_cards', (player.yellow_cards || 0) + 1)
-          // A YELLOW_CARD
           break
         case EVENT_2_MINUTE:
           this.props.setGameKeyValue(gameKey, team + '_team/players/' + playerKey + '/two_minutes', (player.two_minutes || 0) + 1)
-          // A 2_MINUTE
           break
         case EVENT_RED_CARD:
           this.props.setGameKeyValue(gameKey, team + '_team/players/' + playerKey + '/red_cards', (player.red_cards || 0) + 1)
-          // A RED_CARD
           break
         default:
           break
@@ -112,7 +107,7 @@ class ScoreGame extends React.Component {
 
   startGame = (e) => {
     e.preventDefault()
-    if(confirm('Initalize Game?')){
+    if (confirm('Initalize Game?')) {
       this.props.initializeGame(this.props.params.id)
     }
   }
@@ -127,13 +122,13 @@ class ScoreGame extends React.Component {
     const secondStarted = game.status_secondhalf_started || false
     const secondComp = game.status_secondhalf_completed || false
 
-    if(!firstStarted && !firstComp && !secondStarted && !secondComp) {
+    if (!firstStarted && !firstComp && !secondStarted && !secondComp) {
       this.props.setGameKeyValue(gameKey, 'status_firsthalf_started', true)
     }
-    if(firstStarted && firstComp && !secondStarted && !secondComp) {
+    if (firstStarted && firstComp && !secondStarted && !secondComp) {
       this.props.setGameKeyValue(gameKey, 'status_secondhalf_started', true)
     }
-    if(!secondComp) {
+    if (!secondComp) {
       this.props.startTimer(this.props.params.id)
       this.setState({running: true})
     }
@@ -152,7 +147,7 @@ class ScoreGame extends React.Component {
 
     const homeTeam = gameInitialized ? game.home_team || {} : this.props.teams[game.home_team] || {}
     const awayTeam = gameInitialized ? game.away_team || {} : this.props.teams[game.away_team] || {}
-    
+
     const currentTime = formatTime(this.state.currentTime || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
@@ -185,10 +180,10 @@ class ScoreGame extends React.Component {
               ? <h1 className='timer' id='gameTimer'> {currentTime} </h1>
               : <h3>Loading Game</h3>}
             <h4>{gameStatus}</h4>
-            {initalized 
-              ? !running 
-              ? <i className='fa fa-play game-timer-icon start' onClick={this.startTimer} /> 
-              : <i className='fa fa-pause game-timer-icon pause' onClick={this.pauseTimer} /> 
+            {initalized
+              ? !running
+              ? <i className='fa fa-play game-timer-icon start' onClick={this.startTimer} />
+              : <i className='fa fa-pause game-timer-icon pause' onClick={this.pauseTimer} />
               : <i className='fa fa-play-circle game-timer-icon initalize' onClick={this.startGame} />}
           </div>
           <div className='scores-board'>

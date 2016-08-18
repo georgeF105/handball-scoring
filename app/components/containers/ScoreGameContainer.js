@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     pauseTimer: (gameKey, currentTime) => {
       dispatch(pauseTimer(gameKey, currentTime))
-    },
+    }
   }
 }
 
