@@ -14,7 +14,7 @@ name={EVENT_RED_CARD}
 class ScoreGame extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { pendingAction: '', currentTime: 0, running: false}
+    this.state = { pendingAction: '', currentTime: 0, running: this.props.status_in_play}
   }
 
   handlEventButton = (e) => {
@@ -27,12 +27,16 @@ class ScoreGame extends React.Component {
     console.log('Player Button teamKey', teamKey, 'playerKey', playerKey)
     const pendingAction = this.state.pendingAction
 
+    const game = this.props.games[this.props.params.id]
+
     if(this.state.pendingAction) {
-      const team = teamKey === this.props.games[this.props.params.id].home_team.key ? 'home' : 'away'
+      const team = teamKey === game.home_team.key ? 'home' : 'away'
       console.log('EVENT', pendingAction)
       switch (pendingAction) {
         case EVENT_GOAL:
-          // A GOAL
+          console.log('Goal to ', team)
+          console.log('game HERE','current_score/' + team)
+          this.props.setGameKeyValue (this.props.params.id, 'current_score/' + team, game.current_score[team] + 1)
           break
         case EVENT_7_METER:
           // A 7_METER
@@ -65,9 +69,11 @@ class ScoreGame extends React.Component {
       console.log('inital game')
       this.startGame()
     }
+    this.setState({running: true})
   }
 
-  pauseTimer = () => {
+  pauseTimer = (e) => {
+    e.preventDefault()
     this.setState({running: false})
     // send pause game to db
   }
@@ -75,25 +81,20 @@ class ScoreGame extends React.Component {
   render () {
     const loading = this.props.fetchingGame
     const game = this.props.games[this.props.params.id] || {}
-    console.log('venue',game.venue)
-    // if (game.gameKey !== this.props.params.id && !loading) {
-    //   this.props.fetchGame(this.props.params.id)
-    // }
     const gameInitialized = game.status_initialized
-    console.log('gameInitialized', gameInitialized)
+
     const homeTeam = gameInitialized ? game.home_team || {} : this.props.teams[game.home_team] || {}
     const awayTeam = gameInitialized ? game.away_team || {} : this.props.teams[game.away_team] || {}
 
     const homePlayers = homeTeam.players
     const awayPlayers = awayTeam.players
-    console.log('players HERE', game)
 
     const currentTime = formatTime(game.current_time || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
     const events = game.events || []
     const pendingAction = this.state.pendingAction
-    const running = game.status_in_play || false
+    const running = this.state.running
 
     const firstStarted = game.status_firsthalf_started || false
     const firstComp = game.status_firsthalf_completed || false
@@ -118,7 +119,7 @@ class ScoreGame extends React.Component {
               ? <h1 className='timer' id='gameTimer'> {currentTime} </h1>
               : <h3>Loading Game</h3>}
             <h4>{gameStatus}</h4>
-            {!running ? <i className='fa fa-play game-timer-icon start' onClick={this.startTimer} /> : <i className='fa fa-pause game-timer-icon pause' />}
+            {!running ? <i className='fa fa-play game-timer-icon start' onClick={this.startTimer} /> : <i className='fa fa-pause game-timer-icon pause' onClick={this.pauseTimer} />}
           </div>
           <div className='scores-board'>
             <div className='score-board'>

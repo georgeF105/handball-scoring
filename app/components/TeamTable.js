@@ -4,7 +4,7 @@ class TeamTable extends React.Component {
 
   handlePlayerClick = (e) => {
     e.preventDefault()
-    const playerKey = e.target.name
+    const playerKey = e.target.getAttribute('name')
     this.props.playerButton(this.props.team.key, playerKey)
   }
 
@@ -24,9 +24,9 @@ class TeamTable extends React.Component {
         {Object.keys(players).map((key) => {
           return (
             <div key={key} name={key} className='team-table row player' onClick={this.handlePlayerClick}>
-              <div className='team-table col num'>{players[key].number}</div>
-              <div className='team-table col goal'></div>
-              <div className='team-table col yellow-card'></div>
+              <div name={key} className='team-table col num'>{players[key].number}</div>
+              <div name={key} className='team-table col goal'></div>
+              <div name={key} className='team-table col yellow-card'></div>
             </div>
           )
         })}
