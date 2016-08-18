@@ -53,7 +53,7 @@ export function fetchGame (gameKey) {
 export function initializeGame (gameKey) {
   return (dispatch) => {
     appendPlayersToGame(gameKey)
-    updateGameChild(gameKey, status_initialized, true)
+    // updateGameChild(gameKey, 'status_initialized', true)
   }
 }
 

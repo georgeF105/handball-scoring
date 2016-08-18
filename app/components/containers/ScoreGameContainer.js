@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { fetchGame } from '../../redux/gamesActions'
+import { fetchGame, initializeGame } from '../../redux/gamesActions'
 import ScoreGame from '../ScoreGame'
 
 const mapStateToProps = (state) => {

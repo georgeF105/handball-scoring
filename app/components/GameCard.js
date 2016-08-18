@@ -9,8 +9,6 @@ export default (props) => {
       <div>date {game.date}</div>
       <div>time {game.time}</div>
       <div>gender {game.gender}</div>
-      <div>home_team {game.home_team}</div>
-      <div>away_team {game.away_team}</div>
       {game.ownedByCurrentUser ? <Link to={`/game/${game.gameKey}/score`}>Score Game</Link> : null}
     </div>
   )

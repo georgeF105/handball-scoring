@@ -55,11 +55,16 @@ class ScoreGame extends React.Component {
   }
 
   startGame = () => {
-    initializeGame(this.props.params.id)
+    this.props.initializeGame(this.props.params.id)
   }
 
-  startTimer = () => {
-    this
+  startTimer = (e) => {
+    e.preventDefault()
+    console.log('start timer')
+    if(!this.props.games[this.props.params.id].status_initialized) {
+      console.log('inital game')
+      this.startGame()
+    }
   }
 
   pauseTimer = () => {
@@ -75,12 +80,13 @@ class ScoreGame extends React.Component {
     //   this.props.fetchGame(this.props.params.id)
     // }
     const gameInitialized = game.status_initialized
-
+    console.log('gameInitialized', gameInitialized)
     const homeTeam = gameInitialized ? game.home_team || {} : this.props.teams[game.home_team] || {}
     const awayTeam = gameInitialized ? game.away_team || {} : this.props.teams[game.away_team] || {}
 
     const homePlayers = homeTeam.players
     const awayPlayers = awayTeam.players
+    console.log('players HERE', game)
 
     const currentTime = formatTime(game.current_time || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
@@ -112,7 +118,7 @@ class ScoreGame extends React.Component {
               ? <h1 className='timer' id='gameTimer'> {currentTime} </h1>
               : <h3>Loading Game</h3>}
             <h4>{gameStatus}</h4>
-            {!running ? <i className='fa fa-play game-timer-icon start' /> : <i className='fa fa-pause game-timer-icon pause' />}
+            {!running ? <i className='fa fa-play game-timer-icon start' onClick={this.startTimer} /> : <i className='fa fa-pause game-timer-icon pause' />}
           </div>
           <div className='scores-board'>
             <div className='score-board'>
