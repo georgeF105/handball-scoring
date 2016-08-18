@@ -108,6 +108,21 @@ export function addEvent (gameKey, eventObj) {
   }
 }
 
+export function startTimer (gameKey) {
+  return (dispatch) => {
+    updateGameChild(gameKey, 'status_in_play', true)
+    updateGameChild(gameKey, 'timer_last_updated', Date.now())
+  }
+}
+
+export function pauseTimer (gameKey, currentTime) {
+  return (dispatch) => {
+    updateGameChild(gameKey, 'status_in_play', false)
+    updateGameChild(gameKey, 'timer_last_updated', Date.now())
+    updateGameChild(gameKey, 'current_time', currentTime)
+  }
+}
+
 export function error (error) {
   return {
     type: 'ERROR',
