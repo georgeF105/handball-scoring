@@ -21,7 +21,12 @@ class ScoreGame extends React.Component {
   }
 
   componentDidMount () {
+    
     this.props.setInterval(this.tickTimer, 1000)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({running: this.props.games[this.props.params.id] && this.props.games[this.props.params.id].status_in_play})
   }
 
   tickTimer = () => {
@@ -79,11 +84,13 @@ class ScoreGame extends React.Component {
       this.startGame()
     }
     this.setState({running: true})
+    this.props.setGameKeyValue(this.props.params.id, 'status_in_play', true)
   }
 
   pauseTimer = (e) => {
     e.preventDefault()
     this.setState({running: false})
+    this.props.setGameKeyValue(this.props.params.id, 'status_in_play', false)
     // send pause game to db
   }
 
