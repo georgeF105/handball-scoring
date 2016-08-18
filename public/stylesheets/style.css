@@ -1,13 +1,14 @@
 body {
   max-height: 100vh;
   position: relative;
-  background-color: #E0E0E0;
+  /*background-color: #E0E0E0;*/
 }
 
 header {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   z-index: 1;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .header-icon {
@@ -50,7 +51,7 @@ header {
   display: flex;
 }
 .content {
-  padding-top: 75px;
+  padding-top: 50px;
 }
 
 .title {
