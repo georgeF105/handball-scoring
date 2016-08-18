@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactTimeout from 'react-timeout'
 
 import TeamTable from './TeamTable'
 import EventsTable from './EventsTable'
@@ -14,13 +15,25 @@ name={EVENT_RED_CARD}
 class ScoreGame extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { pendingAction: '', currentTime: 0, running: this.props.status_in_play}
+    this.state = { pendingAction: '',
+      currentTime: this.props.games[this.props.params.id] && this.props.games[this.props.params.id].current_time || 0,
+      running: this.props.games[this.props.params.id] && this.props.games[this.props.params.id].status_in_play}
   }
 
   handlEventButton = (e) => {
     e.preventDefault()
     const eventName = e.target.name
     this.setState({pendingAction: eventName})
+  }
+
+  componentDidMount () {
+    this.props.setInterval(this.tickTimer, 1000)
+  }
+
+  tickTimer = () => {
+    if(this.state.running) {
+      this.setState({currentTime: this.state.currentTime + 1})
+    }
   }
 
   handlePlayerButton = (teamKey, playerKey) => {
@@ -89,7 +102,7 @@ class ScoreGame extends React.Component {
     const homePlayers = homeTeam.players
     const awayPlayers = awayTeam.players
 
-    const currentTime = formatTime(game.current_time || 0)
+    const currentTime = formatTime(this.state.currentTime || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
     const events = game.events || []
@@ -151,4 +164,4 @@ class ScoreGame extends React.Component {
   }
 }
 
-export default ScoreGame
+export default ReactTimeout(ScoreGame)
