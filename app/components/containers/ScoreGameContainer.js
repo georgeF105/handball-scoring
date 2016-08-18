@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { fetchGame, initializeGame, setGameKeyValue } from '../../redux/gamesActions'
+import { fetchGame, initializeGame, setGameKeyValue, addEvent } from '../../redux/gamesActions'
 import ScoreGame from '../ScoreGame'
 
 const mapStateToProps = (state) => {
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setGameKeyValue: (gameKey, key, value) => {
       dispatch(setGameKeyValue(gameKey, key, value))
+    },
+    addEvent: (gameKey, eventObj) => {
+      dispatch(addEvent(gameKey, eventObj))
     }
   }
 }

@@ -33,15 +33,19 @@ class ScoreGame extends React.Component {
   handlePlayerButton = (teamKey, playerKey) => {
     console.log('Player Button teamKey', teamKey, 'playerKey', playerKey)
     const pendingAction = this.state.pendingAction
-    const game = this.props.games[this.props.params.id]
+    const gameKey = this.props.params.id
+    const game = this.props.games[gameKey]
     if (this.state.pendingAction) {
       const team = teamKey === game.home_team.key ? 'home' : 'away'
-      console.log('EVENT', pendingAction)
+      const eventObj = {}
+      eventObj.type = pendingAction
+      eventObj.team = team
+      eventObj.player_key = playerKey
+      eventObj.time = this.state.currentTime
+      this.props.addEvent(gameKey, eventObj)
       switch (pendingAction) {
         case EVENT_GOAL:
-          console.log('Goal to ', team)
-          console.log('game HERE', 'current_score/' + team)
-          this.props.setGameKeyValue(this.props.params.id, 'current_score/' + team, game.current_score[team] + 1)
+          this.props.setGameKeyValue(gameKey, 'current_score/' + team, game.current_score[team] + 1)
           break
         case EVENT_7_METER:
           // A 7_METER

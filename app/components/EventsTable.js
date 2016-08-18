@@ -8,10 +8,10 @@ export default (props) => {
     <div className='event-table card'>
       <div className='heading'> <div>Events</div> </div>
       <div className='events'>
-        {events.map((event, key) => {
+        {Object.keys(events).map((key) => {
           return (
             <div key={key} className='event'>
-              {event.team_side} team - player {event.player_number} - {event.type} - {formatTime(event.time)}
+              {events[key].team} team - player {events[key].player_name} - {events[key].type} - {formatTime(events[key].time)}
             </div>
           )
         })}
