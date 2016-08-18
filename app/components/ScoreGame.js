@@ -24,7 +24,7 @@ class ScoreGame extends React.Component {
   }
 
   componentDidMount () {
-    this.props.setInterval(this.tickTimer, 1000)
+    this.props.setInterval(this.tickTimer, 10)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -42,9 +42,28 @@ class ScoreGame extends React.Component {
   }
 
   tickTimer = () => {
+    const gameKey = this.props.params.id
+    const game = this.props.games[gameKey] || {}
+    const firstComp = game.status_firsthalf_completed || false
+    const secondComp = game.status_secondhalf_completed || false
+    let newCurrentTime = this.state.currentTime
+    
     if (this.state.running) {
-      this.setState({currentTime: this.state.currentTime + 1})
+      newCurrentTime++
     }
+
+    if (!firstComp && newCurrentTime > (20 * 60)) {
+      newCurrentTime = 20*60
+      this.props.setGameKeyValue(gameKey, 'status_firsthalf_completed', true)
+      this.setState({running: false})
+    }
+    if (!secondComp && newCurrentTime > (40 * 60)) {
+      newCurrentTime = 40*60
+      this.props.setGameKeyValue(gameKey, 'status_secondhalf_completed', true)
+      this.setState({running: false})
+    }
+
+    this.setState({currentTime: newCurrentTime})
   }
 
   handlePlayerButton = (teamKey, playerKey) => {
@@ -93,21 +112,30 @@ class ScoreGame extends React.Component {
 
   startTimer = (e) => {
     e.preventDefault()
-    // if (!this.props.games[this.props.params.id].status_initialized) {
-    //   console.log('inital game')
-    //   this.startGame()
-    // }
-    this.props.startTimer(this.props.params.id)
-    this.setState({running: true})
-    // this.props.setGameKeyValue(this.props.params.id, 'status_in_play', true)
+
+    const gameKey = this.props.params.id
+    const game = this.props.games[gameKey] || {}
+    const firstStarted = game.status_firsthalf_started || false
+    const firstComp = game.status_firsthalf_completed || false
+    const secondStarted = game.status_secondhalf_started || false
+    const secondComp = game.status_secondhalf_completed || false
+
+    if(!firstStarted && !firstComp && !secondStarted && !secondComp) {
+      this.props.setGameKeyValue(gameKey, 'status_firsthalf_started', true)
+    }
+    if(firstStarted && firstComp && !secondStarted && !secondComp) {
+      this.props.setGameKeyValue(gameKey, 'status_secondhalf_started', true)
+    }
+    if(!secondComp) {
+      this.props.startTimer(this.props.params.id)
+      this.setState({running: true})
+    }
   }
 
   pauseTimer = (e) => {
     e.preventDefault()
     this.setState({running: false})
     this.props.pauseTimer(this.props.params.id, this.state.currentTime)
-    // this.props.setGameKeyValue(this.props.params.id, 'status_in_play', false)
-    // send pause game to db
   }
 
   render () {
