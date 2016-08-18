@@ -176,6 +176,11 @@ hr {
   margin: 3px;
 }
 
+.event-button.event-pending {
+  color: red;
+  border-color: red;
+}
+
 /****    Event Table    ****/
 .event-table {
   margin: 0;

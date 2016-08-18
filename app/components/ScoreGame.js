@@ -3,8 +3,29 @@ import React from 'react'
 import TeamTable from './TeamTable'
 import EventsTable from './EventsTable'
 import { formatTime, formatScore } from '../../lib/formatNumber'
+import { EVENT_GOAL, EVENT_7_METER, EVENT_YELLOW_CARD, EVENT_2_MINUTE, EVENT_RED_CARD } from '../../lib/gamesUtils'
+
+name={EVENT_GOAL}
+name={EVENT_7_METER}
+name={EVENT_YELLOW_CARD}
+name={EVENT_2_MINUTE}
+name={EVENT_RED_CARD}
 
 class ScoreGame extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { pendingAction: ''}
+  }
+
+  handlEventButton = (e) => {
+    e.preventDefault()
+    const eventName = e.target.name
+    this.setState({pendingAction: eventName})
+  }
+
+  handlePlayerButton = (e) => {
+    e.preventDefault()
+  }
 
   render () {
     const loading = this.props.fetchingGame
@@ -18,6 +39,7 @@ class ScoreGame extends React.Component {
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
     const events = game.events || []
+    const pendingAction = this.state.pendingAction
     return (
       <div className='score-game'>
         <div className='team-table-column'>
@@ -44,10 +66,11 @@ class ScoreGame extends React.Component {
             </div>
           </div>
           <div className='event-buttons'>
-            <button className='event-button goal'>Goal</button>
-            <button className='event-button yellow-card'>YC</button>
-            <button className='event-button two-min'>2 Min</button>
-            <button className='event-button red-card'>RC</button>
+            <button className={'event-button goal ' + (pendingAction === EVENT_GOAL ? 'event-pending': '')} name={EVENT_GOAL} onClick={this.handlEventButton}>Goal</button>
+            <button className={'event-button seven-meter ' + (pendingAction === EVENT_7_METER ? 'event-pending': '')} name={EVENT_7_METER} onClick={this.handlEventButton}>7 Meter</button>
+            <button className={'event-button yellow-card ' + (pendingAction === EVENT_YELLOW_CARD ? 'event-pending': '')} name={EVENT_YELLOW_CARD} onClick={this.handlEventButton}>YC</button>
+            <button className={'event-button two-min ' + (pendingAction === EVENT_2_MINUTE ? 'event-pending': '')} name={EVENT_2_MINUTE} onClick={this.handlEventButton}>2 Min</button>
+            <button className={'event-button red-card ' + (pendingAction === EVENT_RED_CARD ? 'event-pending': '')} name={EVENT_RED_CARD} onClick={this.handlEventButton}>RC</button>
           </div>
           <EventsTable events={events} />
         </div>
