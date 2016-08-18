@@ -6,12 +6,6 @@ import EventsTable from './EventsTable'
 import { formatTime, formatScore } from '../../lib/formatNumber'
 import { EVENT_GOAL, EVENT_7_METER, EVENT_YELLOW_CARD, EVENT_2_MINUTE, EVENT_RED_CARD } from '../../lib/gamesUtils'
 
-name={EVENT_GOAL}
-name={EVENT_7_METER}
-name={EVENT_YELLOW_CARD}
-name={EVENT_2_MINUTE}
-name={EVENT_RED_CARD}
-
 class ScoreGame extends React.Component {
   constructor (props) {
     super(props)
@@ -31,7 +25,7 @@ class ScoreGame extends React.Component {
   }
 
   tickTimer = () => {
-    if(this.state.running) {
+    if (this.state.running) {
       this.setState({currentTime: this.state.currentTime + 1})
     }
   }
@@ -39,17 +33,15 @@ class ScoreGame extends React.Component {
   handlePlayerButton = (teamKey, playerKey) => {
     console.log('Player Button teamKey', teamKey, 'playerKey', playerKey)
     const pendingAction = this.state.pendingAction
-
     const game = this.props.games[this.props.params.id]
-
-    if(this.state.pendingAction) {
+    if (this.state.pendingAction) {
       const team = teamKey === game.home_team.key ? 'home' : 'away'
       console.log('EVENT', pendingAction)
       switch (pendingAction) {
         case EVENT_GOAL:
           console.log('Goal to ', team)
-          console.log('game HERE','current_score/' + team)
-          this.props.setGameKeyValue (this.props.params.id, 'current_score/' + team, game.current_score[team] + 1)
+          console.log('game HERE', 'current_score/' + team)
+          this.props.setGameKeyValue(this.props.params.id, 'current_score/' + team, game.current_score[team] + 1)
           break
         case EVENT_7_METER:
           // A 7_METER
@@ -65,7 +57,7 @@ class ScoreGame extends React.Component {
           break
         default:
           break
-        
+
       }
       this.setState({pendingAction: ''})
     }
@@ -78,7 +70,7 @@ class ScoreGame extends React.Component {
   startTimer = (e) => {
     e.preventDefault()
     console.log('start timer')
-    if(!this.props.games[this.props.params.id].status_initialized) {
+    if (!this.props.games[this.props.params.id].status_initialized) {
       console.log('inital game')
       this.startGame()
     }
@@ -99,9 +91,6 @@ class ScoreGame extends React.Component {
     const homeTeam = gameInitialized ? game.home_team || {} : this.props.teams[game.home_team] || {}
     const awayTeam = gameInitialized ? game.away_team || {} : this.props.teams[game.away_team] || {}
 
-    const homePlayers = homeTeam.players
-    const awayPlayers = awayTeam.players
-
     const currentTime = formatTime(this.state.currentTime || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
@@ -113,10 +102,10 @@ class ScoreGame extends React.Component {
     const firstComp = game.status_firsthalf_completed || false
     const secondStarted = game.status_secondhalf_started || false
     const secondComp = game.status_secondhalf_completed || false
-    const gameStatus = firstStarted && firstComp && secondStarted && secondComp 
+    const gameStatus = firstStarted && firstComp && secondStarted && secondComp
       ? 'Full Time' : firstStarted && firstComp && secondStarted
       ? 'Second Half' : firstStarted && firstComp
-      ? 'Start Second Half' : firstStarted 
+      ? 'Start Second Half' : firstStarted
       ? 'First Half' : 'Start Game'
     return (
       <div className='score-game'>
@@ -145,11 +134,11 @@ class ScoreGame extends React.Component {
             </div>
           </div>
           <div className='event-buttons'>
-            <button className={'event-button goal ' + (pendingAction === EVENT_GOAL ? 'event-pending': '')} name={EVENT_GOAL} onClick={this.handlEventButton}>Goal</button>
-            <button className={'event-button seven-meter ' + (pendingAction === EVENT_7_METER ? 'event-pending': '')} name={EVENT_7_METER} onClick={this.handlEventButton}>7 Meter</button>
-            <button className={'event-button yellow-card ' + (pendingAction === EVENT_YELLOW_CARD ? 'event-pending': '')} name={EVENT_YELLOW_CARD} onClick={this.handlEventButton}>YC</button>
-            <button className={'event-button two-min ' + (pendingAction === EVENT_2_MINUTE ? 'event-pending': '')} name={EVENT_2_MINUTE} onClick={this.handlEventButton}>2 Min</button>
-            <button className={'event-button red-card ' + (pendingAction === EVENT_RED_CARD ? 'event-pending': '')} name={EVENT_RED_CARD} onClick={this.handlEventButton}>RC</button>
+            <button className={'event-button goal ' + (pendingAction === EVENT_GOAL ? 'event-pending' : '')} name={EVENT_GOAL} onClick={this.handlEventButton}>Goal</button>
+            <button className={'event-button seven-meter ' + (pendingAction === EVENT_7_METER ? 'event-pending' : '')} name={EVENT_7_METER} onClick={this.handlEventButton}>7 Meter</button>
+            <button className={'event-button yellow-card ' + (pendingAction === EVENT_YELLOW_CARD ? 'event-pending' : '')} name={EVENT_YELLOW_CARD} onClick={this.handlEventButton}>YC</button>
+            <button className={'event-button two-min ' + (pendingAction === EVENT_2_MINUTE ? 'event-pending' : '')} name={EVENT_2_MINUTE} onClick={this.handlEventButton}>2 Min</button>
+            <button className={'event-button red-card ' + (pendingAction === EVENT_RED_CARD ? 'event-pending' : '')} name={EVENT_RED_CARD} onClick={this.handlEventButton}>RC</button>
           </div>
           <EventsTable events={events} />
         </div>
@@ -157,7 +146,7 @@ class ScoreGame extends React.Component {
           <div className='team-logo'>
             <img src='http://placehold.it/250x120?text=LOGO' />
           </div>
-          <TeamTable teamName={'away team'} players={awayPlayers}  team={awayTeam} playerButton={this.handlePlayerButton} />
+          <TeamTable team={awayTeam} playerButton={this.handlePlayerButton} />
         </div>
       </div>
     )
