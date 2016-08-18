@@ -11,7 +11,7 @@ export default (props) => {
       <div>gender {game.gender}</div>
       <div>home_team {game.home_team}</div>
       <div>away_team {game.away_team}</div>
-      {game.ownedByCurrentUser ? <Link to={`/game/${game.gameKey}/score`}>Game link</Link> : null}
+      {game.ownedByCurrentUser ? <Link to={`/game/${game.gameKey}/score`}>Score Game</Link> : null}
     </div>
   )
 }
