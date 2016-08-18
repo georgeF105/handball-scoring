@@ -1,28 +1,50 @@
 import React from 'react'
+import { Link } from 'react-router'
 
-export default (props) => {
-  const userName = props.userName
-  const loggedIn = props.loggedIn
-  const logIn = props.logIn
-  const logOut = props.logOut
-  return (
-    <header>
-      <div className='container'>
-        <div className='navbar'>
-          <h3 className='title'>Handball Scoring</h3>
-          {loggedIn
-            ? <div className='login-bar'>
-              <div className='user-name'>{userName}</div>
-              <button onClick={logOut}>LogOut</button>
-            </div>
-            : <div className='login-bar'>
-              <button onClick={logIn}>LogIn</button>
-            </div>}
+class NavBar extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = { optionsView: false }
+  }
+
+  toggleOptions = () => {
+    this.setState({optionsView: !this.state.optionsView})
+  }
+
+  render () {
+    const userName = this.props.userName
+    const loggedIn = this.props.loggedIn
+    const logIn = this.props.logIn
+    const logOut = this.props.logOut
+    const optionsView = this.state.optionsView
+    return (
+      <header>
+        <div className='container'>
+          <div className='navbar'>
+            <Link className='header-icon home' to='/'><i className='fa fa-home' /></Link>
+            {optionsView
+              ? <div className='options-bar'>
+                {loggedIn
+                  ? <div className='login-bar'>
+                    <div className='user-name'>{userName}</div>
+                    <Link className='nav-button' activeClass='active' to='game/new'>New Game</Link>
+                    <Link className='nav-button' activeClass='active' to='team/new'>New Team</Link>
+                    <div className='nav-button' onClick={logOut}>LogOut</div>
+                  </div>
+                  : <div className='login-bar'>
+                    <div className='nav-button'  onClick={logIn}>LogIn</div>
+                  </div>}
+                <div className='header-icon options' onClick={this.toggleOptions}><i className='fa fa-caret-up' /></div>
+              </div>
+              : <div className='header-icon options' onClick={this.toggleOptions}><i className='fa fa-caret-down' /></div>
+            }
+              
+          </div>
+
         </div>
-
-      </div>
-      <hr />
-    </header>
-  )
+      </header>
+    )
+  }
 }
 
+export default NavBar
