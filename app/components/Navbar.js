@@ -27,9 +27,9 @@ class NavBar extends React.Component {
                 {loggedIn
                   ? <div className='login-bar'>
                     <div className='user-name'>{userName}</div>
-                    <Link className='nav-button' activeClass='active' to='game/new'>New Game</Link>
-                    <Link className='nav-button' activeClass='active' to='team/new'>New Team</Link>
-                    <Link className='nav-button' activeClass='active' to='team/new'>Dashboard</Link>
+                    <Link className='nav-button' activeClassName='active' to='game/new'>New Game</Link>
+                    <Link className='nav-button' activeClassName='active' to='team/new'>New Team</Link>
+                    <Link className='nav-button' activeClassName='active' to='team/new'>Dashboard</Link>
                     <div className='nav-button' onClick={logOut}>LogOut</div>
                   </div>
                   : <div className='login-bar'>
