@@ -60,8 +60,8 @@ export function submitGame (gameObj) {
   return (dispatch) => {
     const gameKey = saveGame(gameObj)
     gameObj.gameKey = gameKey
-    dispatch(savedGame(gameObj))
-    hashHistory.push('game/' + gameKey)
+    // dispatch(savedGame(gameObj))
+    hashHistory.push('/')
   }
 }
 
