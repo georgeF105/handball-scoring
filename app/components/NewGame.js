@@ -23,9 +23,12 @@ class NewGame extends React.Component {
     gameObj.current_score = {home: 0, away: 0}
     gameObj.halftime_score = {home: 0, away: 0}
     gameObj.fulltime_score = {home: 0, away: 0}
-    gameObj.status_started = false
-    gameObj.status_halftime_completed = false
-    gameObj.status_fulltime_completed = false
+    gameObj.status_initialized
+    gameObj.status_in_play = false
+    gameObj.status_firsthalf_started = false
+    gameObj.status_firsthalf_completed = false
+    gameObj.status_secondhalf_started = false
+    gameObj.status_secondhalf_completed = false
     gameObj.current_time = 0
 
     console.log('gameObj', gameObj)

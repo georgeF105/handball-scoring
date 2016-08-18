@@ -14,7 +14,7 @@ name={EVENT_RED_CARD}
 class ScoreGame extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { pendingAction: ''}
+    this.state = { pendingAction: '', currentTime: 0, running: false}
   }
 
   handlEventButton = (e) => {
@@ -25,41 +25,94 @@ class ScoreGame extends React.Component {
 
   handlePlayerButton = (teamKey, playerKey) => {
     console.log('Player Button teamKey', teamKey, 'playerKey', playerKey)
+    const pendingAction = this.state.pendingAction
+
     if(this.state.pendingAction) {
-      console.log('EVENT', this.state.pendingAction)
+      const team = teamKey === this.props.games[this.props.params.id].home_team.key ? 'home' : 'away'
+      console.log('EVENT', pendingAction)
+      switch (pendingAction) {
+        case EVENT_GOAL:
+          // A GOAL
+          break
+        case EVENT_7_METER:
+          // A 7_METER
+          break
+        case EVENT_YELLOW_CARD:
+          // A YELLOW_CARD
+          break
+        case EVENT_2_MINUTE:
+          // A 2_MINUTE
+          break
+        case EVENT_RED_CARD:
+          // A RED_CARD
+          break
+        default:
+          break
+        
+      }
       this.setState({pendingAction: ''})
     }
   }
 
+  startGame = () => {
+    initializeGame(this.props.params.id)
+  }
+
+  startTimer = () => {
+    this
+  }
+
+  pauseTimer = () => {
+    this.setState({running: false})
+    // send pause game to db
+  }
+
   render () {
     const loading = this.props.fetchingGame
-    const game = this.props.game
-    if (game.gameKey !== this.props.params.id && !loading) {
-      this.props.fetchGame(this.props.params.id)
-    }
-    const homeTeam = game.home_team || {}
-    const awayTeam = game.away_team || {}
-    const homePlayers = game.home_team && game.home_team.players || []
-    const awayPlayers = game.home_team && game.away_team.players || []
+    const game = this.props.games[this.props.params.id] || {}
+    console.log('venue',game.venue)
+    // if (game.gameKey !== this.props.params.id && !loading) {
+    //   this.props.fetchGame(this.props.params.id)
+    // }
+    const gameInitialized = game.status_initialized
+
+    const homeTeam = gameInitialized ? game.home_team || {} : this.props.teams[game.home_team] || {}
+    const awayTeam = gameInitialized ? game.away_team || {} : this.props.teams[game.away_team] || {}
+
+    const homePlayers = homeTeam.players
+    const awayPlayers = awayTeam.players
+
     const currentTime = formatTime(game.current_time || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
     const events = game.events || []
     const pendingAction = this.state.pendingAction
+    const running = game.status_in_play || false
+
+    const firstStarted = game.status_firsthalf_started || false
+    const firstComp = game.status_firsthalf_completed || false
+    const secondStarted = game.status_secondhalf_started || false
+    const secondComp = game.status_secondhalf_completed || false
+    const gameStatus = firstStarted && firstComp && secondStarted && secondComp 
+      ? 'Full Time' : firstStarted && firstComp && secondStarted
+      ? 'Second Half' : firstStarted && firstComp
+      ? 'Start Second Half' : firstStarted 
+      ? 'First Half' : 'Start Game'
     return (
       <div className='score-game'>
         <div className='team-table-column'>
           <div className='team-logo'>
             <img src='http://placehold.it/250x120?text=LOGO' />
           </div>
-          <TeamTable teamName='home team' players={homePlayers} team={homeTeam} playerButton={this.handlePlayerButton} />
+          <TeamTable team={homeTeam} playerButton={this.handlePlayerButton} />
         </div>
         <div className='centre-column'>
           <div className='game-timer'>
             {!loading
               ? <h1 className='timer' id='gameTimer'> {currentTime} </h1>
               : <h3>Loading Game</h3>}
-            <div>Play/Pause(icon)</div>
+            <h4>{gameStatus}</h4>
+            {!running ? <i className='fa fa-play game-timer-icon start' /> : <i className='fa fa-pause game-timer-icon pause' />}
           </div>
           <div className='scores-board'>
             <div className='score-board'>
