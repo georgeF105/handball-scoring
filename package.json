@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --content-base public/ --inline --hot",
-    "build": "webpack",
+    "build": "webpack --progress --profile --colors",
     "test": "babel-tape-runner tests/*.js | tap-spec"
   },
   "repository": {
