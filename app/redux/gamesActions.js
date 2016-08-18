@@ -33,26 +33,20 @@ export function fetchGame (gameKey) {
         return getTeam(game.home_team)
       })
       .then(homeTeam => {
-        let homePlayerArr = []
-        for (let key in homeTeam.players) {
-          homePlayerArr.push(homeTeam.players[key])
-        }
-        gameObj.home_players = homePlayerArr
+        const teamKey = gameObj.home_team
+        gameObj.home_team = homeTeam
+        gameObj.home_team.key = teamKey
         return getTeam(gameObj.away_team)
       })
       .then(awayTeam => {
-        let awayPlayerArr = []
-        for (let key in awayTeam.players) {
-          awayPlayerArr.push(awayTeam.players[key])
-        }
-        gameObj.away_players = awayPlayerArr
-        console.log('gameObj', gameObj)
+        const teamKey = gameObj.away_team
+        gameObj.away_team = awayTeam
+        gameObj.away_team.key = teamKey
         dispatch(reciveGame(gameObj))
       })
       .catch(err => {
         console.error(err)
       })
-    // fetch game from firebase <== TODO.
   }
 }
 

@@ -1,28 +1,38 @@
 import React from 'react'
 
-export default (props) => {
-  const players = props.players
-  const teamName = props.teamName
-  return (
-    <div className='team-table table card'>
-      <div className='team-table row'>
-        <div className='team-table title'>{teamName}</div>
+class TeamTable extends React.Component {
+
+  handlePlayerClick = (e) => {
+    e.preventDefault()
+    const playerKey = e.target.name
+    this.props.playerButton(this.props.team.key, playerKey)
+  }
+
+  render () {
+    const players = this.props.team.players || {}
+    const teamName = this.props.team.name || 'LOADING TEAM'
+    return (
+      <div className='team-table table card'>
+        <div className='team-table row'>
+          <div className='team-table title'>{teamName}</div>
+        </div>
+        <div className='team-table row heading'>
+          <div className='team-table col num'>#</div>
+          <div className='team-table col goal'>Goals</div>
+          <div className='team-table col yellow-card'>Penalties</div>
+        </div>
+        {Object.keys(players).map((key) => {
+          return (
+            <div key={key} name={key} className='team-table row player' onClick={this.handlePlayerClick}>
+              <div className='team-table col num'>{players[key].number}</div>
+              <div className='team-table col goal'></div>
+              <div className='team-table col yellow-card'></div>
+            </div>
+          )
+        })}
       </div>
-      <div className='team-table row heading'>
-        <div className='team-table col num'>#</div>
-        <div className='team-table col goal'>Goals</div>
-        <div className='team-table col yellow-card'>Penalties</div>
-      </div>
-      {players.map((player, key) => {
-        return (
-          <div key={key} className='team-table row player'>
-            <div className='team-table col num'>{player.number}</div>
-            <div className='team-table col goal'></div>
-            <div className='team-table col yellow-card'></div>
-          </div>
-        )
-      })}
-    </div>
-  )
+    )
+  }
 }
 
+export default TeamTable

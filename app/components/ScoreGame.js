@@ -23,8 +23,12 @@ class ScoreGame extends React.Component {
     this.setState({pendingAction: eventName})
   }
 
-  handlePlayerButton = (e) => {
-    e.preventDefault()
+  handlePlayerButton = (teamKey, playerKey) => {
+    console.log('Player Button teamKey', teamKey, 'playerKey', playerKey)
+    if(this.state.pendingAction) {
+      console.log('EVENT', this.state.pendingAction)
+      this.setState({pendingAction: ''})
+    }
   }
 
   render () {
@@ -33,8 +37,10 @@ class ScoreGame extends React.Component {
     if (game.gameKey !== this.props.params.id && !loading) {
       this.props.fetchGame(this.props.params.id)
     }
-    const homePlayers = game.home_players || []
-    const awayPlayers = game.away_players || []
+    const homeTeam = game.home_team || {}
+    const awayTeam = game.away_team || {}
+    const homePlayers = game.home_team && game.home_team.players || []
+    const awayPlayers = game.home_team && game.away_team.players || []
     const currentTime = formatTime(game.current_time || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
@@ -46,7 +52,7 @@ class ScoreGame extends React.Component {
           <div className='team-logo'>
             <img src='http://placehold.it/250x120?text=LOGO' />
           </div>
-          <TeamTable teamName='home team' players={homePlayers} />
+          <TeamTable teamName='home team' players={homePlayers} team={homeTeam} playerButton={this.handlePlayerButton} />
         </div>
         <div className='centre-column'>
           <div className='game-timer'>
@@ -78,7 +84,7 @@ class ScoreGame extends React.Component {
           <div className='team-logo'>
             <img src='http://placehold.it/250x120?text=LOGO' />
           </div>
-          <TeamTable teamName={'away team'} players={awayPlayers} />
+          <TeamTable teamName={'away team'} players={awayPlayers}  team={awayTeam} playerButton={this.handlePlayerButton} />
         </div>
       </div>
     )
