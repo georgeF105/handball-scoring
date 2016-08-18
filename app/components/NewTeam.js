@@ -12,7 +12,7 @@ class NewTeam extends React.Component {
   }
 
   render () {
-    const loggedIn = true//this.props.loggedIn
+    const loggedIn = true// this.props.loggedIn
     return (
       <div className='container content new-team'>
         {loggedIn

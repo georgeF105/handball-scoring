@@ -32,13 +32,13 @@ class NavBar extends React.Component {
                     <div className='nav-button' onClick={logOut}>LogOut</div>
                   </div>
                   : <div className='login-bar'>
-                    <div className='nav-button'  onClick={logIn}>LogIn</div>
+                    <div className='nav-button' onClick={logIn}>LogIn</div>
                   </div>}
                 <div className='header-icon options' onClick={this.toggleOptions}><i className='fa fa-caret-up' /></div>
               </div>
               : <div className='header-icon options' onClick={this.toggleOptions}><i className='fa fa-caret-down' /></div>
             }
-              
+
           </div>
 
         </div>

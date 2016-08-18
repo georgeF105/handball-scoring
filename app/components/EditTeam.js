@@ -22,7 +22,7 @@ class NewTeam extends React.Component {
   }
 
   render () {
-    const loggedIn = true//this.props.loggedIn
+    const loggedIn = true// this.props.loggedIn
     const team = this.props.teams[this.props.params.id]
     console.log('team', team)
     const playersObj = this.props.players
@@ -39,7 +39,7 @@ class NewTeam extends React.Component {
       teamPlayer.teamPlayerKey = key
       teamPlayers.push(teamPlayer)
     }
-    console.log('teamPlayers',teamPlayers)
+    console.log('teamPlayers', teamPlayers)
     return (
       <div className='container content new-team'>
         {loggedIn && team && players.length
@@ -54,28 +54,28 @@ class NewTeam extends React.Component {
             </div>
             {teamPlayers.map((player, key) => {
               return (
-              <div key={key} className='row'>
-                <div className='two columns'>
-                  <label>Number</label>
-                  <p>{player.number}</p>
-                </div>
-                <div className='two columns'>
-                  <label>First Name</label>
-                  <p>{playersObj[player.key] ? playersObj[player.key].first_name : 'player not found'}</p>
-                </div>
-                <div className='two columns'>
-                  <label>Last Name</label>
-                </div>
-                <div className='two columns'>
-                  <label>DOB</label>
-                </div>
-                <div className='two columns'>
-                  <label>Mobile</label>
-                </div>
-                <div className='two columns'>
-                  <label>Email</label>
-                </div>
-              </div>)
+                <div key={key} className='row'>
+                  <div className='two columns'>
+                    <label>Number</label>
+                    <p>{player.number}</p>
+                  </div>
+                  <div className='two columns'>
+                    <label>First Name</label>
+                    <p>{playersObj[player.key] ? playersObj[player.key].first_name : 'player not found'}</p>
+                  </div>
+                  <div className='two columns'>
+                    <label>Last Name</label>
+                  </div>
+                  <div className='two columns'>
+                    <label>DOB</label>
+                  </div>
+                  <div className='two columns'>
+                    <label>Mobile</label>
+                  </div>
+                  <div className='two columns'>
+                    <label>Email</label>
+                  </div>
+                </div>)
             })}
             <div className='row new-player'>
               <div className='one columns'>

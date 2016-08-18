@@ -1,4 +1,4 @@
-import { saveTeam, getTeams, addTeamPlayer,addNewTeamPlayer } from '../../lib/teamsUtils'
+import { saveTeam, getTeams, addTeamPlayer, addNewTeamPlayer } from '../../lib/teamsUtils'
 import { hashHistory } from 'react-router'
 
 export const REQUEST_TEAMS = 'REQUEST_TEAMS'
@@ -36,13 +36,13 @@ export function reciveTeams (teamsObj) {
   }
 }
 
-export function addPlayerToTeam(teamKey, playerKey, number) {
+export function addPlayerToTeam (teamKey, playerKey, number) {
   return (dispatch) => {
     addTeamPlayer(teamKey, playerKey, number)
   }
 }
 
-export function addNewPlayerToTeam(teamKey, playerObj, number) {
+export function addNewPlayerToTeam (teamKey, playerObj, number) {
   return (dispatch) => {
     addNewTeamPlayer(teamKey, playerObj, number)
   }
