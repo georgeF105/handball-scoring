@@ -19,7 +19,9 @@ export default (props) => {
     <div className='games'>
       {!fetchingGames
         ? (games.length
-          ? games.map((game, key) => <GameCard key={key} game={game} homeTeam={teams[game.home_team.key] && teams[game.home_team.key].name || '???'} awayTeam={teams[game.away_team.key] && teams[game.away_team.key].name || '???'} />)
+          ? games.map((game, key) => <GameCard key={key} game={game} 
+              homeTeam={game.status_initialized ? teams[game.home_team.key] && teams[game.home_team.key].name || '???' : teams[game.home_team].name} 
+              awayTeam={game.status_initialized ? teams[game.away_team.key] && teams[game.away_team.key].name || '???' : teams[game.away_team].name} />)
           : <h3>No Games Found</h3>)
         : <h3>Loading Games...</h3>
       }
