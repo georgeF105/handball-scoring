@@ -15,11 +15,12 @@ export default (props) => {
     games.push(game)
   }
   const fetchingGames = props.fetchingGames
+  const deleteGame = props.deleteGame
   return (
     <div className='games'>
       {!fetchingGames
         ? (games.length
-          ? games.map((game, key) => <GameCard key={key} game={game} 
+          ? games.map((game, key) => <GameCard key={key} game={game} deleteGame={deleteGame}
               homeTeam={game.status_initialized ? teams[game.home_team.key] && teams[game.home_team.key].name || '???' : teams[game.home_team].name} 
               awayTeam={game.status_initialized ? teams[game.away_team.key] && teams[game.away_team.key].name || '???' : teams[game.away_team].name} />)
           : <h3>No Games Found</h3>)
