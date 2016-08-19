@@ -5,7 +5,7 @@ export default React.createClass({
   render () {
     return (
       <div>
-        <NavbarContainer />
+        <NavbarContainer props={this.props}/>
         {this.props.children}
       </div>
     )

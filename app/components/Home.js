@@ -6,11 +6,7 @@ export default (props) => {
     <div className='container content home'>
       <h2>Homepage</h2>
       <p> An app for scoring Handball games</p>
-      <Link to='game/new'>New Game</Link>
-      <br />
-      <Link to='team/new'>New Team</Link>
-      <br />
-      <Link to='game'>All Games</Link>
+      <p>Page not made yet. Use NavBar</p>
     </div>
   )
 }
