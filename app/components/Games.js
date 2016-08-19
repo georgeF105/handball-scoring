@@ -4,19 +4,22 @@ import GameCard from './GameCard'
 
 export default (props) => {
   const userId = props.userId
+  const teams = props.teams
   const games = []
-  for (let key in props.games) {
-    const game = props.games[key]
+  const gamesObj = props.games
+  console.log('teams', teams)
+  for (let key in gamesObj) {
+    const game = gamesObj[key]
     game.gameKey = key
     game.ownedByCurrentUser = game.owner_id === userId
     games.push(game)
   }
   const fetchingGames = props.fetchingGames
   return (
-    <div className='container content games'>
+    <div className='games'>
       {!fetchingGames
         ? (games.length
-          ? games.map((game, key) => <GameCard key={key} game={game} />)
+          ? games.map((game, key) => <GameCard key={key} game={game} homeTeam={teams[game.home_team.key] && teams[game.home_team.key].name || '???'} awayTeam={teams[game.away_team.key] && teams[game.away_team.key].name || '???'} />)
           : <h3>No Games Found</h3>)
         : <h3>Loading Games...</h3>
       }

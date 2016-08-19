@@ -94,7 +94,10 @@ hr {
 }
 
 ::-webkit-inner-spin-button { display: none; }
-
+/****    Dashboard    ****/
+.dashboard {
+  text-align: center;
+}
 /****    Scoreing page    ****/
 .score-game {
   background-color: white;

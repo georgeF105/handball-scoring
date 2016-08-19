@@ -8,6 +8,7 @@ import GamesContainer from './containers/GamesContainer'
 import ScoreGameContainer from './containers/ScoreGameContainer'
 import NewTeamContainer from './containers/NewTeamContainer'
 import EditTeamContainer from './containers/EditTeamContainer'
+import DashboardContainer from './containers/DashboardContainer'
 
 export default (
   <Router history={hashHistory}>
@@ -16,7 +17,7 @@ export default (
       <IndexRoute component={Home} />
       <Route path='/game/new' component={NewGameContainer} />
       <Route path='/game/:id' component={Home} />
-      <Route path='/game' component={GamesContainer} />
+      <Route path='/dashboard' component={DashboardContainer} />
       <Route path='/team/new' component={NewTeamContainer} />
       <Route path='/team/:id/edit' component={EditTeamContainer} />
     </Route>
