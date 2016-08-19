@@ -11,9 +11,9 @@ export default (props) => {
       <h5>{homeTeam}</h5>
       <h5>VS</h5>
       <h5>{awayTeam}</h5>
-      <p>{game.date}</p>
+      <p>{game.date} - {game.time}</p>
       <Link to={`/game/${game.gameKey}/score`}>Score Game</Link>
-      <i className='fa fa-trash' name={game.gameKey} onClick={deleteGame} />
+      <i className='fa fa-trash delete-game-icon' name={game.gameKey} onClick={deleteGame} />
     </div>
   )
 }
