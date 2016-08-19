@@ -263,8 +263,8 @@ hr {
   border-right: 1px solid #E0E0E0;
 }
 
-.team-table.yellow-card {
+.team-table.penalties {
   flex-grow: 1;
   text-align: center;
-  width: 120px;
+  width: 40px;
 }

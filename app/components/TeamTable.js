@@ -8,8 +8,25 @@ class TeamTable extends React.Component {
     this.props.playerButton(this.props.team.key, playerKey)
   }
 
+  sortPlayersObjIntoArr = (players) => {
+    let playersArr = []
+    Object.keys(players).map(key => {
+      const player = players[key]
+      player.key = key
+      playersArr.push(player)
+    })
+    playersArr = playersArr.sort((a,b) => {
+      const numA = parseInt(a.number)
+      const numB = parseInt(b.number)
+      if (numA < numB) return -1
+      if (numA > numB) return 1
+      return 0
+    })
+    return playersArr
+  }
+
   render () {
-    const players = this.props.team.players || {}
+    const players = this.sortPlayersObjIntoArr(this.props.team.players || {})
     const teamName = this.props.team.name || 'LOADING TEAM'
     return (
       <div className='team-table table card'>
@@ -19,14 +36,18 @@ class TeamTable extends React.Component {
         <div className='team-table row heading'>
           <div className='team-table col num'>#</div>
           <div className='team-table col goal'>Goals</div>
-          <div className='team-table col yellow-card'>Penalties</div>
+          <div className='team-table col penalties yellow-card'>YC</div>
+          <div className='team-table col penalties two-minute'>2M</div>
+          <div className='team-table col penalties red-card'>RC</div>
         </div>
-        {Object.keys(players).map((key) => {
+        {players.map((player, key) => {
           return (
-            <div key={key} name={key} className='team-table row player' onClick={this.handlePlayerClick}>
-              <div name={key} className='team-table col num'>{players[key].number}</div>
-              <div name={key} className='team-table col goal'></div>
-              <div name={key} className='team-table col yellow-card'></div>
+            <div key={key} name={player.key} className='team-table row player' onClick={this.handlePlayerClick}>
+              <div name={player.key} className='team-table col num'>{player.number}</div>
+              <div name={player.key} className='team-table col goal'>{player.goals || 0}</div>
+              <div name={player.key} className='team-table col penalties yellow-card'>{player.yellow_cards || 0}</div>
+              <div name={player.key} className='team-table col penalties two-minute'>{player.two_minutes || 0}</div>
+              <div name={player.key} className='team-table col penalties red-card'>{player.red_cards || 0}</div>
             </div>
           )
         })}
