@@ -65,12 +65,15 @@ class NewTeam extends React.Component {
                   </div>
                   <div className='two columns'>
                     <label>Last Name</label>
+                    <p>{playersObj[player.key] ? playersObj[player.key].last_name : 'player not found'}</p>
                   </div>
                   <div className='two columns'>
                     <label>DOB</label>
+                    <p>{playersObj[player.key] ? playersObj[player.key].dob : 'player not found'}</p>
                   </div>
                   <div className='two columns'>
                     <label>Mobile</label>
+                    <p>{playersObj[player.key] ? playersObj[player.key].mobile : 'player not found'}</p>
                   </div>
                   <div className='two columns'>
                     <label>Email</label>
