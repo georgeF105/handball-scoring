@@ -77,6 +77,7 @@ class NewTeam extends React.Component {
                   </div>
                   <div className='two columns'>
                     <label>Email</label>
+                    <p>{playersObj[player.key] ? playersObj[player.key].email : 'player not found'}</p>
                   </div>
                 </div>)
             })}
