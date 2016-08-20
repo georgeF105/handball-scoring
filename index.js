@@ -14,7 +14,7 @@ store.dispatch(fetchGames())
 store.dispatch(fetchTeams())
 store.dispatch(fetchPlayers())
 
-if(process.env.NODE_ENV !== 'production') console.log('NODE_ENV = ', process.env.NODE_ENV)
+if (process.env.NODE_ENV !== 'production') console.log('NODE_ENV = ', process.env.NODE_ENV)
 
 render((
   <Provider store={store}>
