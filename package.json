@@ -4,9 +4,12 @@
   "description": "A app for scoring handball games",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base public/ --inline --hot",
-    "build": "webpack --progress --profile --colors",
-    "test": "babel-tape-runner tests/*.js | tap-spec"
+    "start": "NODE_ENV=development webpack-dev-server --content-base public/ --inline --hot",
+    "build:staging": "NODE_ENV=staging webpack --progress --profile --colors",
+    "build:prod": "NODE_ENV=production webpack --progress --profile --colors",
+    "deploy:staging": "npm run build:staging && firebase deploy -P staging",
+    "deploy:prod": "npm run build:prod && firebase deploy -P default",
+    "test": "NODE_ENV=test babel-tape-runner tests/*.js | tap-spec"
   },
   "repository": {
     "type": "git",

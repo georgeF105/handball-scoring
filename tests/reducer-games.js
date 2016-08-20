@@ -2,6 +2,8 @@ import test from 'tape'
 import configureStore from '../app/redux/store'
 import * as gamesActions from '../app/redux/gamesActions'
 
+console.log('process.env.NODE_ENV = ', process.env.NODE_ENV)
+
 test('Request Game Reducer', (t) => {
   const store = configureStore()
 

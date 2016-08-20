@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "handball-scoring"
+    "default": "handball-scoring",
+    "staging": "handball-scoring-staging"
   }
 }
