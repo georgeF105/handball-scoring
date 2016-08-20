@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
     e.preventDefault()
     this.props.deleteGame(e.target.getAttribute('name'))
   }
-  render() {
+  render () {
     const userId = this.props.userId
     const games = this.props.games || {}
     const teams = this.props.teams || {}
@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
         <h1>Dashboard</h1>
         <div className='row'>
           <div className='six columns'>
-            {fetching ? <h3>Loading...</h3> :<Games userId={userId} games={games} teams={teams} deleteGame={this.deleteGame} />}
+            {fetching ? <h3>Loading...</h3> : <Games userId={userId} games={games} teams={teams} deleteGame={this.deleteGame} />}
           </div>
           <div className='six columns'>
             {fetching ? <h3>Loading...</h3> : <Teams teams={teams} />}

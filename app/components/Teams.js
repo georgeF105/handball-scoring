@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import GameCard from './GameCard'
-
 export default (props) => {
   const teams = []
   for (let key in props.teams) {

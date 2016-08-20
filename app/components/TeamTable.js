@@ -15,7 +15,7 @@ class TeamTable extends React.Component {
       player.key = key
       playersArr.push(player)
     })
-    playersArr = playersArr.sort((a,b) => {
+    playersArr = playersArr.sort((a, b) => {
       const numA = parseInt(a.number)
       const numB = parseInt(b.number)
       if (numA < numB) return -1
