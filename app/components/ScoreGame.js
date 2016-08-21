@@ -141,7 +141,7 @@ class ScoreGame extends React.Component {
   }
 
   render () {
-    const loading = this.props.fetchingGame
+    const loading = this.props.fetchingGames
     const game = this.props.games[this.props.params.id] || {}
     const gameInitialized = game.status_initialized
 

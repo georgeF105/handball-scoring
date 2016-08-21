@@ -5,10 +5,9 @@ import ScoreGame from '../ScoreGame'
 
 const mapStateToProps = (state) => {
   return {
-    game: state.games.get('game').toJS(),
     games: state.games.get('games').toJS(),
     teams: state.teams.get('teams').toJS(),
-    fetchingGame: state.games.get('fetchingGame')
+    fetchingGame: state.games.get('fetchingGames')
   }
 }
 
