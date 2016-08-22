@@ -7,6 +7,7 @@ import routes from './app/components/routes'
 import { fetchGames } from './app/redux/gamesActions'
 import { fetchTeams } from './app/redux/teamsActions'
 import { fetchPlayers } from './app/redux/playersActions'
+import './scss/main.scss'
 
 const store = configureStore()
 

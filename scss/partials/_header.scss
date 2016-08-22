@@ -1,0 +1,72 @@
+header {
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+}
+
+.navbar {
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  z-index: 2;
+}
+
+.header-icon {
+  font-size: 25px;
+  margin: 10px;
+  color: #757575;
+}
+
+.header-icon:hover {
+  color: #757575;
+  text-shadow: 0 0 3px lightblue;
+  color: #757575;
+}
+
+.nav-button {
+  margin: 10px;
+  text-decoration: underline;
+  color: #757575;
+  font-weight: bold;
+}
+
+.nav-button:hover {
+  color: #0FA0CE;
+}
+
+.nav-button.active {
+  color: red;
+}
+
+.options-bar {
+  display: flex;
+  box-sizing: border-box;
+}
+
+.login-bar {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin: 0px;
+}
+
+.user-name {
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.login-bar button {
+  margin: 0px;
+}
+
+hr {
+  margin: 5px;
+}
