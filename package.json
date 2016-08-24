@@ -9,7 +9,7 @@
     "build:prod": "NODE_ENV=production webpack --progress --profile --colors",
     "deploy:staging": "npm run build:staging && firebase deploy -P staging",
     "deploy:prod": "npm run build:prod && firebase deploy -P default",
-    "test": "NODE_ENV=test babel-tape-runner tests/*.js | tap-spec"
+    "test": "babel-tape-runner tests/*.js | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -41,6 +41,7 @@
     "css-loader": "^0.23.1",
     "firebase": "^3.2.1",
     "gh-pages": "^0.11.0",
+    "immutable": "^3.8.1",
     "node-sass": "^3.8.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
