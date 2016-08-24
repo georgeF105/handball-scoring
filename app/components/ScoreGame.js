@@ -21,7 +21,8 @@ class ScoreGame extends React.Component {
 
   handlEventButton = (e) => {
     e.preventDefault()
-    if (this.state.running) {
+    // console.log('event button', e.target, 'running', this.props.games[this.props.params.id])
+    if (this.props.games[this.props.params.id].status_in_play) {
       const eventName = e.target.name
       this.setState({pendingAction: eventName})
     }
@@ -38,7 +39,7 @@ class ScoreGame extends React.Component {
       eventObj.type = pendingAction
       eventObj.team = team
       eventObj.player_key = playerKey
-      eventObj.time = this.state.currentTime
+      eventObj.time = game.current_time
       this.props.addEvent(gameKey, eventObj)
       switch (pendingAction) {
         case EVENT_GOAL:
