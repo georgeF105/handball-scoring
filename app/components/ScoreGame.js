@@ -3,7 +3,8 @@ import ReactTimeout from 'react-timeout'
 
 import TeamTable from './TeamTable'
 import EventsTable from './EventsTable'
-import { formatTime, formatScore } from '../../lib/formatNumber'
+import ScoreGameTimerContainer from './containers/ScoreGameTimerContainer'
+import { formatScore } from '../../lib/formatNumber'
 import { EVENT_GOAL, EVENT_7_METER, EVENT_YELLOW_CARD, EVENT_2_MINUTE, EVENT_RED_CARD } from '../../lib/gamesUtils'
 
 class ScoreGame extends React.Component {
@@ -16,52 +17,6 @@ class ScoreGame extends React.Component {
       timeSet: false,
       halfTimeSeconds: 1200
     }
-  }
-
-  componentDidMount () {
-    this.props.setInterval(this.tickTimer, 10)
-  }
-
-  componentWillReceiveProps (nextProps) {
-    const game = nextProps.games[this.props.params.id]
-    this.setState({running: game && game.status_in_play})
-    if (!this.state.timeSet && game) {
-      let newCurrentTime = 0
-      if (game.status_in_play) {
-        newCurrentTime = game.current_time + Math.floor((Date.now() - game.timer_last_updated) / 1000)
-      } else {
-        newCurrentTime = game.current_time
-      }
-      this.setState({currentTime: newCurrentTime, timeSet: true})
-    }
-  }
-
-  tickTimer = () => {
-    const gameKey = this.props.params.id
-    const game = this.props.games[gameKey] || {}
-    const firstComp = game.status_firsthalf_completed || false
-    const secondComp = game.status_secondhalf_completed || false
-    const halfTimeSeconds = this.state.halfTimeSeconds
-    let newCurrentTime = this.state.currentTime
-
-    if (this.state.running) {
-      newCurrentTime++
-    }
-
-    if (!firstComp && newCurrentTime > halfTimeSeconds) {
-      newCurrentTime = halfTimeSeconds
-      this.props.setGameKeyValue(gameKey, 'status_firsthalf_completed', true)
-      this.setState({running: false})
-      this.props.pauseTimer(this.props.params.id, this.state.currentTime)
-    }
-    if (!secondComp && newCurrentTime > (halfTimeSeconds * 2)) {
-      newCurrentTime = halfTimeSeconds * 2
-      this.props.setGameKeyValue(gameKey, 'status_secondhalf_completed', true)
-      this.setState({running: false})
-      this.props.pauseTimer(this.props.params.id, this.state.currentTime)
-    }
-
-    this.setState({currentTime: newCurrentTime})
   }
 
   handlEventButton = (e) => {
@@ -109,41 +64,6 @@ class ScoreGame extends React.Component {
     }
   }
 
-  startGame = (e) => {
-    e.preventDefault()
-    if (confirm('Initalize Game?')) {
-      this.props.initializeGame(this.props.params.id)
-    }
-  }
-
-  startTimer = (e) => {
-    e.preventDefault()
-
-    const gameKey = this.props.params.id
-    const game = this.props.games[gameKey] || {}
-    const firstStarted = game.status_firsthalf_started || false
-    const firstComp = game.status_firsthalf_completed || false
-    const secondStarted = game.status_secondhalf_started || false
-    const secondComp = game.status_secondhalf_completed || false
-
-    if (!firstStarted && !firstComp && !secondStarted && !secondComp) {
-      this.props.setGameKeyValue(gameKey, 'status_firsthalf_started', true)
-    }
-    if (firstStarted && firstComp && !secondStarted && !secondComp) {
-      this.props.setGameKeyValue(gameKey, 'status_secondhalf_started', true)
-    }
-    if (!secondComp) {
-      this.props.startTimer(this.props.params.id)
-      this.setState({running: true})
-    }
-  }
-
-  pauseTimer = (e) => {
-    e.preventDefault()
-    this.setState({running: false})
-    this.props.pauseTimer(this.props.params.id, this.state.currentTime)
-  }
-
   render () {
     const loading = this.props.fetchingGames
     const game = this.props.games[this.props.params.id] || {}
@@ -152,24 +72,11 @@ class ScoreGame extends React.Component {
     const homeTeam = gameInitialized ? game.home_team || {} : this.props.teams[game.home_team] || {}
     const awayTeam = gameInitialized ? game.away_team || {} : this.props.teams[game.away_team] || {}
 
-    const currentTime = formatTime(this.state.currentTime || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
     const events = game.events || []
     const pendingAction = this.state.pendingAction
-    const running = this.state.running
 
-    const initalized = game.status_initialized || false
-    const firstStarted = game.status_firsthalf_started || false
-    const firstComp = game.status_firsthalf_completed || false
-    const secondStarted = game.status_secondhalf_started || false
-    const secondComp = game.status_secondhalf_completed || false
-    const gameStatus = firstStarted && firstComp && secondStarted && secondComp
-      ? 'Full Time' : firstStarted && firstComp && secondStarted
-      ? 'Second Half' : firstStarted && firstComp
-      ? 'Start Second Half' : firstStarted && initalized
-      ? 'First Half' : initalized
-      ? 'Start Game' : 'Initalize Game'
     return (
       <div className='score-game'>
         <div className='team-table-column'>
@@ -179,17 +86,7 @@ class ScoreGame extends React.Component {
           <TeamTable team={homeTeam} playerButton={this.handlePlayerButton} />
         </div>
         <div className='centre-column'>
-          <div className='game-timer'>
-            {!loading
-              ? <h1 className='timer' id='gameTimer'> {currentTime} </h1>
-              : <h3>Loading Game</h3>}
-            <h4>{gameStatus}</h4>
-            {initalized
-              ? !running
-              ? <i className='fa fa-play game-timer-icon start' onClick={this.startTimer} />
-              : <i className='fa fa-pause game-timer-icon pause' onClick={this.pauseTimer} />
-              : <i className='fa fa-play-circle game-timer-icon initalize' onClick={this.startGame} />}
-          </div>
+          <ScoreGameTimerContainer game={game} gameKey={this.props.params.id} />
           <div className='scores-board'>
             <div className='score-board'>
               <h1 className='game-score' id='homeTeamScore'>{homeTeamScore}</h1>

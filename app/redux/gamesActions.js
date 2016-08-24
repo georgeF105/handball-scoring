@@ -59,16 +59,24 @@ export function addEvent (gameKey, eventObj) {
   }
 }
 
-export function startTimer (gameKey) {
+export function startTimer (gameKey, currentTime) {
   return (dispatch) => {
     updateGameChild(gameKey, 'status_in_play', true)
     updateGameChild(gameKey, 'timer_last_updated', Date.now())
+    updateGameChild(gameKey, 'current_time', currentTime)
   }
 }
 
 export function pauseTimer (gameKey, currentTime) {
   return (dispatch) => {
     updateGameChild(gameKey, 'status_in_play', false)
+    updateGameChild(gameKey, 'timer_last_updated', Date.now())
+    updateGameChild(gameKey, 'current_time', currentTime)
+  }
+}
+
+export function updateTime (gameKey, currentTime) {
+  return (dispatch) => {
     updateGameChild(gameKey, 'timer_last_updated', Date.now())
     updateGameChild(gameKey, 'current_time', currentTime)
   }
