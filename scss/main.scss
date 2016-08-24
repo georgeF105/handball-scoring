@@ -1,5 +1,7 @@
+$icon-font-path: '~/node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 @import 'modules/fonts';
 
+@import 'vendor/bootstrap-custom';
 @import 'vendor/normalize';
 @import 'vendor/skeleton';
 
@@ -8,3 +10,4 @@
 @import 'partials/header';
 @import 'partials/newGame';
 @import 'partials/scoreGame';
+
