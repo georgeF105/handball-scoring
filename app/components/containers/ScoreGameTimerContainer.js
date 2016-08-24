@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { fetchGame, initializeGame, setGameKeyValue, addEvent, startTimer, pauseTimer } from '../../redux/gamesActions'
+import { fetchGame, initializeGame, setGameKeyValue, addEvent, startTimer, pauseTimer, updateTime } from '../../redux/gamesActions'
 import ScoreGameTimer from '../ScoreGameTimer'
 
 const mapStateToProps = (state) => {
@@ -17,11 +17,14 @@ const mapDispatchToProps = (dispatch) => {
     setGameKeyValue: (gameKey, key, value) => {
       dispatch(setGameKeyValue(gameKey, key, value))
     },
-    startTimer: (gameKey) => {
-      dispatch(startTimer(gameKey))
+    startTimer: (gameKey, currentTime) => {
+      dispatch(startTimer(gameKey, currentTime))
     },
     pauseTimer: (gameKey, currentTime) => {
       dispatch(pauseTimer(gameKey, currentTime))
+    },
+    updateTime: (gameKey, currentTime) => {
+      dispatch(updateTime(gameKey, currentTime))
     }
   }
 }

@@ -85,7 +85,7 @@ class ScoreGameTimer extends React.Component {
       this.props.setGameKeyValue(gameKey, 'status_secondhalf_started', true)
     }
     if (!secondComp) {
-      this.props.startTimer(this.props.gameKey)
+      this.props.startTimer(this.props.gameKey, this.state.currentTime)
       this.setState({running: true})
     }
   }
@@ -102,10 +102,12 @@ class ScoreGameTimer extends React.Component {
   }
 
   adjustTimeUp = () => {
+    this.props.updateTime(this.props.gameKey, this.state.currentTime + 5)
     this.setState({currentTime: this.state.currentTime + 5})
   }
 
   adjustTimeDown = () => {
+    this.props.updateTime(this.props.gameKey, this.state.currentTime - 5)
     this.setState({currentTime: this.state.currentTime - 5})
   }
 
