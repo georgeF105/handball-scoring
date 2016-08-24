@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactTimeout from 'react-timeout'
 
-import { formatTime, formatScore } from '../../lib/formatNumber'
+import { formatTime } from '../../lib/formatNumber'
 
 class ScoreGameTimer extends React.Component {
   constructor (props) {
@@ -98,7 +98,7 @@ class ScoreGameTimer extends React.Component {
 
   toggleAdjustClockSettings = (e) => {
     e.preventDefault()
-    this.setState({adjustClockSettings:!this.state.adjustClockSettings})
+    this.setState({adjustClockSettings: !this.state.adjustClockSettings})
   }
 
   adjustTimeUp = () => {
@@ -110,7 +110,6 @@ class ScoreGameTimer extends React.Component {
     this.props.updateTime(this.props.gameKey, this.state.currentTime - 5)
     this.setState({currentTime: this.state.currentTime - 5})
   }
-
 
   render () {
     const loading = this.props.fetchingGames
@@ -136,10 +135,10 @@ class ScoreGameTimer extends React.Component {
         {!loading
           ? <div className='timer' id='gameTimer' onClick={this.toggleAdjustClockSettings}> {currentTime} </div>
           : <h3>Loading Game</h3>}
-        {adjustClockSettings 
+        {adjustClockSettings
           ? <div className='adjust-clock'>
-            <i className='fa fa-plus' onClick={this.adjustTimeUp}/>
-            <i className='fa fa-minus' onClick={this.adjustTimeDown}/>
+            <i className='fa fa-plus' onClick={this.adjustTimeUp} />
+            <i className='fa fa-minus' onClick={this.adjustTimeDown} />
           </div>
           : <div className='game-status'>{gameStatus}</div>}
         {initalized

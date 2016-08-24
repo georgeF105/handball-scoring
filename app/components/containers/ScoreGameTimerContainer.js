@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { fetchGame, initializeGame, setGameKeyValue, addEvent, startTimer, pauseTimer, updateTime } from '../../redux/gamesActions'
+import { initializeGame, setGameKeyValue, startTimer, pauseTimer, updateTime } from '../../redux/gamesActions'
 import ScoreGameTimer from '../ScoreGameTimer'
 
 const mapStateToProps = (state) => {

@@ -4,7 +4,7 @@ import ReactTimeout from 'react-timeout'
 import TeamTable from './TeamTable'
 import EventsTable from './EventsTable'
 import ScoreGameTimerContainer from './containers/ScoreGameTimerContainer'
-import { formatTime, formatScore } from '../../lib/formatNumber'
+import { formatScore } from '../../lib/formatNumber'
 import { EVENT_GOAL, EVENT_7_METER, EVENT_YELLOW_CARD, EVENT_2_MINUTE, EVENT_RED_CARD } from '../../lib/gamesUtils'
 
 class ScoreGame extends React.Component {
@@ -64,41 +64,6 @@ class ScoreGame extends React.Component {
     }
   }
 
-  startGame = (e) => {
-    e.preventDefault()
-    if (confirm('Initalize Game?')) {
-      this.props.initializeGame(this.props.params.id)
-    }
-  }
-
-  startTimer = (e) => {
-    e.preventDefault()
-
-    const gameKey = this.props.params.id
-    const game = this.props.games[gameKey] || {}
-    const firstStarted = game.status_firsthalf_started || false
-    const firstComp = game.status_firsthalf_completed || false
-    const secondStarted = game.status_secondhalf_started || false
-    const secondComp = game.status_secondhalf_completed || false
-
-    if (!firstStarted && !firstComp && !secondStarted && !secondComp) {
-      this.props.setGameKeyValue(gameKey, 'status_firsthalf_started', true)
-    }
-    if (firstStarted && firstComp && !secondStarted && !secondComp) {
-      this.props.setGameKeyValue(gameKey, 'status_secondhalf_started', true)
-    }
-    if (!secondComp) {
-      this.props.startTimer(this.props.params.id)
-      this.setState({running: true})
-    }
-  }
-
-  pauseTimer = (e) => {
-    e.preventDefault()
-    this.setState({running: false})
-    this.props.pauseTimer(this.props.params.id, this.state.currentTime)
-  }
-
   render () {
     const loading = this.props.fetchingGames
     const game = this.props.games[this.props.params.id] || {}
@@ -107,12 +72,10 @@ class ScoreGame extends React.Component {
     const homeTeam = gameInitialized ? game.home_team || {} : this.props.teams[game.home_team] || {}
     const awayTeam = gameInitialized ? game.away_team || {} : this.props.teams[game.away_team] || {}
 
-    const currentTime = formatTime(this.state.currentTime || 0)
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
     const events = game.events || []
     const pendingAction = this.state.pendingAction
-    const running = this.state.running
 
     return (
       <div className='score-game'>
@@ -123,7 +86,7 @@ class ScoreGame extends React.Component {
           <TeamTable team={homeTeam} playerButton={this.handlePlayerButton} />
         </div>
         <div className='centre-column'>
-          <ScoreGameTimerContainer game={game} gameKey={this.props.params.id}/>
+          <ScoreGameTimerContainer game={game} gameKey={this.props.params.id} />
           <div className='scores-board'>
             <div className='score-board'>
               <h1 className='game-score' id='homeTeamScore'>{homeTeamScore}</h1>
