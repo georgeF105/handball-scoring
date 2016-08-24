@@ -2,42 +2,28 @@ import test from 'tape'
 import configureStore from '../app/redux/store'
 import * as gamesActions from '../app/redux/gamesActions'
 
-console.log('process.env.NODE_ENV = ', process.env.NODE_ENV)
+// console.log('process.env.NODE_ENV = ', process.env.NODE_ENV)
 
-test('Request Game Reducer', (t) => {
+test('Request Games Reducer', (t) => {
   const store = configureStore()
 
-  store.dispatch(gamesActions.requestGame())
+  store.dispatch(gamesActions.requestGames())
 
-  t.equal(store.getState().games.get('fetchingGame'), true, 'fetchingGames is true')
+  t.equal(store.getState().games.get('fetchingGames'), true, 'fetchingGames is true')
   t.end()
 })
 
-test('Recive Game Reducer', (t) => {
+test('Recive Games Reducer', (t) => {
   const store = configureStore()
   const gameObj = {
     venue: 'test venue',
     gameKey: 'testGameKey'
   }
 
-  store.dispatch(gamesActions.reciveGame(gameObj))
+  store.dispatch(gamesActions.reciveGames(gameObj))
 
-  t.deepEqual(store.getState().games.get('game').toJS(), gameObj, 'Game = expected')
-  t.equal(store.getState().games.get('fetchingGame'), false, 'fetchingGames is false')
-  t.end()
-})
-
-test('Saved Game Reducer', (t) => {
-  const store = configureStore()
-  const gameObj = {
-    venue: 'test venue',
-    gameKey: 'testGameKey'
-  }
-
-  store.dispatch(gamesActions.savedGame(gameObj))
-
-  t.deepEqual(store.getState().games.get('game').toJS(), gameObj, 'Game = expected')
-  t.equal(store.getState().games.get('fetchingGame'), false, 'fetchingGames is false')
+  t.deepEqual(store.getState().games.get('games').toJS(), gameObj, 'Games = expected')
+  t.equal(store.getState().games.get('fetchingGames'), false, 'fetchingGames is false')
   t.end()
 })
 
