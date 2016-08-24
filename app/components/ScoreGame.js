@@ -181,7 +181,7 @@ class ScoreGame extends React.Component {
         <div className='centre-column'>
           <div className='game-timer'>
             {!loading
-              ? <h1 className='timer' id='gameTimer'> {currentTime} </h1>
+              ? <div className='timer' id='gameTimer'> {currentTime} </div>
               : <h3>Loading Game</h3>}
             <h4>{gameStatus}</h4>
             {initalized

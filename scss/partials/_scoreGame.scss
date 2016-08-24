@@ -65,8 +65,16 @@
 }
 
 .game-timer .timer {
+  font-family: score-board;
+  font-size: 90px;
+  line-height: 75px;
+  color: yellow;
+  text-shadow: 0 0 1px;
+  background-color: #310e00;
   border: 1px solid black;
-  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px black;
+  padding: 15px;
 }
 
 .game-timer-icon {
