@@ -13,12 +13,13 @@ class ScoreGame extends React.Component {
       pendingAction: '',
       currentTime: this.props.games[this.props.params.id] && this.props.games[this.props.params.id].current_time || 0,
       running: this.props.games[this.props.params.id] && this.props.games[this.props.params.id].status_in_play || false,
-      timeSet: false
+      timeSet: false,
+      halfTimeSeconds: 1200
     }
   }
 
   componentDidMount () {
-    this.props.setInterval(this.tickTimer, 1000)
+    this.props.setInterval(this.tickTimer, 10)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -40,21 +41,24 @@ class ScoreGame extends React.Component {
     const game = this.props.games[gameKey] || {}
     const firstComp = game.status_firsthalf_completed || false
     const secondComp = game.status_secondhalf_completed || false
+    const halfTimeSeconds = this.state.halfTimeSeconds
     let newCurrentTime = this.state.currentTime
 
     if (this.state.running) {
       newCurrentTime++
     }
 
-    if (!firstComp && newCurrentTime > (20 * 60)) {
-      newCurrentTime = 20 * 60
+    if (!firstComp && newCurrentTime > halfTimeSeconds) {
+      newCurrentTime = halfTimeSeconds
       this.props.setGameKeyValue(gameKey, 'status_firsthalf_completed', true)
       this.setState({running: false})
+      this.props.pauseTimer(this.props.params.id, this.state.currentTime)
     }
-    if (!secondComp && newCurrentTime > (40 * 60)) {
-      newCurrentTime = 40 * 60
+    if (!secondComp && newCurrentTime > (halfTimeSeconds * 2)) {
+      newCurrentTime = halfTimeSeconds * 2
       this.props.setGameKeyValue(gameKey, 'status_secondhalf_completed', true)
       this.setState({running: false})
+      this.props.pauseTimer(this.props.params.id, this.state.currentTime)
     }
 
     this.setState({currentTime: newCurrentTime})
