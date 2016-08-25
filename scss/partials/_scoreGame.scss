@@ -208,10 +208,12 @@
   display: flex;
   border-bottom: 1px solid #E0E0E0;
   flex-grow: 1;
+  margin: 0;
+  max-height: 50px;
 }
 
 .team-table.row:last-child {
-  border-bottom: none;
+  // border-bottom: none;
 }
 
 .team-table {
