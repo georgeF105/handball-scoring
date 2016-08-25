@@ -23,8 +23,12 @@ class EventsTable extends React.Component {
     this.props.deleteEvent(eventKey)
   }
   render () {
-    const events = this.props.events
     const editingEvent = this.state.editingEvent
+    let eventsArr = Object.keys(this.props.events).map(key => {
+      let event = this.props.events[key]
+      event.key = key
+      return event
+    })
     return (
       <div className='event-table card'>
         <div className='heading'> 
@@ -50,20 +54,20 @@ class EventsTable extends React.Component {
           </div>
         </div>
         <div className='events'>
-          {Object.keys(events).map((key) => {
-            return (editingEvent !== key
-                ? <div key={key} className='event-row' onClick={this.editEvent.bind(this,key)}>
+          {eventsArr.map((event, key) => {
+            return (editingEvent !== event.key
+                ? <div key={key} className='event-row' onClick={this.editEvent.bind(this,event.key)}>
                   <div className='event-cell team'>
-                    <p>{events[key].team}</p>
+                    <p>{event.team}</p>
                   </div>
                   <div className='event-cell player'>
-                    <p>{events[key].player_name}</p>
+                    <p>{event.player_name}</p>
                   </div>
                   <div className='event-cell type'>
-                    <p>{events[key].type}</p>
+                    <p>{event.type}</p>
                   </div>
                   <div className='event-cell time'>
-                    <p>{formatTime(events[key].time)}</p>
+                    <p>{formatTime(event.time)}</p>
                   </div>
                   {editingEvent
                     ?<div className='event-cell delete'></div>
@@ -71,19 +75,19 @@ class EventsTable extends React.Component {
                 </div>
                 : <div key={key} className='event-row editing'>
                   <div className='event-cell team'>
-                    <p>{events[key].team}</p>
+                    <p>{event.team}</p>
                   </div>
                   <div className='event-cell player'>
-                    <p>{events[key].player_name}</p>
+                    <p>{event.player_name}</p>
                   </div>
                   <div className='event-cell type'>
-                    <p>{events[key].type}</p>
+                    <p>{event.type}</p>
                   </div>
                   <div className='event-cell time'>
-                    <input type='text' defaultValue={formatTime(events[key].time)} onBlur={this.updateEventTime} />
+                    <input type='text' defaultValue={formatTime(event.time)} onBlur={this.updateEventTime} />
                   </div>
                   <div className='event-cell delete'>
-                    <i className='fa fa-trash' onClick={this.deleteEvent.bind(this, key)}/>
+                    <i className='fa fa-trash' onClick={this.deleteEvent.bind(this, event.key)}/>
                   </div>
                 </div>)
           })}
