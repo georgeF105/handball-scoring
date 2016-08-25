@@ -29,6 +29,11 @@ class EventsTable extends React.Component {
       event.key = key
       return event
     })
+    eventsArr.sort((a,b) => {
+      if(a.time < b.time) return 1
+      if(a.time > b.time) return -1
+      return 0
+    })
     return (
       <div className='event-table card'>
         <div className='heading'> 
