@@ -82,7 +82,7 @@ class EventsTable extends React.Component {
                     <p>{events[key].type}</p>
                   </div>
                   <div className='event-cell time'>
-                    <input type='text' value={formatTime(events[key].time)} onBlur={this.updateEventTime} />
+                    <input type='text' defaultValue={formatTime(events[key].time)} onBlur={this.updateEventTime} />
                   </div>
                   <div className='event-cell delete'>
                     <i className='fa fa-trash' onClick={this.deleteEvent.bind(this, key)}/>
