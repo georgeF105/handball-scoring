@@ -11,18 +11,16 @@ class EventsTable extends React.Component {
   }
 
   editEvent = (key) => {
-    console.log('key',key)
     this.setState({editingEvent: key})
   }
 
   updateEventTime = (e) => {
-    console.log(e.target.value)
     this.setState({editingEvent: null})
   }
 
   deleteEvent = (eventKey) => {
-    console.log('deleteEvent', eventKey)
     this.setState({editingEvent: null})
+    this.props.deleteEvent(eventKey)
   }
   render () {
     const events = this.props.events

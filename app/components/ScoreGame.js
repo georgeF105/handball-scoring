@@ -32,11 +32,14 @@ class ScoreGame extends React.Component {
     const gameKey = this.props.params.id
     const game = this.props.games[gameKey]
     const currentTime = game.current_time + Math.floor((Date.now() - game.timer_last_updated) / 1000)
-    console.log('time', currentTime)
     if (this.state.pendingAction) {
       this.props.addEvent(game, teamKey, playerGameKey, pendingAction, currentTime)
       this.setState({pendingAction: ''})
     }
+  }
+
+  deleteEvent = (eventKey) => {
+    this.props.deleteEvent(this.props.games[this.props.params.id], eventKey)
   }
 
   render () {
@@ -79,7 +82,7 @@ class ScoreGame extends React.Component {
             <button className={'event-button two-min ' + (pendingAction === EVENT_2_MINUTE ? 'event-pending' : '')} name={EVENT_2_MINUTE} onClick={this.handlEventButton}>2 Min</button>
             <button className={'event-button red-card ' + (pendingAction === EVENT_RED_CARD ? 'event-pending' : '')} name={EVENT_RED_CARD} onClick={this.handlEventButton}>RC</button>
           </div>
-          <EventsTable events={events} />
+          <EventsTable events={events} deleteEvent={this.deleteEvent} />
         </div>
         <div className='team-table-column'>
           <div className='team-logo'>
