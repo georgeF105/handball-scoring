@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch) => {
     setGameKeyValue: (gameKey, key, value) => {
       dispatch(setGameKeyValue(gameKey, key, value))
     },
-    addEvent: (gameKey, eventObj) => {
-      dispatch(addEvent(gameKey, eventObj))
+    addEvent: (game, teamKey, playerGameKey, type, time) => {
+      dispatch(addEvent(game, teamKey, playerGameKey, type, time))
     },
     startTimer: (gameKey) => {
       dispatch(startTimer(gameKey))

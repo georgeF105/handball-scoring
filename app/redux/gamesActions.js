@@ -1,4 +1,4 @@
-import { saveGame, getGames, updateGameChild, appendPlayersToGame, pushEvent, removeGame } from '../../lib/gamesUtils'
+import { saveGame, getGames, updateGameChild, appendPlayersToGame, createEvent, removeGame } from '../../lib/gamesUtils'
 import { hashHistory } from 'react-router'
 
 export const REQUEST_GAMES = 'REQUEST_GAMES'
@@ -53,9 +53,9 @@ export function setGameKeyValue (gameKey, key, value) {
   }
 }
 
-export function addEvent (gameKey, eventObj) {
+export function addEvent (gameKey, teamKey, playerGameKey, type, time) {
   return (dispatch) => {
-    pushEvent(gameKey, eventObj)
+    createEvent(gameKey, teamKey, playerGameKey, type, time)
   }
 }
 
