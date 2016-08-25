@@ -123,7 +123,7 @@
   align-items: center;
   width: 90%;
   margin-bottom: 10px;
-  height: 120px;
+  height: 150px;
 }
 
 .event-table .heading {
@@ -147,6 +147,52 @@
   text-decoration: underline;
 }
 
+.heading > .event-row {
+  padding-right: 15px;
+}
+
+.event-row {
+  width: 100%;
+  min-height: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-row.editing {
+  min-height: 50px;
+  background-color: #ECEFF1;
+  line-height: 50px;
+}
+
+.event-cell {
+  width: 50px;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.event-cell.delete {
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 20px;
+  }
+}
+
+.event-cell > input {
+  border: none;
+  width: 50px;
+  height: 50px;
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+  background-color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
 /****    Team Table    ****/
 .team-table.table {
   padding: 0;
@@ -162,10 +208,12 @@
   display: flex;
   border-bottom: 1px solid #E0E0E0;
   flex-grow: 1;
+  margin: 0;
+  max-height: 50px;
 }
 
 .team-table.row:last-child {
-  border-bottom: none;
+  // border-bottom: none;
 }
 
 .team-table {
