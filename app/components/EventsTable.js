@@ -14,6 +14,16 @@ class EventsTable extends React.Component {
     console.log('key',key)
     this.setState({editingEvent: key})
   }
+
+  updateEventTime = (e) => {
+    console.log(e.target.value)
+    this.setState({editingEvent: null})
+  }
+
+  deleteEvent = (eventKey) => {
+    console.log('deleteEvent', eventKey)
+    this.setState({editingEvent: null})
+  }
   render () {
     const events = this.props.events
     const editingEvent = this.state.editingEvent
@@ -34,38 +44,48 @@ class EventsTable extends React.Component {
             <div className='event-cell time'>
               time
             </div>
+            {editingEvent
+              ?<div className='event-cell delete'>
+              delete
+            </div>
+              : null}
           </div>
         </div>
         <div className='events'>
           {Object.keys(events).map((key) => {
-            console.log('editingEvent' , editingEvent, 'key', key)
             return (editingEvent !== key
                 ? <div key={key} className='event-row' onClick={this.editEvent.bind(this,key)}>
                   <div className='event-cell team'>
-                    {events[key].team}
+                    <p>{events[key].team}</p>
                   </div>
                   <div className='event-cell player'>
-                    {events[key].player_name}
+                    <p>{events[key].player_name}</p>
                   </div>
                   <div className='event-cell type'>
-                    {events[key].type}
+                    <p>{events[key].type}</p>
                   </div>
                   <div className='event-cell time'>
-                    {formatTime(events[key].time)}
+                    <p>{formatTime(events[key].time)}</p>
                   </div>
+                  {editingEvent
+                    ?<div className='event-cell delete'></div>
+                    : null}
                 </div>
-                : <div key={key} className='event-row editing' onClick={this.editEvent.bind(this,key)}>
+                : <div key={key} className='event-row editing'>
                   <div className='event-cell team'>
-                    {events[key].team}
+                    <p>{events[key].team}</p>
                   </div>
                   <div className='event-cell player'>
-                    {events[key].player_name}
+                    <p>{events[key].player_name}</p>
                   </div>
                   <div className='event-cell type'>
-                    {events[key].type}
+                    <p>{events[key].type}</p>
                   </div>
                   <div className='event-cell time'>
-                    {formatTime(events[key].time)}
+                    <input type='text' value={formatTime(events[key].time)} onBlur={this.updateEventTime} />
+                  </div>
+                  <div className='event-cell delete'>
+                    <i className='fa fa-trash' onClick={this.deleteEvent.bind(this, key)}/>
                   </div>
                 </div>)
           })}
