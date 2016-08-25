@@ -29,15 +29,15 @@ class EventsTable extends React.Component {
       event.key = key
       return event
     })
-    eventsArr.sort((a,b) => {
-      if(a.time < b.time) return 1
-      if(a.time > b.time) return -1
+    eventsArr.sort((a, b) => {
+      if (a.time < b.time) return 1
+      if (a.time > b.time) return -1
       return 0
     })
     return (
       <div className='event-table card'>
-        <div className='heading'> 
-          <div>Events - click to edit</div> 
+        <div className='heading'>
+          <div>Events - click to edit</div>
           <div className='event-row'>
             <div className='event-cell team'>
               team
@@ -52,16 +52,16 @@ class EventsTable extends React.Component {
               time
             </div>
             {editingEvent
-              ?<div className='event-cell delete'>
-              delete
-            </div>
+              ? <div className='event-cell delete'>
+                delete
+              </div>
               : null}
           </div>
         </div>
         <div className='events'>
           {eventsArr.map((event, key) => {
             return (editingEvent !== event.key
-                ? <div key={key} className='event-row' onClick={this.editEvent.bind(this,event.key)}>
+                ? <div key={key} className='event-row' onClick={this.editEvent.bind(this, event.key)}>
                   <div className='event-cell team'>
                     <p>{event.team}</p>
                   </div>
@@ -75,7 +75,7 @@ class EventsTable extends React.Component {
                     <p>{formatTime(event.time)}</p>
                   </div>
                   {editingEvent
-                    ?<div className='event-cell delete'></div>
+                    ? <div className='event-cell delete'></div>
                     : null}
                 </div>
                 : <div key={key} className='event-row editing'>
@@ -92,7 +92,7 @@ class EventsTable extends React.Component {
                     <input type='text' defaultValue={formatTime(event.time)} onBlur={this.updateEventTime} />
                   </div>
                   <div className='event-cell delete'>
-                    <i className='fa fa-trash' onClick={this.deleteEvent.bind(this, event.key)}/>
+                    <i className='fa fa-trash' onClick={this.deleteEvent.bind(this, event.key)} />
                   </div>
                 </div>)
           })}
