@@ -31,8 +31,10 @@ class ScoreGame extends React.Component {
     const pendingAction = this.state.pendingAction
     const gameKey = this.props.params.id
     const game = this.props.games[gameKey]
+    const currentTime = game.current_time + Math.floor((Date.now() - game.timer_last_updated) / 1000)
+    console.log('time', currentTime)
     if (this.state.pendingAction) {
-      this.props.addEvent(game, teamKey, playerGameKey, pendingAction, game.current_time)
+      this.props.addEvent(game, teamKey, playerGameKey, pendingAction, currentTime)
       this.setState({pendingAction: ''})
     }
   }
