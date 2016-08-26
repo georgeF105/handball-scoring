@@ -11,12 +11,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
-}
-
-const GamesContainer = connect(mapStateToProps, mapDispatchToProps)(Games)
+const GamesContainer = connect(mapStateToProps)(Games)
 
 export default GamesContainer

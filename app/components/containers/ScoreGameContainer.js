@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 
-import { fetchGame, initializeGame, setGameKeyValue, addEvent, startTimer, pauseTimer, deleteEvent } from '../../redux/gamesActions'
 import ScoreGame from '../ScoreGame'
 
 const mapStateToProps = (state) => {
@@ -11,32 +10,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchGame: (gameKey) => {
-      dispatch(fetchGame(gameKey))
-    },
-    initializeGame: (gameKey) => {
-      dispatch(initializeGame(gameKey))
-    },
-    setGameKeyValue: (gameKey, key, value) => {
-      dispatch(setGameKeyValue(gameKey, key, value))
-    },
-    addEvent: (game, teamKey, playerGameKey, type, time) => {
-      dispatch(addEvent(game, teamKey, playerGameKey, type, time))
-    },
-    startTimer: (gameKey) => {
-      dispatch(startTimer(gameKey))
-    },
-    pauseTimer: (gameKey, currentTime) => {
-      dispatch(pauseTimer(gameKey, currentTime))
-    },
-    deleteEvent: (game, eventKey) => {
-      dispatch(deleteEvent(game, eventKey))
-    }
-  }
-}
-
-const ScoreGameContainer = connect(mapStateToProps, mapDispatchToProps)(ScoreGame)
+const ScoreGameContainer = connect(mapStateToProps)(ScoreGame)
 
 export default ScoreGameContainer

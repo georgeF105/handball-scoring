@@ -1,12 +1,14 @@
 import React from 'react'
 
+import { addTeamPlayer, addNewTeamPlayer } from '../../lib/teamsUtils'
+
 class NewTeam extends React.Component {
 
   addPlayerToTeam = (e) => {
     e.preventDefault()
     const playerKey = document.getElementById('existing-player-input').value
     const number = document.getElementById('number-existing-input').value
-    this.props.addPlayerToTeam(this.props.params.id, playerKey, number)
+    addTeamPlayer(this.props.params.id, playerKey, number)
   }
 
   addNewPlayerToTeam = (e) => {
@@ -18,7 +20,7 @@ class NewTeam extends React.Component {
     playerObj.dob = document.getElementById('dob-input').value
     playerObj.mobile = document.getElementById('mobile-input').value
     playerObj.email = document.getElementById('email-input').value
-    this.props.addNewPlayerToTeam(this.props.params.id, playerObj, number)
+    addNewTeamPlayer(this.props.params.id, playerObj, number)
   }
 
   render () {

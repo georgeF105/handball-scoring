@@ -2,6 +2,7 @@ import React from 'react'
 import ReactTimeout from 'react-timeout'
 
 import { formatTime } from '../../lib/formatNumber'
+import { startFirstHalf, startSecondHalf, completeFirstHalf, completeSecondHalf, startGameTimer, pauseGameTimer, updateGameTime, initializeGame } from '../../lib/gamesUtils.js'
 
 class ScoreGameTimer extends React.Component {
   constructor (props) {
@@ -47,15 +48,15 @@ class ScoreGameTimer extends React.Component {
 
     if (!firstComp && newCurrentTime > halfTimeSeconds) {
       newCurrentTime = halfTimeSeconds
-      this.props.setGameKeyValue(gameKey, 'status_firsthalf_completed', true)
+      completeFirstHalf(gameKey)
       this.setState({running: false})
-      this.props.pauseTimer(this.props.gameKey, this.state.currentTime)
+      pauseGameTimer(this.props.gameKey, this.state.currentTime)
     }
     if (!secondComp && newCurrentTime > (halfTimeSeconds * 2)) {
       newCurrentTime = halfTimeSeconds * 2
-      this.props.setGameKeyValue(gameKey, 'status_secondhalf_completed', true)
+      completeSecondHalf(gameKey)
       this.setState({running: false})
-      this.props.pauseTimer(this.props.gameKey, this.state.currentTime)
+      pauseGameTimer(this.props.gameKey, this.state.currentTime)
     }
 
     this.setState({currentTime: newCurrentTime})
@@ -63,10 +64,7 @@ class ScoreGameTimer extends React.Component {
 
   startGame = (e) => {
     e.preventDefault()
-    if (confirm('Initalize Game?')) {
-      console.log('Initalize gameKey', this.props.gameKey)
-      this.props.initializeGame(this.props.gameKey)
-    }
+    initializeGame(this.props.gameKey, this.props.game, this.props.homeTeam, this.props.awayTeam)
   }
 
   startTimer = (e) => {
@@ -80,21 +78,21 @@ class ScoreGameTimer extends React.Component {
     const secondComp = game.status_secondhalf_completed || false
 
     if (!firstStarted && !firstComp && !secondStarted && !secondComp) {
-      this.props.setGameKeyValue(gameKey, 'status_firsthalf_started', true)
+      startFirstHalf(gameKey)
     }
     if (firstStarted && firstComp && !secondStarted && !secondComp) {
-      this.props.setGameKeyValue(gameKey, 'status_secondhalf_started', true)
+      startSecondHalf(gameKey)
     }
     if (!secondComp) {
-      this.props.startTimer(this.props.gameKey, this.state.currentTime)
+      startGameTimer(this.props.gameKey, this.state.currentTime)
       this.setState({running: true})
     }
   }
 
   pauseTimer = (e) => {
     e.preventDefault()
+    pauseGameTimer(this.props.gameKey, this.state.currentTime)
     this.setState({running: false})
-    this.props.pauseTimer(this.props.gameKey, this.state.currentTime)
   }
 
   toggleAdjustClockSettings = (e) => {
@@ -103,12 +101,12 @@ class ScoreGameTimer extends React.Component {
   }
 
   adjustTimeUp = () => {
-    this.props.updateTime(this.props.gameKey, this.state.currentTime + 5)
+    updateGameTime(this.props.gameKey, this.state.currentTime + 5)
     this.setState({currentTime: this.state.currentTime + 5})
   }
 
   adjustTimeDown = () => {
-    this.props.updateTime(this.props.gameKey, this.state.currentTime - 5)
+    updateGameTime(this.props.gameKey, this.state.currentTime - 5)
     this.setState({currentTime: this.state.currentTime - 5})
   }
 

@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 
-import { addPlayerToTeam, addNewPlayerToTeam } from '../../redux/teamsActions'
 import EditTeam from '../EditTeam'
 
 const mapStateToProps = (state) => {
@@ -12,17 +11,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addPlayerToTeam: (teamKey, playerKey, number) => {
-      dispatch(addPlayerToTeam(teamKey, playerKey, number))
-    },
-    addNewPlayerToTeam: (teamKey, playerObj, number) => {
-      dispatch(addNewPlayerToTeam(teamKey, playerObj, number))
-    }
-  }
-}
-
-const EditTeamContainer = connect(mapStateToProps, mapDispatchToProps)(EditTeam)
+const EditTeamContainer = connect(mapStateToProps)(EditTeam)
 
 export default EditTeamContainer

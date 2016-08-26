@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 
 import Dashboard from '../Dashboard'
-import { deleteGame } from '../../redux/gamesActions'
 
 const mapStateToProps = (state) => {
   return {
@@ -14,14 +13,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteGame: (gameKey) => {
-      dispatch(deleteGame(gameKey))
-    }
-  }
-}
-
-const DashboardContainer = connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+const DashboardContainer = connect(mapStateToProps)(Dashboard)
 
 export default DashboardContainer

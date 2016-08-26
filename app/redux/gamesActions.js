@@ -1,28 +1,7 @@
-import { saveGame, getGames, updateGameChild, appendPlayersToGame, createEvent, removeGame, undoEvent } from '../../lib/gamesUtils'
-import { hashHistory } from 'react-router'
+import { getGames } from '../../lib/gamesUtils'
 
 export const REQUEST_GAMES = 'REQUEST_GAMES'
 export const RECEIVE_GAMES = 'RECEIVE_GAMES'
-
-export function initializeGame (gameKey) {
-  return (dispatch) => {
-    appendPlayersToGame(gameKey)
-  }
-}
-
-export function submitGame (gameObj) {
-  return (dispatch) => {
-    const gameKey = saveGame(gameObj)
-    gameObj.gameKey = gameKey
-    hashHistory.push('/')
-  }
-}
-
-export function deleteGame (gameKey) {
-  return (dispatch) => {
-    removeGame(gameKey)
-  }
-}
 
 export function fetchGames (gameKey) {
   return (dispatch) => {
@@ -44,47 +23,6 @@ export function reciveGames (gamesObj) {
     type: RECEIVE_GAMES,
     gameObj: gamesObj,
     receivedAt: Date.now()
-  }
-}
-
-export function setGameKeyValue (gameKey, key, value) {
-  return (dispatch) => {
-    updateGameChild(gameKey, key, value)
-  }
-}
-
-export function addEvent (gameKey, teamKey, playerGameKey, type, time) {
-  return (dispatch) => {
-    createEvent(gameKey, teamKey, playerGameKey, type, time)
-  }
-}
-
-export function deleteEvent (game, eventKey) {
-  return (dispatch) => {
-    undoEvent(game, eventKey)
-  }
-}
-
-export function startTimer (gameKey, currentTime) {
-  return (dispatch) => {
-    updateGameChild(gameKey, 'status_in_play', true)
-    updateGameChild(gameKey, 'timer_last_updated', Date.now())
-    updateGameChild(gameKey, 'current_time', currentTime)
-  }
-}
-
-export function pauseTimer (gameKey, currentTime) {
-  return (dispatch) => {
-    updateGameChild(gameKey, 'status_in_play', false)
-    updateGameChild(gameKey, 'timer_last_updated', Date.now())
-    updateGameChild(gameKey, 'current_time', currentTime)
-  }
-}
-
-export function updateTime (gameKey, currentTime) {
-  return (dispatch) => {
-    updateGameChild(gameKey, 'timer_last_updated', Date.now())
-    updateGameChild(gameKey, 'current_time', currentTime)
   }
 }
 
