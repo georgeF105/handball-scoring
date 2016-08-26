@@ -1,4 +1,7 @@
 import React from 'react'
+import { hashHistory } from 'react-router'
+
+import { saveTeam } from '../../lib/teamsUtils'
 
 class NewTeam extends React.Component {
 
@@ -7,8 +10,8 @@ class NewTeam extends React.Component {
     let teamObj = {}
     teamObj.name = document.getElementById('team-name-input').value
     teamObj.gender = document.getElementById('gender-input').value
-    this.props.submitTeam(teamObj)
-    // this.props.history.push('/')
+    const teamKey = saveTeam(teamObj)
+    hashHistory.push('/team/' + teamKey + '/edit')
   }
 
   render () {

@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 
-import { submitTeam } from '../../redux/teamsActions'
 import NewTeam from '../NewTeam'
 
 const mapStateToProps = (state) => {
@@ -11,14 +10,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    submitTeam: (teamObj) => {
-      dispatch(submitTeam(teamObj))
-    }
-  }
-}
-
-const NewTeamContainer = connect(mapStateToProps, mapDispatchToProps)(NewTeam)
+const NewTeamContainer = connect(mapStateToProps)(NewTeam)
 
 export default NewTeamContainer
