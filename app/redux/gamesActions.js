@@ -12,12 +12,6 @@ export function submitGame (gameObj) {
   }
 }
 
-export function deleteGame (gameKey) {
-  return (dispatch) => {
-    removeGame(gameKey)
-  }
-}
-
 export function fetchGames (gameKey) {
   return (dispatch) => {
     dispatch(requestGames())

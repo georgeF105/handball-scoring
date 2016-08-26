@@ -3,10 +3,12 @@ import React from 'react'
 import Games from './Games'
 import Teams from './Teams'
 
+import { removeGame } from '../../lib/gamesUtils'
+
 class Dashboard extends React.Component {
   deleteGame = (e) => {
     e.preventDefault()
-    this.props.deleteGame(e.target.getAttribute('name'))
+    removeGame(e.target.getAttribute('name'))
   }
   render () {
     const userId = this.props.userId
