@@ -10,9 +10,10 @@
 }
 
 .team-table-column {
-  flex-grow: 1;
+  // flex-grow: 1;
   display: flex;
   flex-direction: column;
+  width: 280px;
 }
 
 .centre-column {
@@ -191,55 +192,4 @@
   background-color: inherit;
   padding: 0;
   margin: 0;
-}
-
-/****    Team Table    ****/
-.team-table.table {
-  padding: 0;
-  margin: 5px;
-  border: 1px solid #E0E0E0;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.team-table.row {
-  display: flex;
-  border-bottom: 1px solid #E0E0E0;
-  flex-grow: 1;
-  margin: 0;
-  max-height: 50px;
-}
-
-.team-table.row:last-child {
-  // border-bottom: none;
-}
-
-.team-table {
-  font-size: 20px;
-}
-
-.team-table.title {
-  text-align: center;
-  flex-grow: 1;
-}
-
-.team-table.num {
-  width: 30px;
-  text-align: center;
-  border-right: 1px solid #E0E0E0;
-}
-
-.team-table.goal {
-  flex-grow: 1;
-  text-align: center;
-  width: 120px;
-  border-right: 1px solid #E0E0E0;
-}
-
-.team-table.penalties {
-  flex-grow: 1;
-  text-align: center;
-  width: 40px;
 }
