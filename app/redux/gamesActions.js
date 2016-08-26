@@ -1,4 +1,4 @@
-import { saveGame, getGames, updateGameChild, appendPlayersToGame, createEvent, removeGame, undoEvent, startGameTimer, pauseGameTimer, updateGameTime } from '../../lib/gamesUtils'
+import { saveGame, getGames, appendPlayersToGame, createEvent, removeGame, undoEvent, startGameTimer, pauseGameTimer, updateGameTime } from '../../lib/gamesUtils'
 import { hashHistory } from 'react-router'
 
 export const REQUEST_GAMES = 'REQUEST_GAMES'
@@ -44,12 +44,6 @@ export function reciveGames (gamesObj) {
     type: RECEIVE_GAMES,
     gameObj: gamesObj,
     receivedAt: Date.now()
-  }
-}
-
-export function setGameKeyValue (gameKey, key, value) {
-  return (dispatch) => {
-    updateGameChild(gameKey, key, value)
   }
 }
 
