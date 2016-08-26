@@ -64,7 +64,7 @@ class ScoreGame extends React.Component {
           <TeamTable team={homeTeam} playerButton={this.handlePlayerButton} />
         </div>
         <div className='centre-column'>
-          <ScoreGameTimerContainer game={game} gameKey={this.props.params.id} />
+          <ScoreGameTimerContainer game={game} gameKey={this.props.params.id} homeTeam={homeTeam} awayTeam={awayTeam}/>
           <div className='scores-board'>
             <div className='score-board'>
               <h1 className='game-score' id='homeTeamScore'>{homeTeamScore}</h1>

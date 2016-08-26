@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { initializeGame, setGameKeyValue, startTimer, pauseTimer, updateTime } from '../../redux/gamesActions'
+import { initializeGame, startTimer, pauseTimer, updateTime, endFirstHalf, endSecondHalf } from '../../redux/gamesActions'
 import ScoreGameTimer from '../ScoreGameTimer'
 
 const mapStateToProps = (state) => {
@@ -9,26 +9,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    initializeGame: (gameKey) => {
-      dispatch(initializeGame(gameKey))
-    },
-    setGameKeyValue: (gameKey, key, value) => {
-      dispatch(setGameKeyValue(gameKey, key, value))
-    },
-    startTimer: (gameKey, currentTime) => {
-      dispatch(startTimer(gameKey, currentTime))
-    },
-    pauseTimer: (gameKey, currentTime) => {
-      dispatch(pauseTimer(gameKey, currentTime))
-    },
-    updateTime: (gameKey, currentTime) => {
-      dispatch(updateTime(gameKey, currentTime))
-    }
-  }
-}
-
-const ScoreGameTimerContainer = connect(mapStateToProps, mapDispatchToProps)(ScoreGameTimer)
+const ScoreGameTimerContainer = connect(mapStateToProps)(ScoreGameTimer)
 
 export default ScoreGameTimerContainer
