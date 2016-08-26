@@ -41,18 +41,6 @@ export function reciveGames (gamesObj) {
   }
 }
 
-export function addEvent (gameKey, teamKey, playerGameKey, type, time) {
-  return (dispatch) => {
-    createEvent(gameKey, teamKey, playerGameKey, type, time)
-  }
-}
-
-export function deleteEvent (game, eventKey) {
-  return (dispatch) => {
-    undoEvent(game, eventKey)
-  }
-}
-
 export function error (error) {
   return {
     type: 'ERROR',

@@ -5,7 +5,7 @@ import TeamTable from './TeamTable'
 import EventsTable from './EventsTable'
 import ScoreGameTimerContainer from './containers/ScoreGameTimerContainer'
 import { formatScore } from '../../lib/formatNumber'
-import { EVENT_GOAL, EVENT_7_METER, EVENT_YELLOW_CARD, EVENT_2_MINUTE, EVENT_RED_CARD } from '../../lib/gamesUtils'
+import { EVENT_GOAL, EVENT_7_METER, EVENT_YELLOW_CARD, EVENT_2_MINUTE, EVENT_RED_CARD, createEvent, undoEvent } from '../../lib/gamesUtils'
 
 class ScoreGame extends React.Component {
   constructor (props) {
@@ -33,13 +33,13 @@ class ScoreGame extends React.Component {
     const game = this.props.games[gameKey]
     const currentTime = game.current_time + Math.floor((Date.now() - game.timer_last_updated) / 1000)
     if (this.state.pendingAction) {
-      this.props.addEvent(game, teamKey, playerGameKey, pendingAction, currentTime)
+      creatdeEvent(game, teamKey, playerGameKey, pendingAction, currentTime)
       this.setState({pendingAction: ''})
     }
   }
 
   deleteEvent = (eventKey) => {
-    this.props.deleteEvent(this.props.games[this.props.params.id], eventKey)
+    undoEvent(this.props.games[this.props.params.id], eventKey)
   }
 
   render () {

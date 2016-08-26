@@ -17,7 +17,7 @@ class ScoreGameTimer extends React.Component {
   }
 
   componentDidMount () {
-    this.props.setInterval(this.tickTimer, 10)
+    this.props.setInterval(this.tickTimer, 1000)
   }
 
   componentWillReceiveProps (nextProps) {
