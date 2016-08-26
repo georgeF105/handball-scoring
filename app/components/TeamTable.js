@@ -51,7 +51,7 @@ class TeamTable extends React.Component {
             <div className='team-table col num'>#</div>
             <div className='team-table col name'>Name</div>
           </div>
-          :<div className='team-table row heading'>
+          : <div className='team-table row heading'>
             <div className='team-table col num'>#</div>
             <div className='team-table col goal'>Goals</div>
             <div className='team-table col penalties yellow-card'>YC</div>
@@ -60,7 +60,7 @@ class TeamTable extends React.Component {
           </div>}
         <div className='table-content players'>
         {players.map((player, key) => {
-          return ( this.state.displayNames
+          return (this.state.displayNames
             ? <div key={key} name={player.teamKey} className='team-table row player' onClick={this.handlePlayerClick}>
               <div name={player.teamKey} className='team-table col num'>{player.number}</div>
               <div name={player.teamKey} className='team-table col name'>{player.firstName + ' ' + player.lastName}</div>
@@ -75,7 +75,7 @@ class TeamTable extends React.Component {
           )
         })}
         </div>
-        {this.state.displayNames 
+        {this.state.displayNames
           ? <div className='team-table row selector' onClick={this.toggleDisplay}>
             <div className='content-selector active'>Names</div>
             <div className='content-selector'>Stats</div>

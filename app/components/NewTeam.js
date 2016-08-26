@@ -31,8 +31,7 @@ class NewTeam extends React.Component {
                   <option value='female'>Female</option>
                 </select>
               </div>
-              <div className='three columns'>
-              </div>
+              <div className='three columns' />
             </div>
             <div className='row'>
               <button onClick={this.submitTeam} >Make Team</button>
