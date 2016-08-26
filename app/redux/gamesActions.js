@@ -1,4 +1,4 @@
-import { saveGame, getGames, updateGameChild, appendPlayersToGame, pushEvent, removeGame } from '../../lib/gamesUtils'
+import { saveGame, getGames, updateGameChild, appendPlayersToGame, createEvent, removeGame, undoEvent, startGameTimer, pauseGameTimer, updateGameTime } from '../../lib/gamesUtils'
 import { hashHistory } from 'react-router'
 
 export const REQUEST_GAMES = 'REQUEST_GAMES'
@@ -53,32 +53,33 @@ export function setGameKeyValue (gameKey, key, value) {
   }
 }
 
-export function addEvent (gameKey, eventObj) {
+export function addEvent (gameKey, teamKey, playerGameKey, type, time) {
   return (dispatch) => {
-    pushEvent(gameKey, eventObj)
+    createEvent(gameKey, teamKey, playerGameKey, type, time)
+  }
+}
+
+export function deleteEvent (game, eventKey) {
+  return (dispatch) => {
+    undoEvent(game, eventKey)
   }
 }
 
 export function startTimer (gameKey, currentTime) {
   return (dispatch) => {
-    updateGameChild(gameKey, 'status_in_play', true)
-    updateGameChild(gameKey, 'timer_last_updated', Date.now())
-    updateGameChild(gameKey, 'current_time', currentTime)
+    startGameTimer(gameKey, currentTime)
   }
 }
 
 export function pauseTimer (gameKey, currentTime) {
   return (dispatch) => {
-    updateGameChild(gameKey, 'status_in_play', false)
-    updateGameChild(gameKey, 'timer_last_updated', Date.now())
-    updateGameChild(gameKey, 'current_time', currentTime)
+    pauseGameTimer(gameKey, currentTime)
   }
 }
 
 export function updateTime (gameKey, currentTime) {
   return (dispatch) => {
-    updateGameChild(gameKey, 'timer_last_updated', Date.now())
-    updateGameChild(gameKey, 'current_time', currentTime)
+    updateGameTimer(gameKey, currentTime)
   }
 }
 
