@@ -28,18 +28,6 @@ export function reciveTeams (teamsObj) {
   }
 }
 
-export function addPlayerToTeam (teamKey, playerKey, number) {
-  return (dispatch) => {
-    addTeamPlayer(teamKey, playerKey, number)
-  }
-}
-
-export function addNewPlayerToTeam (teamKey, playerObj, number) {
-  return (dispatch) => {
-    addNewTeamPlayer(teamKey, playerObj, number)
-  }
-}
-
 export function error (error) {
   return {
     type: 'ERROR',
