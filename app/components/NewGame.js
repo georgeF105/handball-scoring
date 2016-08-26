@@ -1,4 +1,7 @@
 import React from 'react'
+import { hashHistory } from 'react-router'
+
+import { saveGame } from '../../lib/gamesUtils'
 
 class NewGame extends React.Component {
 
@@ -31,9 +34,8 @@ class NewGame extends React.Component {
     gameObj.status_secondhalf_completed = false
     gameObj.current_time = 0
 
-    console.log('gameObj', gameObj)
-    this.props.submitGame(gameObj)
-    // this.props.history.push('/')
+    saveGame(gameObj)
+    hashHistory.push('/')
   }
 
   render () {

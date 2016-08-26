@@ -1,16 +1,7 @@
 import { saveGame, getGames, createEvent, removeGame, undoEvent, updateGameTime, } from '../../lib/gamesUtils'
-import { hashHistory } from 'react-router'
 
 export const REQUEST_GAMES = 'REQUEST_GAMES'
 export const RECEIVE_GAMES = 'RECEIVE_GAMES'
-
-export function submitGame (gameObj) {
-  return (dispatch) => {
-    const gameKey = saveGame(gameObj)
-    gameObj.gameKey = gameKey
-    hashHistory.push('/')
-  }
-}
 
 export function fetchGames (gameKey) {
   return (dispatch) => {
