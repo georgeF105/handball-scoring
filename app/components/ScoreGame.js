@@ -33,7 +33,7 @@ class ScoreGame extends React.Component {
     const game = this.props.games[gameKey]
     const currentTime = game.current_time + Math.floor((Date.now() - game.timer_last_updated) / 1000)
     if (this.state.pendingAction) {
-      creatdeEvent(game, teamKey, playerGameKey, pendingAction, currentTime)
+      createEvent(game, teamKey, playerGameKey, pendingAction, currentTime)
       this.setState({pendingAction: ''})
     }
   }
@@ -57,6 +57,11 @@ class ScoreGame extends React.Component {
 
     return (
       <div className='score-game'>
+        {loading
+          ? <div className='full-page-loading-message'>
+            <h1>Loading Page</h1>
+          </div>
+          : null}
         <div className='team-table-column'>
           <div className='team-logo'>
             <img src='http://placehold.it/250x120?text=LOGO' />
@@ -64,7 +69,7 @@ class ScoreGame extends React.Component {
           <TeamTable team={homeTeam} playerButton={this.handlePlayerButton} />
         </div>
         <div className='centre-column'>
-          <ScoreGameTimerContainer game={game} gameKey={this.props.params.id} homeTeam={homeTeam} awayTeam={awayTeam}/>
+          <ScoreGameTimerContainer game={game} gameKey={this.props.params.id} homeTeam={homeTeam} awayTeam={awayTeam} />
           <div className='scores-board'>
             <div className='score-board'>
               <h1 className='game-score' id='homeTeamScore'>{homeTeamScore}</h1>

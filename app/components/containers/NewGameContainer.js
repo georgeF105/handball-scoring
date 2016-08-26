@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 
-import { submitGame } from '../../redux/gamesActions'
 import NewGame from '../NewGame'
 
 const mapStateToProps = (state) => {

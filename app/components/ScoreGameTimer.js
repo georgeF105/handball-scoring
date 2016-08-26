@@ -64,9 +64,7 @@ class ScoreGameTimer extends React.Component {
 
   startGame = (e) => {
     e.preventDefault()
-    if (confirm('Initalize Game?')) {
-      initializeGame(this.props.gameKey, this.props.game, this.props.homeTeam, this.props.awayTeam)
-    }
+    initializeGame(this.props.gameKey, this.props.game, this.props.homeTeam, this.props.awayTeam)
   }
 
   startTimer = (e) => {

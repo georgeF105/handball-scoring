@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 
 import Dashboard from '../Dashboard'
-import { deleteGame } from '../../redux/gamesActions'
 
 const mapStateToProps = (state) => {
   return {

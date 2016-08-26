@@ -1,4 +1,4 @@
-import { saveTeam, getTeams, addTeamPlayer, addNewTeamPlayer } from '../../lib/teamsUtils'
+import { getTeams } from '../../lib/teamsUtils'
 
 export const REQUEST_TEAMS = 'REQUEST_TEAMS'
 export const RECEIVE_TEAMS = 'RECEIVE_TEAMS'
