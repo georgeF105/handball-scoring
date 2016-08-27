@@ -5,6 +5,7 @@ import { simpleFilter } from '../../lib/filter'
 
 export default (props) => {
   const userId = props.userId
+  const isAdmin = props.isAdmin || false
   const teams = props.teams
   let games = []
   const gamesObj = props.games
@@ -23,7 +24,7 @@ export default (props) => {
     <div className='games'>
       {!fetchingGames
         ? (games.length
-          ? games.map((game, key) => <GameCard key={key} game={game} deleteGame={deleteGame}
+          ? games.map((game, key) => <GameCard key={key} game={game} deleteGame={deleteGame} isAdmin={isAdmin}
             homeTeam={game.status_initialized ? teams[game.home_team.key] && teams[game.home_team.key].name || '???' : teams[game.home_team] && teams[game.home_team].name || "Can't find team"}
             awayTeam={game.status_initialized ? teams[game.away_team.key] && teams[game.away_team.key].name || '???' : teams[game.away_team] && teams[game.away_team].name || "Can't find team"} />)
           : <h3>No Games Found</h3>)
