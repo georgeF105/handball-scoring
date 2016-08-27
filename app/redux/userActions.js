@@ -46,7 +46,8 @@ export function attemptLogOut () {
 export function attachAuthListener () {
   return (dispatch) => {
     authListener((userId, userName) => {
-      dispatch(logIn(userId,userName))}, 
+      dispatch(logIn(userId, userName))
+    },
       dispatch(logOut))
   }
 }
