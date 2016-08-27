@@ -48,7 +48,6 @@ class ScoreGame extends React.Component {
     const gameInitialized = game.status_initialized
 
     const homeTeam = gameInitialized ? game.home_team || {} : this.props.teams[game.home_team] || {}
-    console.log('homeTeam', homeTeam)
     const awayTeam = gameInitialized ? game.away_team || {} : this.props.teams[game.away_team] || {}
 
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)

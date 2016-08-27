@@ -15,7 +15,6 @@ class TeamTable extends React.Component {
 
   sortPlayersObjIntoArr = (players) => {
     let playersArr = []
-    console.log('players', players)
     Object.keys(players).map(key => {
       const player = Object.assign({}, players[key])
       player.teamKey = key
