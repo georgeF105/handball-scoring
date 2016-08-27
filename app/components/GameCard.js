@@ -6,7 +6,7 @@ export default (props) => {
   const homeTeam = props.homeTeam || 'Home Team'
   const awayTeam = props.awayTeam || 'Away Team'
   const deleteGame = props.deleteGame
-
+  const isAdmin = props.isAdmin || false
   const initalized = game.status_initialized || false
   const firstStarted = game.status_firsthalf_started || false
   const firstComp = game.status_firsthalf_completed || false
@@ -40,11 +40,13 @@ export default (props) => {
           <h5 className='team-name'>{awayTeam}</h5>
         </div>
       </div>
-      <div className='card-options'>
-        <i className='fa fa-cog icon' />
-        <Link to={`/game/${game.gameKey}/score`}>Score Game</Link>
-        <i className='fa fa-trash delete-game-icon' name={game.gameKey} onClick={deleteGame} />
-      </div>
+      {isAdmin
+        ? <div className='card-options'>
+          <i className='fa fa-cog icon' />
+          <Link to={`/game/${game.gameKey}/score`}>Score Game</Link>
+          <i className='fa fa-trash delete-game-icon' name={game.gameKey} onClick={deleteGame} />
+        </div>
+        : null}
     </div>
   )
 }
