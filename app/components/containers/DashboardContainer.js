@@ -9,7 +9,9 @@ const mapStateToProps = (state) => {
     games: state.games.get('games') && state.games.get('games').toJS() || {},
     fetchingGames: state.games.get('fetchingGames'),
     teams: state.teams.get('teams') && state.teams.get('teams').toJS() || {},
-    fetchingTeams: state.teams.get('fetchingTeams')
+    fetchingTeams: state.teams.get('fetchingTeams'),
+    players: state.players.get('players') && state.players.get('players').toJS() || {},
+    fetchingPlayers: state.players.get('fetchingPlayers')
   }
 }
 
