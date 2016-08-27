@@ -30,7 +30,6 @@ class NewTeam extends React.Component {
   }
 
   render () {
-    const loggedIn = true// this.props.loggedIn
     const team = this.props.teams[this.props.params.id] || {}
     const playersObj = this.props.players
     const players = []
