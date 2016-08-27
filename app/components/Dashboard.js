@@ -35,7 +35,7 @@ class Dashboard extends React.Component {
         </div>
         <div className='row'>
           <div className='col-md-4'>
-            {fetching ? <h3>Loading...</h3> : <Games userId={userId} games={games} teams={teams} deleteGame={this.deleteGame} isAdmin={true} />}
+            {fetching ? <h3>Loading...</h3> : <Games userId={userId} games={games} teams={teams} deleteGame={this.deleteGame} isAdmin />}
           </div>
           <div className='col-md-4'>
             {fetching ? <h3>Loading...</h3> : <Teams teams={teams} />}
