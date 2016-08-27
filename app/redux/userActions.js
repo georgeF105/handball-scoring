@@ -1,4 +1,4 @@
-import { logInUser, logOutUser } from '../../lib/authUtils'
+import { logInUser, logOutUser, authListener } from '../../lib/authUtils'
 
 export const LOG_IN = 'LOG_IN'
 export const LOG_OUT = 'LOG_OUT'
@@ -40,5 +40,14 @@ export function attemptLogOut () {
       .catch(err => {
         console.error(err)
       })
+  }
+}
+
+export function attachAuthListener () {
+  return (dispatch) => {
+    authListener((userId, userName) => {
+      dispatch(logIn(userId, userName))
+    },
+      dispatch(logOut))
   }
 }
