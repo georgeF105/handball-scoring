@@ -21,15 +21,15 @@ class NavBar extends React.Component {
       <nav className='navbar navbar-default navbar-fixed-top'>
         <div className='container'>
           <div className='navbar-header'>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span className="sr-only">Toggle navigation</span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
             </button>
             <Link className='navbar-brand' to='/'>Handball Scoring</Link>
           </div>
-          <div className='navbar-collapse collapse'>
+          <div id='navbar' className='navbar-collapse collapse in' aria-expanded="true">
             <ul className='nav navbar-nav navbar-right'>
               <li><p className='navbar-text'>{userName}</p></li>
               <li><Link className='' activeClassName='active' to='game/new'>New Game</Link></li>
