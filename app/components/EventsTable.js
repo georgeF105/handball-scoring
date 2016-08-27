@@ -75,7 +75,7 @@ class EventsTable extends React.Component {
                     <p>{formatTime(event.time)}</p>
                   </div>
                   {editingEvent
-                    ? <div className='event-cell delete'></div>
+                    ? <div className='event-cell delete' />
                     : null}
                 </div>
                 : <div key={key} className='event-row editing'>

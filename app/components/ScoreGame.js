@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactTimeout from 'react-timeout'
 
-import TeamTable from './TeamTable'
+import TeamTableContainer from './containers/TeamTableContainer'
 import EventsTable from './EventsTable'
 import ScoreGameTimerContainer from './containers/ScoreGameTimerContainer'
 import { formatScore } from '../../lib/formatNumber'
@@ -66,7 +66,7 @@ class ScoreGame extends React.Component {
           <div className='team-logo'>
             <img src='http://placehold.it/250x120?text=LOGO' />
           </div>
-          <TeamTable team={homeTeam} playerButton={this.handlePlayerButton} />
+          <TeamTableContainer team={homeTeam} playerButton={this.handlePlayerButton} />
         </div>
         <div className='centre-column'>
           <ScoreGameTimerContainer game={game} gameKey={this.props.params.id} homeTeam={homeTeam} awayTeam={awayTeam} />
@@ -93,7 +93,7 @@ class ScoreGame extends React.Component {
           <div className='team-logo'>
             <img src='http://placehold.it/250x120?text=LOGO' />
           </div>
-          <TeamTable team={awayTeam} playerButton={this.handlePlayerButton} />
+          <TeamTableContainer team={awayTeam} playerButton={this.handlePlayerButton} />
         </div>
       </div>
     )

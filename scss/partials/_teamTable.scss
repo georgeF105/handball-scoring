@@ -1,0 +1,90 @@
+/****    Team Table    ****/
+
+.team-table.table {
+  padding: 0;
+  margin: 5px;
+  border: 1px solid #E0E0E0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.team-table {
+  font-size: 20px;
+}
+
+.team-table.row {
+  display: flex;
+  border-bottom: 1px solid #E0E0E0;
+  // flex-grow: 1;
+  margin: 0;
+  background-color: #FFFFFF;
+}
+
+.team-table.row:last-child {
+  // border-bottom: none;
+}
+
+.team-table.title {
+  text-align: center;
+  flex-grow: 1;
+  font-size: 22px;
+}
+
+.row.heading {
+  font-weight: bold;
+}
+.table-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #F0F0F0;
+}
+
+.table-content > .row {
+  flex-grow: 1;
+  max-height: 40px;
+}
+
+.row.selector {
+  justify-content: space-around;
+  text-align: center;
+}
+
+.content-selector {
+  width: 70px;
+  flex-grow: 1;
+  text-decoration: underline;
+}
+
+.content-selector:hover {
+  background-color: #F0F0F0;
+}
+
+.content-selector.active {
+  font-weight: bold;
+}
+
+.team-table.num {
+  width: 30px;
+  text-align: center;
+  border-right: 1px solid #E0E0E0;
+}
+
+.team-table.name {
+  margin-left: 10px;
+}
+
+.team-table.goal {
+  flex-grow: 1;
+  text-align: center;
+  width: 120px;
+  border-right: 1px solid #E0E0E0;
+}
+
+.team-table.penalties {
+  flex-grow: 1;
+  text-align: center;
+  width: 40px;
+}
