@@ -13,7 +13,7 @@ export default (state = INITAL_STATE, action) => {
     case userActions.LOG_IN:
       return state.set('userName', fromJS(action.userName)).set('userId', fromJS(action.userId)).set('loggedIn', true)
     case userActions.LOG_OUT:
-      return state.set('loggedIn', false)
+      return state.set('userName', '').set('userId', '').set('loggedIn', false)
     default:
       return state
   }
