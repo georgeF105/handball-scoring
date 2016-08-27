@@ -30,10 +30,10 @@ export default (props) => {
         {!gameStatus
           ? <h4>Not Started</h4>
           : <div className='card-score'>
-              <div className='score'>00</div>
-              <h4>{gameStatus}</h4>
-              <div className='score'>00</div>
-            </div>}
+            <div className='score'>00</div>
+            <h4>{gameStatus}</h4>
+            <div className='score'>00</div>
+          </div>}
         <div className='game-teams'>
           <h5 className='team-name'>{homeTeam}</h5>
           <h5>VS</h5>
