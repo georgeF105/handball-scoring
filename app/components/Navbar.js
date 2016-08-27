@@ -26,6 +26,7 @@ class NavBar extends React.Component {
           <div id='navbar' className='navbar-collapse collapse in' aria-expanded='true'>
             <ul className='nav navbar-nav navbar-right'>
               <li><p className='navbar-text'>{userName}</p></li>
+              <li><Link className='' activeClassName='active' to='game'>Games</Link></li>
               <li><Link className='' activeClassName='active' to='game/new'>New Game</Link></li>
               <li><Link className='' activeClassName='active' to='team/new'>New Team</Link></li>
               <li><Link className='' activeClassName='active' to='dashboard'>Dashboard</Link></li>
