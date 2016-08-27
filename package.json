@@ -12,7 +12,7 @@
     "build:prod": "NODE_ENV=production webpack --progress --profile --colors",
     "deploy:staging": "npm run build:staging && firebase deploy -P staging",
     "deploy:prod": "npm run build:prod && firebase deploy -P default",
-    "test": "npm run lint && babel-tape-runner tests/*.js | tap-spec",
+    "test": "babel-tape-runner tests/*.js | tap-spec && npm run lint",
     "lint": "standard",
     "lint:fix": "standard --fix"
   },

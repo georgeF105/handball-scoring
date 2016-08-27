@@ -1,12 +1,14 @@
 import React from 'react'
 
 import GameCard from './GameCard'
+import { simpleFilter } from '../../lib/filter'
 
 export default (props) => {
   const userId = props.userId
   const teams = props.teams
-  const games = []
+  let games = []
   const gamesObj = props.games
+  const filterObj = props.filter || {}
   console.log('teams', teams)
   for (let key in gamesObj) {
     const game = gamesObj[key]
@@ -14,6 +16,7 @@ export default (props) => {
     game.ownedByCurrentUser = game.owner_id === userId
     games.push(game)
   }
+  games = simpleFilter(games, filterObj)
   const fetchingGames = props.fetchingGames
   const deleteGame = props.deleteGame
   return (

@@ -1,13 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+import { simpleFilter } from '../../lib/filter'
+
 export default (props) => {
-  const players = []
+  const filterObj = props.filter || {}
+  let players = []
   for (let key in props.players) {
     const player = props.players[key]
     player.key = key
     players.push(player)
   }
+  players = simpleFilter(players, filterObj)
   return (
     <div className='players'>
       {players.length
