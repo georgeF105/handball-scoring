@@ -31,8 +31,9 @@
 
 .card-score {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  margin: 10px;
   .score {
     font-family: score-board;
     text-align: center;
@@ -44,9 +45,6 @@
     padding-left: 3px;
     border-radius: 5px;
     box-shadow: 0px 3px 5px black;
-  }
-  h4 {
-    margin: 10px;
   }
 }
 
