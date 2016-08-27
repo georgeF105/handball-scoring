@@ -4,9 +4,8 @@ import GamesContainer from './containers/GamesContainer'
 
 export default (props) => {
   return (
-    <div className='container'>
+    <div className='container overview'>
       <div className='page-header'>
-        <h1>Games</h1>
         <div className='row'>
           <div className='col-md-6'>
             <h3>Mens</h3>
