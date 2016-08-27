@@ -48,61 +48,57 @@ class NewGame extends React.Component {
     }
     return (
       <div className='container content new-game'>
-        {loggedIn
-          ? <form className='new-game-form'>
-            <div className='row'>
-              <div className='six columns'>
-                <label>Venue</label><input className='u-full-width' type='text' name='venue' id='venue-input' />
-              </div>
-              <div className='two columns'>
-                <label>date</label><input className='u-full-width' type='date' name='date' id='date-input' />
-              </div>
-              <div className='two columns'>
-                <label>time</label><input className='u-full-width' type='time' name='time' id='time-input' />
-              </div>
-              <div className='two columns'>
-                <label htmlFor='gender-input' >Gender</label>
-                <select type='text' name='gender' id='gender-input' >
-                  <option value='male'>Male</option>
-                  <option value='female'>Female</option>
-                </select>
-              </div>
+        <form className='new-game-form'>
+          <div className='row form-group'>
+            <div className='col-md-6'>
+              <label htmlFor='venue-input'>Venue</label><input className='form-control' type='text' name='venue' id='venue-input' />
             </div>
-            <div className='row'>
-              <div className='six columns'>
-                <label>Home Team</label>
-                <select className='u-full-width' type='text' name='home_team' id='home_team-input'>
-                  {teams.map((team, key) => <option key={key} value={team.teamKey}>{team.name}</option>)}
-                </select>
-              </div>
-              <div className='six columns'>
-                <label>Away Team</label>
-                <select className='u-full-width' type='text' name='away_team' id='away_team-input' >
-                  {teams.map((team, key) => <option key={key} value={team.teamKey}>{team.name}</option>)}
-                </select>
-              </div>
+            <div className='col-md-2'>
+              <label htmlFor='date-input'>Date</label><input className='form-control' type='date' name='date' id='date-input' />
             </div>
-            <div className='row'>
-              <div className='six columns'>
-                <label>Referee #1</label><input className='u-full-width' type='text' name='referee_1' id='referee_1-input' />
-              </div>
-              <div className='six columns'>
-                <label>Referee #2</label><input className='u-full-width' type='text' name='referee_2' id='referee_2-input' />
-              </div>
+            <div className='col-md-2'>
+              <label htmlFor='time-input'>Time</label><input className='form-control' type='time' name='time' id='time-input' />
             </div>
-            <div className='row'>
-              <div className='six columns'>
-                <label>Timekeeper</label><input className='u-full-width' type='text' name='timekeeper' id='timekeeper-input' />
-              </div>
-              <div className='six columns'>
-                <label>Scorekeeper</label><input className='u-full-width' type='text' name='scorekeeper' id='scorekeeper-input' />
-              </div>
+            <div className='col-md-2'>
+              <label htmlFor='gender-input' >Gender</label>
+              <select className='form-control' type='text' name='gender' id='gender-input' >
+                <option value='male'>Male</option>
+                <option value='female'>Female</option>
+              </select>
             </div>
-            <input className='button-primary' type='submit' value='Make New Game' onClick={this.submitGame} />
-          </form>
-          : <div className='message-box'>
-            <h3>Log In To Make Game</h3>
-          </div>}
+          </div>
+          <div className='row form-group'>
+            <div className='col-md-6'>
+              <label htmlFor='home_team-input' >Home Team</label>
+              <select className='form-control' type='text' name='home_team' id='home_team-input'>
+                {teams.map((team, key) => <option key={key} value={team.teamKey}>{team.name}</option>)}
+              </select>
+            </div>
+            <div className='col-md-6'>
+              <label htmlFor='away_team-input' >Away Team</label>
+              <select className='form-control' type='text' name='away_team' id='away_team-input' >
+                {teams.map((team, key) => <option key={key} value={team.teamKey}>{team.name}</option>)}
+              </select>
+            </div>
+          </div>
+          <div className='row form-group'>
+            <div className='col-md-6'>
+              <label htmlFor='referee_1-input' >Referee #1</label><input className='form-control' type='text' name='referee_1' id='referee_1-input' />
+            </div>
+            <div className='col-md-6'>
+              <label htmlFor='referee_2-input' >Referee #2</label><input className='form-control' type='text' name='referee_2' id='referee_2-input' />
+            </div>
+          </div>
+          <div className='row form-group'>
+            <div className='col-md-6'>
+              <label htmlFor='timekeeper-input' >Timekeeper</label><input className='form-control' type='text' name='timekeeper' id='timekeeper-input' />
+            </div>
+            <div className='col-md-6'>
+              <label htmlFor='scorekeeper-input' >Scorekeeper</label><input className='form-control' type='text' name='scorekeeper' id='scorekeeper-input' />
+            </div>
+          </div>
+          <input className='btn btn-default' type='submit' value='Make New Game' onClick={this.submitGame} />
+        </form>
       </div>
     )
   }
