@@ -1,0 +1,546 @@
+{
+  "games" : {
+    "-KP_k9OTMk1yWfnuOhli" : {
+      "away_team" : "-KP_jtEKVwcYvMpcO0yF",
+      "current_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "current_time" : 0,
+      "date" : "2016-08-21",
+      "fulltime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "gender" : "female",
+      "halftime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "home_team" : "-KP_jqaoolByX30_SxhK",
+      "owner_id" : "ELI7tIydrjRKm10clUJO75ndY3Z2",
+      "referee_1" : "Spartanz",
+      "referee_2" : "Spartanz",
+      "scorekeeper" : "VUW Ravens",
+      "status_firsthalf_completed" : false,
+      "status_firsthalf_started" : false,
+      "status_in_play" : false,
+      "status_initialized" : false,
+      "status_secondhalf_completed" : false,
+      "status_secondhalf_started" : false,
+      "time" : "15:30",
+      "timekeeper" : "VUW Ravens",
+      "venue" : "ASB"
+    },
+    "-KP_k_ipJqlf885l3PEu" : {
+      "away_team" : "-KP_jhV7aAGO21l-SDLj",
+      "current_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "current_time" : 0,
+      "date" : "2016-08-21",
+      "fulltime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "gender" : "male",
+      "halftime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "home_team" : "-KP_jKDZbC2b0iA962PL",
+      "owner_id" : "ELI7tIydrjRKm10clUJO75ndY3Z2",
+      "referee_1" : "Vikings",
+      "referee_2" : "Vikings",
+      "scorekeeper" : "VUW Roosters",
+      "status_firsthalf_completed" : false,
+      "status_firsthalf_started" : false,
+      "status_in_play" : false,
+      "status_initialized" : false,
+      "status_secondhalf_completed" : false,
+      "status_secondhalf_started" : false,
+      "time" : "17:20",
+      "timekeeper" : "VUW Roosters",
+      "venue" : "ASB"
+    },
+    "-KP_kqFucpdpto5_mbWu" : {
+      "away_team" : "-KP_gdn9bsiDf7q2lzCJ",
+      "current_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "current_time" : 0,
+      "date" : "2016-08-21",
+      "fulltime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "gender" : "male",
+      "halftime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "home_team" : "-KP_jk-LfIlXz7Mm11iP",
+      "owner_id" : "ELI7tIydrjRKm10clUJO75ndY3Z2",
+      "referee_1" : "Spartanz Gold",
+      "referee_2" : "Spartanz Gold",
+      "scorekeeper" : "VUW Sparrows",
+      "status_firsthalf_completed" : false,
+      "status_firsthalf_started" : false,
+      "status_in_play" : false,
+      "status_initialized" : false,
+      "status_secondhalf_completed" : false,
+      "status_secondhalf_started" : false,
+      "time" : "18:15",
+      "timekeeper" : "VUW Sparrows",
+      "venue" : "ASB"
+    },
+    "-KP_l29iHMcBWVmdaxOE" : {
+      "away_team" : "-KP_j-y7IZhF1sPrYV2u",
+      "current_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "current_time" : 0,
+      "date" : "2016-08-21",
+      "fulltime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "gender" : "male",
+      "halftime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "home_team" : "-KPVGPl8tcVkiCcdHMot",
+      "owner_id" : "ELI7tIydrjRKm10clUJO75ndY3Z2",
+      "referee_1" : "Hutt Hawks",
+      "referee_2" : "Hutt Hawks",
+      "scorekeeper" : "Bulldogs",
+      "status_firsthalf_completed" : false,
+      "status_firsthalf_started" : false,
+      "status_in_play" : false,
+      "status_initialized" : false,
+      "status_secondhalf_completed" : false,
+      "status_secondhalf_started" : false,
+      "time" : "19:10",
+      "timekeeper" : "Bulldogs",
+      "venue" : "ASB"
+    },
+    "-KP_lEAZT4wcBshamzgb" : {
+      "away_team" : "-KP_jlbL6n5KCZzvdZ0G",
+      "current_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "current_time" : 0,
+      "date" : "2016-08-21",
+      "fulltime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "gender" : "male",
+      "halftime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "home_team" : "-KP_jnhySleN4WqojETx",
+      "owner_id" : "ELI7tIydrjRKm10clUJO75ndY3Z2",
+      "referee_1" : "Northern Handball ",
+      "referee_2" : "Northern Handball",
+      "scorekeeper" : "Spartanz Black",
+      "status_firsthalf_completed" : false,
+      "status_firsthalf_started" : false,
+      "status_in_play" : false,
+      "status_initialized" : false,
+      "status_secondhalf_completed" : false,
+      "status_secondhalf_started" : false,
+      "time" : "20:05",
+      "timekeeper" : "Spartanz Black",
+      "venue" : "ASB"
+    },
+    "-KP_lWsxmlrAKjI42SIm" : {
+      "away_team" : "-KP_jxvDPpt_6nOsjaei",
+      "current_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "current_time" : 0,
+      "date" : "2016-08-21",
+      "fulltime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "gender" : "female",
+      "halftime_score" : {
+        "away" : 0,
+        "home" : 0
+      },
+      "home_team" : "-KP_jva1e_cMXO6M4WU9",
+      "owner_id" : "ELI7tIydrjRKm10clUJO75ndY3Z2",
+      "referee_1" : "Valley Hunters",
+      "referee_2" : "Valley Hunters",
+      "scorekeeper" : "Vikings",
+      "status_firsthalf_completed" : false,
+      "status_firsthalf_started" : false,
+      "status_in_play" : false,
+      "status_initialized" : false,
+      "status_secondhalf_completed" : false,
+      "status_secondhalf_started" : false,
+      "time" : "16:25",
+      "timekeeper" : "Vikings",
+      "venue" : "ASB"
+    }
+  },
+  "players" : {
+    "-KPVHN4Zrjw5FQ1oIJKO" : {
+      "dob" : "1990-03-11",
+      "email" : "tim_rayner458@hotmail.com",
+      "first_name" : "Tim",
+      "last_name" : "Rayner",
+      "mobile" : "0273564452"
+    },
+    "-KPVcT4UyVSLJa6kIp4h" : {
+      "dob" : "1993-08-26",
+      "email" : "jono@tattenhall.co.nz",
+      "first_name" : "Jono",
+      "last_name" : "Rayner",
+      "mobile" : "0273101614"
+    },
+    "-KPVcqyttBZQgmEMyVzh" : {
+      "dob" : "1990-03-11",
+      "email" : "tim_rayner458@hotmail.com",
+      "first_name" : "Tim",
+      "last_name" : "Rayner",
+      "mobile" : "0273564452"
+    },
+    "-KPVdL1u8-zL7xOWa6xu" : {
+      "dob" : "1988-06-27",
+      "email" : "camandbex@gmail.com",
+      "first_name" : "Cameron",
+      "last_name" : "Ross",
+      "mobile" : "02102440201"
+    },
+    "-KPVdaJ3DzI2YV8f_1PX" : {
+      "dob" : "1992-09-22",
+      "email" : "nickshields1@hotmail.com",
+      "first_name" : "Nick",
+      "last_name" : "Shields",
+      "mobile" : "0273404110"
+    },
+    "-KPVdmfxrtN1rmGM7QXB" : {
+      "dob" : "1994-01-01",
+      "email" : "oscar.bupha@gmail.com",
+      "first_name" : "Oscar",
+      "last_name" : "Bupha-Intr",
+      "mobile" : "0273273534"
+    },
+    "-KPVdx29qOQ7G5ZHfJmu" : {
+      "dob" : "1990-04-09",
+      "email" : "timbanks002@gmail.com",
+      "first_name" : "Tim",
+      "last_name" : "Banks",
+      "mobile" : "0210641593"
+    },
+    "-KPVfss7vrE0lWBy1y7h" : {
+      "dob" : "1994-01-11",
+      "email" : "",
+      "first_name" : "Luke",
+      "last_name" : "Ireland",
+      "mobile" : "0227474627"
+    },
+    "-KP_fN8O6kCGLftNc8i7" : {
+      "dob" : "1992-09-22",
+      "email" : "nickshields1@hotmail.com",
+      "first_name" : "Nick",
+      "last_name" : "Shields",
+      "mobile" : "0273404110"
+    },
+    "-KP_fb0CP0jrJYKAb9Pb" : {
+      "dob" : "1994-01-01",
+      "email" : "oscar.bupha@gmail.com",
+      "first_name" : "Oscar",
+      "last_name" : "Bupha-Intr",
+      "mobile" : "0273273534"
+    },
+    "-KP_grZ8NRcLAt7XqDy0" : {
+      "dob" : "1980-04-04",
+      "email" : "pholic@seznam.cz",
+      "first_name" : "Petr",
+      "last_name" : "Holic",
+      "mobile" : "02108265887"
+    },
+    "-KP_h-zPJWpuIN7Fr1u0" : {
+      "dob" : "1992-08-11",
+      "email" : "stjimmygreenday@hotmail.com",
+      "first_name" : "James",
+      "last_name" : "Weston",
+      "mobile" : "02040352547"
+    },
+    "-KP_hAbA-HrvBsB1LNIk" : {
+      "dob" : "1988-05-29",
+      "email" : "nicolas.piveteau@hotmail.fr",
+      "first_name" : "Nicholas",
+      "last_name" : "Piveteau",
+      "mobile" : "021562114"
+    },
+    "-KP_hMQukLl9QxPRdFPo" : {
+      "dob" : "1988-08-10",
+      "email" : "todd_anderson7@hotmail.com",
+      "first_name" : "Todd",
+      "last_name" : "Anderson",
+      "mobile" : "0276343457"
+    },
+    "-KP_hYT9A85x_c9WNI9u" : {
+      "dob" : "1979-02-08",
+      "email" : "daniel.triebsch@gmail.com",
+      "first_name" : "Daniel",
+      "last_name" : "Triebsch",
+      "mobile" : "0212092985"
+    },
+    "-KP_hoGsuQwF94I2Qnhm" : {
+      "dob" : "1995-10-15",
+      "email" : "luckas.ireland@hotmail.com",
+      "first_name" : "Luke",
+      "last_name" : "Ireland",
+      "mobile" : "0212139441"
+    },
+    "-KP_hxc4-6CcYaGRSzjQ" : {
+      "dob" : "1996-03-03",
+      "email" : "",
+      "first_name" : "Emmanuel",
+      "last_name" : "Nagoor",
+      "mobile" : "0275247793"
+    },
+    "-KP_i8c88G8aKRu1Qtj7" : {
+      "dob" : "1986-07-26",
+      "email" : "muel_sam@hotmail.com",
+      "first_name" : "Samuel",
+      "last_name" : "Keegan",
+      "mobile" : "0273282587"
+    },
+    "-KP_iO8Amh5yla_3EWP2" : {
+      "dob" : "1995-04-30",
+      "email" : "gallagher30496@gmail.com",
+      "first_name" : "Jack",
+      "last_name" : "Gallagher",
+      "mobile" : "0278917367"
+    },
+    "-KP_iab8I3OAElJFTkeA" : {
+      "dob" : "1977-12-02",
+      "email" : "pierre.tellier77@gmail.com",
+      "first_name" : "Pierre",
+      "last_name" : "Tellier",
+      "mobile" : "0211293863"
+    },
+    "-KP_igtRhFEds0ol6cYF" : {
+      "dob" : "",
+      "email" : "",
+      "first_name" : "Angus",
+      "last_name" : "Hazelton",
+      "mobile" : ""
+    },
+    "-KP_imSlvYt6l39wAs76" : {
+      "dob" : "1998-12-20",
+      "email" : "",
+      "first_name" : "Riley",
+      "last_name" : "Grice",
+      "mobile" : ""
+    },
+    "-KP_iqiV8my0SecCPRuz" : {
+      "dob" : "1997-07-12",
+      "email" : "",
+      "first_name" : "Harry",
+      "last_name" : "Ireland",
+      "mobile" : ""
+    },
+    "-KP_ivv64ZJuow1zoJOz" : {
+      "dob" : "2001-01-14",
+      "email" : "",
+      "first_name" : "Paul",
+      "last_name" : "Ireland",
+      "mobile" : ""
+    }
+  },
+  "teams" : {
+    "-KPVGPl8tcVkiCcdHMot" : {
+      "gender" : "male",
+      "name" : "Northern Handball Club",
+      "players" : {
+        "-KPVHN4oQu2MKcfIkgoI" : {
+          "key" : "-KPVHN4Zrjw5FQ1oIJKO",
+          "number" : "6"
+        },
+        "-KP_-UifcAfCaHTFR3Px" : {
+          "key" : "-KPVcT4UyVSLJa6kIp4h",
+          "number" : "1"
+        },
+        "-KP_-aJtbykAf2c0-I01" : {
+          "key" : "-KPVdL1u8-zL7xOWa6xu",
+          "number" : "2"
+        },
+        "-KP_fN8dG_elIXnUqzqr" : {
+          "key" : "-KP_fN8O6kCGLftNc8i7",
+          "number" : "34"
+        },
+        "-KP_fb0Hb4yWMbHB5B9t" : {
+          "key" : "-KP_fb0CP0jrJYKAb9Pb",
+          "number" : "8"
+        },
+        "-KP_gL2ZXBPKo_2QZzjj" : {
+          "key" : "-KPVdL1u8-zL7xOWa6xu",
+          "number" : "27"
+        }
+      }
+    },
+    "-KPZzk9rw2L50exFYDli" : {
+      "gender" : "male",
+      "name" : "New Test Team",
+      "players" : {
+        "-KPZzl1S10k2DbpxI5qp" : {
+          "key" : "-KPVHN4Zrjw5FQ1oIJKO",
+          "number" : ""
+        },
+        "-KPZzltRBiZfLnfVaPri" : {
+          "key" : "-KPVcqyttBZQgmEMyVzh",
+          "number" : ""
+        },
+        "-KPZzqtGXy0halSy5HVZ" : {
+          "key" : "-KPVdL1u8-zL7xOWa6xu",
+          "number" : "3"
+        },
+        "-KPZzsGy4GNqUOwHSwnH" : {
+          "key" : "-KPVdaJ3DzI2YV8f_1PX",
+          "number" : "4"
+        },
+        "-KPZztJ1AWdZ3aQ-b1rE" : {
+          "key" : "-KPVdmfxrtN1rmGM7QXB",
+          "number" : "5"
+        },
+        "-KPZzukBNry8SHHTU4ny" : {
+          "key" : "-KPVdx29qOQ7G5ZHfJmu",
+          "number" : "6"
+        },
+        "-KPZzwMcTP9ihjqV9WFY" : {
+          "key" : "-KPVfss7vrE0lWBy1y7h",
+          "number" : "7"
+        }
+      }
+    },
+    "-KP_gdn9bsiDf7q2lzCJ" : {
+      "gender" : "male",
+      "name" : "Vikings HC",
+      "players" : {
+        "-KP_grZD7cJng1V3Q3RA" : {
+          "key" : "-KP_grZ8NRcLAt7XqDy0",
+          "number" : "1"
+        },
+        "-KP_h-zQu9nInGKyjvFK" : {
+          "key" : "-KP_h-zPJWpuIN7Fr1u0",
+          "number" : "18"
+        },
+        "-KP_hAbBX5lvvJjeslEo" : {
+          "key" : "-KP_hAbA-HrvBsB1LNIk",
+          "number" : "2"
+        },
+        "-KP_hMQzDadG8StZsybl" : {
+          "key" : "-KP_hMQukLl9QxPRdFPo",
+          "number" : "3"
+        },
+        "-KP_hYTCx-G3O1KElHNx" : {
+          "key" : "-KP_hYT9A85x_c9WNI9u",
+          "number" : "6"
+        },
+        "-KP_hb-qLdNvamb3MBVj" : {
+          "key" : "-KPVfss7vrE0lWBy1y7h",
+          "number" : "8"
+        },
+        "-KP_hoH2H6l5qyg2lLm_" : {
+          "key" : "-KP_hoGsuQwF94I2Qnhm",
+          "number" : "8"
+        },
+        "-KP_hxc9jfgEpzf10g1z" : {
+          "key" : "-KP_hxc4-6CcYaGRSzjQ",
+          "number" : "9"
+        },
+        "-KP_i8cAYbKDXAuYkzRG" : {
+          "key" : "-KP_i8c88G8aKRu1Qtj7",
+          "number" : "10"
+        },
+        "-KP_iO8Ba22hMr4dFIs0" : {
+          "key" : "-KP_iO8Amh5yla_3EWP2",
+          "number" : "11"
+        },
+        "-KP_iab9JyXGpbet5IOq" : {
+          "key" : "-KP_iab8I3OAElJFTkeA",
+          "number" : "19"
+        },
+        "-KP_igtW-IUivejqOXyo" : {
+          "key" : "-KP_igtRhFEds0ol6cYF",
+          "number" : "20"
+        },
+        "-KP_imSnLB2e5Dw40VmE" : {
+          "key" : "-KP_imSlvYt6l39wAs76",
+          "number" : "21"
+        },
+        "-KP_iqiYzZm7FZrlgQoI" : {
+          "key" : "-KP_iqiV8my0SecCPRuz",
+          "number" : ""
+        },
+        "-KP_ivv8A1hCxVNtSAkx" : {
+          "key" : "-KP_ivv64ZJuow1zoJOz",
+          "number" : ""
+        }
+      }
+    },
+    "-KP_j-y7IZhF1sPrYV2u" : {
+      "gender" : "male",
+      "name" : "Spartanz Black"
+    },
+    "-KP_jKDZbC2b0iA962PL" : {
+      "gender" : "male",
+      "name" : "Spartanz Gold"
+    },
+    "-KP_jhV7aAGO21l-SDLj" : {
+      "gender" : "male",
+      "name" : "VUW Sparrows"
+    },
+    "-KP_jk-LfIlXz7Mm11iP" : {
+      "gender" : "male",
+      "name" : "VUW Roosters"
+    },
+    "-KP_jlbL6n5KCZzvdZ0G" : {
+      "gender" : "male",
+      "name" : "Hutt Hawks"
+    },
+    "-KP_jnhySleN4WqojETx" : {
+      "gender" : "male",
+      "name" : "Bulldogs HC"
+    },
+    "-KP_jqaoolByX30_SxhK" : {
+      "gender" : "female",
+      "name" : "Valley Hunters"
+    },
+    "-KP_jtEKVwcYvMpcO0yF" : {
+      "gender" : "female",
+      "name" : "Vikings"
+    },
+    "-KP_jva1e_cMXO6M4WU9" : {
+      "gender" : "female",
+      "name" : "Spartanz"
+    },
+    "-KP_jxvDPpt_6nOsjaei" : {
+      "gender" : "female",
+      "name" : "VUW Ravens"
+    }
+  },
+  "users" : {
+    "ELI7tIydrjRKm10clUJO75ndY3Z2" : {
+      "isAdmin" : true
+    },
+    "WAQUy5IhC3WIC7xK3pgFtnMKUlT2" : {
+      "isAdmin" : true
+    }
+  }
+}
