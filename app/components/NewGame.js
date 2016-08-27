@@ -39,7 +39,6 @@ class NewGame extends React.Component {
   }
 
   render () {
-    const loggedIn = this.props.loggedIn
     const teams = []
     for (let key in this.props.teams) {
       let team = this.props.teams[key]
