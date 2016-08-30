@@ -2,7 +2,7 @@ import React from 'react'
 import ReactTimeout from 'react-timeout'
 
 import { formatTime } from '../../lib/formatNumber'
-import { startFirstHalf, startSecondHalf, completeFirstHalf, completeSecondHalf, startGameTimer, pauseGameTimer, updateGameTime, initializeGame } from '../../lib/gamesUtils.js'
+import { startFirstHalf, startSecondHalf, completeFirstHalf, completeSecondHalf, startGameTimer, pauseGameTimer, updateGameTime, initializeGame, calculateFinalScore } from '../../lib/gamesUtils.js'
 
 class ScoreGameTimer extends React.Component {
   constructor (props) {
@@ -57,6 +57,7 @@ class ScoreGameTimer extends React.Component {
       completeSecondHalf(gameKey)
       this.setState({running: false})
       pauseGameTimer(this.props.gameKey, this.state.currentTime)
+      calculateFinalScore(gameKey, game)
     }
 
     this.setState({currentTime: newCurrentTime})
