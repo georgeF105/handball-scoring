@@ -31,7 +31,16 @@ class Dashboard extends React.Component {
     const searchField = this.state.searchField
     return (
       <div className='container content dashboard'>
-        <input type='text' placeholder='search' onChange={this.updateSearchField} />
+        <div className='row'>
+          <div className='col-md-4 col-md-offset-4'>
+            <div className='input-group'>
+              <input type='search' className='form-control' placeholder='search'  onChange={this.updateSearchField} />
+              <span className='input-group-addon '>
+                <span className=''/>
+              </span>
+            </div>
+          </div>
+        </div>
         <div className='row'>
           <div className='col-md-4'>
             <div className='page-header'>
