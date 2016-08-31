@@ -13,8 +13,8 @@ import DashboardContainer from './containers/DashboardContainer'
 export default (
   <Router history={hashHistory}>
     <Route path='/game/:id/score' component={ScoreGameContainer} />
+    <Route path='/' component={Home} />
     <Route path='/' component={App}>
-      <IndexRoute component={Home} />
       <Route path='/game/new' component={NewGameContainer} />
       <Route path='/game' component={Overview} />
       <Route path='/game/:id' component={Home} />
