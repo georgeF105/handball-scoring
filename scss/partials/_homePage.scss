@@ -1,0 +1,53 @@
+.home-page {
+  .header {
+    height: 100vh;
+    background-image: url('/images/front-page-bg-ts.jpg');
+    // opacity: 0.5;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .header-text {
+      text-align: center;
+      color: black;
+      text-shadow: 1px 1px 3px #FFFFFF;
+      h1 {
+        color: #333333;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 100px;
+        font-weight: bold;
+      }
+      .btn {
+        color: #FFF;
+        border-radius: 0;
+        background-color: rgba(0,0,0,0.7);
+        margin: 15px;
+        h2 {
+          text-shadow: none;
+          font-weight: bold;
+          margin: 15px;
+        }
+      }
+    }
+  }
+  .about-header {
+    text-align: center;
+    padding: 20px 0;
+  }
+  .about {
+    background-color: #337ab7;
+    color: #FFF;
+    text-align: center;
+    padding: 20px 0;
+    .jumbotron {
+      background-color: transparent;
+    }
+  }
+  footer {
+    text-align: center;
+    padding: 40px 0;
+  }
+}
+
