@@ -7,7 +7,7 @@ const players = [
   {firstName: 'Sam', lastName: 'Gold', dob: '1982-10-10'},
   {firstName: 'John', lastName: 'Doe', dob: '1995-09-22'},
   {firstName: 'Bob', lastName: 'Burger', dob: '1987-09-22'},
-  {firstName: 'Dan', lastName: 'Samson', dob: '1992-09-22'},
+  {firstName: 'Dan', lastName: 'Don', dob: '1992-09-22'},
   
 ]
 
