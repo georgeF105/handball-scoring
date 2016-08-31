@@ -19,28 +19,23 @@ class Dashboard extends React.Component {
     const fetching = this.props.fetchingGames || this.props.fetchingTeams || this.props.fetchingPlayers
     return (
       <div className='container content dashboard'>
-        <div className='page-header'>
-          <h1>Dashboard</h1>
-          <div className='row'>
-            <div className='col-md-4'>
-              <h3>Games</h3>
-            </div>
-            <div className='col-md-4'>
-              <h3>Teams</h3>
-            </div>
-            <div className='col-md-4'>
-              <h3>Players</h3>
-            </div>
-          </div>
-        </div>
         <div className='row'>
           <div className='col-md-4'>
+            <div className='page-header'>
+              <h3>Games</h3>
+            </div>
             {fetching ? <h3>Loading...</h3> : <Games userId={userId} games={games} teams={teams} deleteGame={this.deleteGame} isAdmin />}
           </div>
           <div className='col-md-4'>
+            <div className='page-header'>
+              <h3>Teams</h3>
+            </div>
             {fetching ? <h3>Loading...</h3> : <Teams teams={teams} />}
           </div>
           <div className='col-md-4'>
+            <div className='page-header'>
+              <h3>Players</h3>
+            </div>
             {fetching ? <h3>Loading...</h3> : <Players players={players} />}
           </div>
         </div>
