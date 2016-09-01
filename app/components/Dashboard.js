@@ -20,7 +20,7 @@ class Dashboard extends React.Component {
   }
 
   updateSearchField = (e) => {
-    this.setState({searchField:e.target.value})
+    this.setState({searchField: e.target.value})
   }
   render () {
     const userId = this.props.userId
@@ -33,7 +33,7 @@ class Dashboard extends React.Component {
       <div className='container content dashboard'>
         <div className='row'>
           <div className='col-md-4 col-md-offset-4 search-bar'>
-            <input type='text' className='form-control' placeholder='search'  onChange={this.updateSearchField} aria-describedby='search-addon' />
+            <input type='text' className='form-control' placeholder='search' onChange={this.updateSearchField} aria-describedby='search-addon' />
             <i className='fa fa-search' />
           </div>
         </div>
