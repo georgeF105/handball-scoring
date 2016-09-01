@@ -4,6 +4,7 @@ import { Router, Route, hashHistory } from 'react-router'
 import App from './App'
 import Home from './Home'
 import Overview from './Overview'
+import MatchReport from './MatchReport'
 import NewGameContainer from './containers/NewGameContainer'
 import ScoreGameContainer from './containers/ScoreGameContainer'
 import NewTeamContainer from './containers/NewTeamContainer'
@@ -18,6 +19,7 @@ export default (
       <Route path='/game/new' component={NewGameContainer} />
       <Route path='/game' component={Overview} />
       <Route path='/game/:id' component={Home} />
+      <Route path='/game/:id/report' component={MatchReport} />
       <Route path='/dashboard' component={DashboardContainer} />
       <Route path='/team/new' component={NewTeamContainer} />
       <Route path='/team/:id/edit' component={EditTeamContainer} />
