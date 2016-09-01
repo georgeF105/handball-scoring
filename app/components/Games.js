@@ -2,6 +2,7 @@ import React from 'react'
 
 import GameCard from './GameCard'
 import { simpleFilter } from '../../lib/filter'
+import { searchByAll } from '../../lib/search'
 
 export default (props) => {
   const userId = props.userId
@@ -10,7 +11,7 @@ export default (props) => {
   let games = []
   const gamesObj = props.games
   const filterObj = props.filter || {}
-  console.log('teams', teams)
+  const searchField = props.search || ''
   for (let key in gamesObj) {
     const game = gamesObj[key]
     game.gameKey = key
@@ -18,6 +19,7 @@ export default (props) => {
     games.push(game)
   }
   games = simpleFilter(games, filterObj)
+  games = searchByAll(games, searchField)
   const fetchingGames = props.fetchingGames
   const deleteGame = props.deleteGame
   return (

@@ -2,3 +2,12 @@
 .dashboard {
   text-align: center;
 }
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  i {
+    font-size: 20px;
+    margin: 10px;
+  }
+}
