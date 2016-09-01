@@ -32,13 +32,9 @@ class Dashboard extends React.Component {
     return (
       <div className='container content dashboard'>
         <div className='row'>
-          <div className='col-md-4 col-md-offset-4'>
-            <div className='input-group'>
-              <input type='search' className='form-control' placeholder='search'  onChange={this.updateSearchField} />
-              <span className='input-group-addon '>
-                <span className=''/>
-              </span>
-            </div>
+          <div className='col-md-4 col-md-offset-4 search-bar'>
+            <input type='text' className='form-control' placeholder='search'  onChange={this.updateSearchField} aria-describedby='search-addon' />
+            <i className='fa fa-search' />
           </div>
         </div>
         <div className='row'>
