@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { formatScore } from '../../lib/formatNumber'
 
 export default (props) => {
   const game = props.game
   const homeTeam = props.homeTeam || 'Home Team'
   const awayTeam = props.awayTeam || 'Away Team'
+  const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
+  const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
+
   const deleteGame = props.deleteGame
   const isAdmin = props.isAdmin || false
   const initalized = game.status_initialized || false
@@ -30,9 +34,9 @@ export default (props) => {
         {!gameStatus
           ? <h4>Not Started</h4>
           : <div className='card-score'>
-            <div className='score'>00</div>
+            <div className='score'>{homeTeamScore}</div>
             <h4>{gameStatus}</h4>
-            <div className='score'>00</div>
+            <div className='score'>{awayTeamScore}</div>
           </div>}
         <div className='game-teams'>
           <h5 className='team-name'>{homeTeam}</h5>
