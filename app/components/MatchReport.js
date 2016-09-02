@@ -1,22 +1,39 @@
 import React from 'react'
 
+import { convertToArray } from '../../lib/filter'
 class MatchReport extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
   }
 
-  render () {
-    const homeTeam = [
-      {no: 1, name: 'Jim Jones', dob: '1985-12-25', goals:5, sevenMeter: 'lill', yellowCard: 1, twoMin: 2, redCard: true},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
-    ]
-    const awayTeam = [
-      {no: 1, name: 'Jim Jones', dob: '1985-12-25', goals:5, sevenMeter: 'lill', yellowCard: 1, twoMin: 2, redCard: true},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}
-    ]
-    const scoringEvents = {
+  fillTheBlanks = (arr, num) => {
+    for(let i = arr.length; i < num; i++) {
+      arr.push({})
+    }
+    return arr
+  }
+
+  formatEvents = (events) => {
+    return {
       first:[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
       second:[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
     }
+  }
+
+  render () {
+    const loading = this.props.fetchingGames
+    const game = this.props.games[this.props.params.id] || {}
+    console.log('game',game)
+    const homeTeam = game.home_team || {}
+    const homeTeamPlayers = this.fillTheBlanks(convertToArray(homeTeam.players || {}), 16)
+    const awayTeam = game.away_team || {}
+    const awayTeamPlayers = this.fillTheBlanks(convertToArray(awayTeam.players || {}), 16)
+    const scoringEvents = this.formatEvents(game.events)
+    const homeHalfScore = game.halftime_score && game.halftime_score.home || ''
+    const awayHalfScore = game.halftime_score && game.halftime_score.away || ''
+    const homeFullScore = game.fulltime_score && game.fulltime_score.home || ''
+    const awayFullScore = game.fulltime_score && game.fulltime_score.away || ''
     const league = 'Wellington Handball League'
     return (
       <div className='match-report'>
@@ -43,31 +60,31 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row'>
                     <div className='cell width-1-1 highlight-3'>Venue</div>
-                    <div className='cell width-2-2'></div>
+                    <div className='cell width-2-2'>{game.venue}</div>
                     <div className='cell width-2-3  highlight-3'>Gender</div>
-                    <div className='cell width-2-3'></div>
+                    <div className='cell width-2-3'>{game.gender}</div>
                   </div>
                   <div className='report-row'>
                     <div className='cell width-1-1  highlight-3'>Home Team</div>
-                    <div className='cell width-3-2'></div>
+                    <div className='cell width-3-2'>{homeTeam.name}</div>
                     <div className='cell width-1-1  highlight-3'>Away Team</div>
-                    <div className='cell width-3-4'></div>
+                    <div className='cell width-3-4'>{awayTeam.name}</div>
                   </div>
                   <div className='report-row'>
                     <div className='cell width-1-1  highlight-3'>Date</div>
-                    <div className='cell width-3-2'></div>
+                    <div className='cell width-3-2'>{game.date}</div>
                     <div className='cell width-1-1  highlight-3'>Time</div>
-                    <div className='cell width-3-4'></div>
+                    <div className='cell width-3-4'>{game.time}</div>
                   </div>
                   <div className='report-row two-rows'>
                     <div className='report-column'>
                       <div className='report-row'>
                         <div className='cell width-1-1  highlight-3'>HT Score</div>
-                        <div className='cell width-5-4'></div>
+                        <div className='cell width-5-4'>{homeHalfScore + '  ' + awayHalfScore}</div>
                       </div>
                       <div className='report-row'>
                         <div className='cell width-1-1  highlight-3'>Final Score</div>
-                        <div className='cell width-5-4'></div>
+                        <div className='cell width-5-4'>{homeFullScore + '  ' + awayFullScore}</div>
                       </div>
                     </div>
                     <div className='cell two-rows width-5-4  highlight-3'>Time Outs</div>
@@ -105,19 +122,19 @@ class MatchReport extends React.Component {
                     <div className='cell width-5-6'>2min</div>
                     <div className='cell width-5-6'>RC</div>
                   </div>
-                  {homeTeam.map((player, key) =>{
+                  {homeTeamPlayers.map((player, key) =>{
                     return (
                       <div key={key} className='report-row'>
-                        <div className='cell width-8-1'>{player.no}</div>
-                        <div className='cell width-8-2'>{player.name}</div>
+                        <div className='cell width-8-1'>{player.number}</div>
+                        <div className='cell width-8-2'>{(player.first_name || '') + ' ' + (player.last_name || '')}</div>
                         <div className='cell width-5-4'>{player.dob}</div>
                         <div className='cell width-1-1'>{player.goals}</div>
-                        <div className='cell width-5-6'>{player.sevenMeter}</div>
-                        <div className='cell width-5-6'>{player.yellowCard}</div>
-                        <div className='cell width-5-6'>{player.twoMin}</div>
-                        <div className='cell width-5-6'>{player.twoMin}</div>
-                        <div className='cell width-5-6'>{player.twoMin}</div>
-                        <div className='cell width-5-6'>{player.redCard}</div>
+                        <div className='cell width-5-6'>{player.seven_meter}</div>
+                        <div className='cell width-5-6'>{player.yellow_cards}</div>
+                        <div className='cell width-5-6'>{player.two_minutes}</div>
+                        <div className='cell width-5-6'>{player.two_minutes}</div>
+                        <div className='cell width-5-6'>{player.two_minutes}</div>
+                        <div className='cell width-5-6'>{player.red_cards}</div>
                       </div>
                     )})}
                   <div className='report-row'>
@@ -158,19 +175,19 @@ class MatchReport extends React.Component {
                     <div className='cell width-5-6'>2min</div>
                     <div className='cell width-5-6'>RC</div>
                   </div>
-                  {awayTeam.map((player, key) =>{
+                  {awayTeamPlayers.map((player, key) =>{
                     return (
                       <div key={key} className='report-row'>
-                        <div className='cell width-8-1'>{player.no}</div>
-                        <div className='cell width-8-2'>{player.name}</div>
+                        <div className='cell width-8-1'>{player.number}</div>
+                        <div className='cell width-8-2'>{(player.first_name || '') + ' ' + (player.last_name || '')}</div>
                         <div className='cell width-5-4'>{player.dob}</div>
                         <div className='cell width-1-1'>{player.goals}</div>
-                        <div className='cell width-5-6'>{player.sevenMeter}</div>
-                        <div className='cell width-5-6'>{player.yellowCard}</div>
-                        <div className='cell width-5-6'>{player.twoMin}</div>
-                        <div className='cell width-5-6'>{player.twoMin}</div>
-                        <div className='cell width-5-6'>{player.twoMin}</div>
-                        <div className='cell width-5-6'>{player.redCard}</div>
+                        <div className='cell width-5-6'>{player.seven_meter}</div>
+                        <div className='cell width-5-6'>{player.yellow_cards}</div>
+                        <div className='cell width-5-6'>{player.two_minutes > 0 ? 'x' : ''}</div>
+                        <div className='cell width-5-6'>{player.two_minutes >= 2 ? 'x' : '' }</div>
+                        <div className='cell width-5-6'>{player.two_minutes >= 3 ? 'x' : '' }</div>
+                        <div className='cell width-5-6'>{player.red_cards}</div>
                       </div>
                     )})}
                   <div className='report-row'>
@@ -203,19 +220,19 @@ class MatchReport extends React.Component {
                     <div className='report-column'>
                       <div className='report-row'>
                         <div className='cell width-1-1'>Referee #1</div>
-                        <div className='cell width-2-2'></div>
+                        <div className='cell width-2-2'>{game.referee_1}</div>
                       </div>
                       <div className='report-row'>
                         <div className='cell width-1-1'>Referee #2</div>
-                        <div className='cell width-2-2'></div>
+                        <div className='cell width-2-2'>{game.referee_2}</div>
                       </div>
                       <div className='report-row'>
                         <div className='cell width-1-1'>Timekeeper</div>
-                        <div className='cell width-2-2'></div>
+                        <div className='cell width-2-2'>{game.timekeeper}</div>
                       </div>
                       <div className='report-row'>
                         <div className='cell width-1-1'>Scorekeeper</div>
-                        <div className='cell width-2-2'></div>
+                        <div className='cell width-2-2'>{game.scorekeeper}</div>
                       </div>
                     </div>
                     <div className='cell four-rows width-grow' id='report-comments'>Comments (League Offical):</div>
@@ -254,8 +271,8 @@ class MatchReport extends React.Component {
                   <div className='cell width-half highlight-2'>Score</div>
                 </div>
                 <div className='report-row'>
-                  <div className='cell width-half four-rows'></div>
-                  <div className='cell width-half four-rows'></div>
+                  <div className='cell width-half four-rows'><h3>{homeFullScore}</h3></div>
+                  <div className='cell width-half four-rows'><h3>{awayFullScore}</h3></div>
                 </div>
               </div>
             </div>
