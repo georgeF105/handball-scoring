@@ -23,7 +23,8 @@ export default (props) => {
             <div className='main-col'>
               <div className='report-head'>
                 <div className='report-title report-row four-rows'>
-                  <div className='icon cell four-rows width-1-1'> 
+                  <div className='cell four-rows width-1-1'>
+                    <img src='/images/logo-whl.png' alt='LOGO' className='logo' />
                   </div>
                   <div className='report-column width-grow'>
                     <div className='cell two-rows'>
@@ -216,7 +217,9 @@ export default (props) => {
               </div>
             </div>
             <div className='score-col'>
-              <div className='icon cell five-rows width-grow'></div>
+              <div className='cell five-rows width-grow'>
+                <img src='/images/logo-nzhf.png' alt='LOGO' className='logo' />
+              </div>
               <div className='cell width-grow highlight-2'>Scoring</div>
               <div className='report-row highlight-2'>
                 <div className='cell width-half'>1st</div>

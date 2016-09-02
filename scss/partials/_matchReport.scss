@@ -54,7 +54,11 @@
     height: $row-height * $rows;
     width: 130px;
   }
-
+  .logo {
+    // width: 60%;
+    margin-top: 5%;
+    height: 90%;
+  }
   .highlight-1 {
     background-color: $grey-1;
   }
