@@ -1,0 +1,129 @@
+.match-report {
+  .page-header {
+    text-align: center;
+  }
+}
+
+.a4-page {
+  width: 840px;
+  // padding-bottom: 141%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 1188px;
+  border: 1px solid #757575;
+  position: relative;
+}
+
+.match-report-page {
+  $row-height: 20px;
+  $grey-1: #808080;
+  $grey-2: #969696;
+  $grey-3: #C0C0C0;
+  border: 1px solid #000000;
+  display: flex;
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  text-align: center;
+  font-weight: bold;
+  .main-col {
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    .report-head {
+      $rows: 9;
+      height: $row-height * $rows;
+      h2, h3 {
+        margin: 0;
+        line-height: 40px;
+      }
+    }
+    .report-team {
+      $rows: 21;
+      height: $row-height * $rows;
+      font-weight: normal;
+    }
+    .match-officials {
+      $rows: 5;
+      height: $row-height * $rows;
+    }
+  }
+  .score-col {
+    $rows: 56;
+    height: $row-height * $rows;
+    width: 130px;
+  }
+
+  .highlight-1 {
+    background-color: $grey-1;
+  }
+  .highlight-2 {
+    background-color: $grey-2;
+  }
+  .highlight-3 {
+    background-color: $grey-3;
+  }
+  .report-row {
+    display: flex;
+  }
+  .cell {
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    height: $row-height;
+    line-height: $row-height;
+  }
+  .two-rows {
+    $rows: 2;
+    height: $row-height * $rows;
+    line-height: $row-height * $rows;
+  }
+  .four-rows {
+    $rows: 4;
+    height: $row-height * $rows;
+  }
+  .five-rows {
+    $rows: 5;
+    height: $row-height * $rows;
+  }
+  .width-grow {
+    flex-grow: 1;
+  }
+  .width-half {
+    width: 50%;
+  }
+  .width-1-1 {
+    width: 100px;
+  }
+  .width-2-2 {
+    width: 280px;
+  }
+  .width-2-3 {
+    width: 135px;
+  }
+  .width-3-2 {
+    width: 180px;
+  }
+  .width-3-4 {
+    width: 270px;
+  }
+  .width-5-4 {
+    width: 90px;
+  }
+  .width-5-5 {
+    width: 90px;
+  }
+  .width-5-6 {
+    width: 45px;
+  }
+  .width-8-1 {
+    width: 35px;
+  }
+  .width-8-2 {
+    width: 155px;
+  }
+  #report-comments {
+    text-align: left;
+    padding-left: 5px;
+  }
+}
