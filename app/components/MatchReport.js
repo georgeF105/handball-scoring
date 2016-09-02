@@ -8,7 +8,7 @@ class MatchReport extends React.Component {
   }
 
   fillTheBlanks = (arr, num) => {
-    for(let i = arr.length; i < num; i++) {
+    for (let i = arr.length; i < num; i++) {
       arr.push({})
     }
     return arr
@@ -16,15 +16,14 @@ class MatchReport extends React.Component {
 
   formatEvents = (events) => {
     return {
-      first:[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}],
-      second:[{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
+      first: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
+      second: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
     }
   }
 
   render () {
-    const loading = this.props.fetchingGames
     const game = this.props.games[this.props.params.id] || {}
-    console.log('game',game)
+    console.log('game', game)
     const homeTeam = game.home_team || {}
     const homeTeamPlayers = this.fillTheBlanks(convertToArray(homeTeam.players || {}), 16)
     const awayTeam = game.away_team || {}
@@ -92,16 +91,16 @@ class MatchReport extends React.Component {
                       <div className='report-row'>
                         <div className='cell width-1-1 highlight-3'>Home Team</div>
                         <div className='cell width-5-5 highlight-3'>1st Half</div>
-                        <div className='cell width-5-6'></div>
+                        <div className='cell width-5-6' />
                         <div className='cell width-5-5 highlight-3'>2nd Half</div>
-                        <div className='cell width-5-6'></div>
+                        <div className='cell width-5-6' />
                       </div>
                       <div className='report-row'>
                         <div className='cell width-1-1 highlight-3'>Away Team</div>
                         <div className='cell width-5-5 highlight-3'>1st Half</div>
-                        <div className='cell width-5-6'></div>
+                        <div className='cell width-5-6' />
                         <div className='cell width-5-5 highlight-3'>2nd Half</div>
-                        <div className='cell width-5-6'></div>
+                        <div className='cell width-5-6' />
                       </div>
                     </div>
                   </div>
@@ -122,7 +121,7 @@ class MatchReport extends React.Component {
                     <div className='cell width-5-6'>2min</div>
                     <div className='cell width-5-6'>RC</div>
                   </div>
-                  {homeTeamPlayers.map((player, key) =>{
+                  {homeTeamPlayers.map((player, key) => {
                     return (
                       <div key={key} className='report-row'>
                         <div className='cell width-8-1'>{player.number}</div>
@@ -136,27 +135,27 @@ class MatchReport extends React.Component {
                         <div className='cell width-5-6'>{player.two_minutes}</div>
                         <div className='cell width-5-6'>{player.red_cards}</div>
                       </div>
-                    )})}
+                    ) })}
                   <div className='report-row'>
                     <div className='cell width-grow highlight-3'>TEAM OFFICALS</div>
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>A</div>
-                    <div className='cell width-grow'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
+                    <div className='cell width-grow' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>B</div>
-                    <div className='cell width-grow'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
+                    <div className='cell width-grow' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
                   </div>
                 </div>
                 <div className='report-team'>
@@ -175,7 +174,7 @@ class MatchReport extends React.Component {
                     <div className='cell width-5-6'>2min</div>
                     <div className='cell width-5-6'>RC</div>
                   </div>
-                  {awayTeamPlayers.map((player, key) =>{
+                  {awayTeamPlayers.map((player, key) => {
                     return (
                       <div key={key} className='report-row'>
                         <div className='cell width-8-1'>{player.number}</div>
@@ -189,27 +188,27 @@ class MatchReport extends React.Component {
                         <div className='cell width-5-6'>{player.two_minutes >= 3 ? 'x' : '' }</div>
                         <div className='cell width-5-6'>{player.red_cards}</div>
                       </div>
-                    )})}
+                    ) })}
                   <div className='report-row'>
                     <div className='cell width-grow highlight-3'>TEAM OFFICALS</div>
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>A</div>
-                    <div className='cell width-grow'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
+                    <div className='cell width-grow' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>B</div>
-                    <div className='cell width-grow'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
-                    <div className='cell width-5-6'></div>
+                    <div className='cell width-grow' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
+                    <div className='cell width-5-6' />
                   </div>
                 </div>
                 <div className='match-officials'>
@@ -251,17 +250,17 @@ class MatchReport extends React.Component {
                 <div className='report-row width-grow'>
                   <div className='report-column width-half'>
                     {scoringEvents.first.map((event, key) => {
-                      return <div key={key} className={`report-row ${key%2 ? 'highlight-3' : ''}`}>
-                        <div className='cell width-half'></div>
-                        <div className='cell width-half'></div>
+                      return <div key={key} className={`report-row ${key % 2 ? 'highlight-3' : ''}`}>
+                        <div className='cell width-half' />
+                        <div className='cell width-half' />
                       </div>
                     })}
                   </div>
                   <div className='report-column width-half'>
                     {scoringEvents.second.map((event, key) => {
-                      return <div key={key} className={`report-row ${key%2 ? 'highlight-3' : ''}`}>
-                        <div className='cell width-half'></div>
-                        <div className='cell width-half'></div>
+                      return <div key={key} className={`report-row ${key % 2 ? 'highlight-3' : ''}`}>
+                        <div className='cell width-half' />
+                        <div className='cell width-half' />
                       </div>
                     })}
                   </div>
