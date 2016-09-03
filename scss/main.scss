@@ -1,6 +1,7 @@
-$icon-font-path: '~/node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+$bootstrap-sass-asset-helper: true;
 @import 'modules/fonts';
 
+// @import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import 'vendor/bootstrap-custom';
 @import 'vendor/normalize';
 // @import 'vendor/skeleton';
@@ -16,4 +17,5 @@ $icon-font-path: '~/node_modules/bootstrap-sass/assets/fonts/bootstrap/';
 @import 'partials/card';
 @import 'partials/gameCard';
 @import 'partials/homePage';
+@import 'partials/matchReport';
 

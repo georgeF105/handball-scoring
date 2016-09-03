@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import { simpleFilter } from '../../lib/filter'
+import { searchByAll } from '../../lib/search'
 
 export default (props) => {
   const filterObj = props.filter || {}
+  const searchField = props.search || ''
   let players = []
   for (let key in props.players) {
     const player = props.players[key]
@@ -12,6 +14,7 @@ export default (props) => {
     players.push(player)
   }
   players = simpleFilter(players, filterObj)
+  players = searchByAll(players, searchField)
   return (
     <div className='players'>
       {players.length
