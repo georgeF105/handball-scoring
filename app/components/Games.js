@@ -27,8 +27,8 @@ export default (props) => {
       {!fetchingGames
         ? (games.length
           ? games.map((game, key) => <GameCard key={key} game={game} deleteGame={deleteGame} isAdmin={isAdmin}
-            homeTeam={game.status_initialized ? teams[game.home_team.key] && teams[game.home_team.key].name || '???' : teams[game.home_team] && teams[game.home_team].name || "Can't find team"}
-            awayTeam={game.status_initialized ? teams[game.away_team.key] && teams[game.away_team.key].name || '???' : teams[game.away_team] && teams[game.away_team].name || "Can't find team"} />)
+            homeTeam={teams[game.home_team_key || game.home_team.key || game.home_team].name || "Can't find team"}
+            awayTeam={teams[game.away_team_key || game.away_team.key || game.away_team].name || "Can't find team"} />)
           : <h3>No Games Found</h3>)
         : <h3>Loading Games...</h3>
       }
