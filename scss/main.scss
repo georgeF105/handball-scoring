@@ -6,6 +6,7 @@ $bootstrap-sass-asset-helper: true;
 @import 'vendor/normalize';
 // @import 'vendor/skeleton';
 
+@import 'partials/general';
 @import 'partials/body';
 @import 'partials/dashboard';
 @import 'partials/overview';
