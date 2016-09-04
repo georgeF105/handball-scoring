@@ -46,7 +46,7 @@ export default (props) => {
       </div>
       {isAdmin
         ? <div className='card-options'>
-          <i className='fa fa-cog icon' />
+          <Link to={`/game/${game.gameKey}/edit`}><i className='fa fa-cog icon' /></Link>
           <Link to={`/game/${game.gameKey}/score`}>Score Game</Link>
           <i className='fa fa-trash delete-game-icon' name={game.gameKey} onClick={deleteGame} />
         </div>
