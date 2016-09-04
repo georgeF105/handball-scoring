@@ -13,8 +13,8 @@ class NewGame extends React.Component {
     gameObj.date = document.getElementById('date-input').value
     gameObj.time = document.getElementById('time-input').value
     gameObj.gender = document.getElementById('gender-input').value
-    gameObj.home_team = document.getElementById('home_team-input').value
-    gameObj.away_team = document.getElementById('away_team-input').value
+    gameObj.home_team_key = document.getElementById('home_team-input').value
+    gameObj.away_team_key = document.getElementById('away_team-input').value
     gameObj.referee_1 = document.getElementById('referee_1-input').value
     gameObj.referee_2 = document.getElementById('referee_2-input').value
     gameObj.timekeeper = document.getElementById('timekeeper-input').value
