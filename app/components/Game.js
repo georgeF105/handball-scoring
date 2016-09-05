@@ -27,6 +27,17 @@ class Game extends React.Component {
     const awayTeamName = game.away_team && game.away_team.name || 'Away Team'
     const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
+
+    const initalized = game.status_initialized || false
+    const firstStarted = game.status_firsthalf_started || false
+    const firstComp = game.status_firsthalf_completed || false
+    const secondStarted = game.status_secondhalf_started || false
+    const secondComp = game.status_secondhalf_completed || false
+    const gameStatus = firstStarted && firstComp && secondStarted && secondComp
+      ? 'Full Time' : firstStarted && firstComp && secondStarted
+      ? 'Second Half' : firstStarted && firstComp
+      ? 'Half Time' : firstStarted && initalized
+      ? 'First Half' : 'Not Started'
     return (
       <div className='container content game-page'>
         <div className='row game-page-header'>
@@ -35,7 +46,7 @@ class Game extends React.Component {
             <h1>{homeTeamName}</h1>
           </div>
           <div className='col-md-4 central-column'>
-            <h1>Game Status</h1>
+            <h1>{gameStatus}</h1>
             <div className='card-score'>
               <div className='score'>{homeTeamScore}</div>
               <div className='score'>{awayTeamScore}</div>
