@@ -2,6 +2,8 @@ import React from 'react'
 
 import MatchReportContainer from './containers/MatchReportContainer'
 import EditGameContainer from './containers/EditGameContainer'
+import { formatScore } from '../../lib/formatNumber'
+
 
 class Game extends React.Component {
   constructor (props) {
@@ -20,23 +22,28 @@ class Game extends React.Component {
   render () {
     const showEdit = this.state.showEdit
     const showReport = this.state.showReport
+    const game = this.props.games[this.props.params.id] || {}
+    const homeTeamName = game.home_team && game.home_team.name || 'Home Team'
+    const awayTeamName = game.away_team && game.away_team.name || 'Away Team'
+    const homeTeamScore = formatScore(game.current_score && game.current_score.home || 0)
+    const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
     return (
       <div className='container content game-page'>
         <div className='row'>
           <div className='col-md-4 central-column'>
             <img src='http://placehold.it/250x120?text=LOGO' />
-            <h1>Team Name</h1>
+            <h1>{homeTeamName}</h1>
           </div>
           <div className='col-md-4 central-column'>
             <h1>Game Status</h1>
             <div className='card-score'>
-              <div className='score'>00</div>
-              <div className='score'>00</div>
+              <div className='score'>{homeTeamScore}</div>
+              <div className='score'>{awayTeamScore}</div>
             </div>
           </div>
           <div className='col-md-4 central-column'>
             <img src='http://placehold.it/250x120?text=LOGO' />
-            <h1>Team Name</h1>
+            <h1>{homeTeamName}</h1>
           </div>
         </div>
 
