@@ -1,0 +1,14 @@
+.edit-game {
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.team-offical {
+  display: flex;
+  align-items: center;
+  label {
+    margin: 10px;
+  }
+}
