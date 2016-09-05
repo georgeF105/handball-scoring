@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactTimeout from 'react-timeout'
+import { Link } from 'react-router'
 
 import { formatTime } from '../../lib/formatNumber'
 import { startFirstHalf, startSecondHalf, completeFirstHalf, completeSecondHalf, startGameTimer, pauseGameTimer, updateGameTime, initializeGame, calculateFinalScore } from '../../lib/gamesUtils.js'
@@ -141,11 +142,13 @@ class ScoreGameTimer extends React.Component {
             <i className='fa fa-minus' onClick={this.adjustTimeDown} />
           </div>
           : <div className='game-status'>{gameStatus}</div>}
-        {initalized
+        {!secondComp
+          ? initalized
           ? !running
           ? <i className='fa fa-play game-timer-icon start' onClick={this.startTimer} />
           : <i className='fa fa-pause game-timer-icon pause' onClick={this.pauseTimer} />
-          : <i className='fa fa-play-circle game-timer-icon initalize' onClick={this.startGame} />}
+          : <i className='fa fa-play-circle game-timer-icon initalize' onClick={this.startGame} />
+          : <Link to={`/game/${game.gameKey}`}><h2>Create Report</h2></Link>}
       </div>
     )
   }
