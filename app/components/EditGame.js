@@ -1,7 +1,44 @@
 import React from 'react'
 
+import { updateGame } from '../../lib/gamesFire'
+
 class EditGame extends React.Component {
-  
+
+  updateMatchDetails = (e) => {
+    e.preventDefault()
+    const gameKey = this.props.params.id
+    const game = this.props.games[gameKey]
+    game.venue = document.getElementById('venue-input').value
+    game.date = document.getElementById('date-input').value
+    game.time = document.getElementById('time-input').value
+    game.gender = document.getElementById('gender-input').value
+    game.referee_1 = document.getElementById('referee_1-input').value
+    game.referee_2 = document.getElementById('referee_2-input').value
+    game.timekeeper = document.getElementById('timekeeper-input').value
+    game.scorekeeper = document.getElementById('scorekeeper-input').value
+    updateGame(gameKey, game)
+  }
+
+  updateTeamOfficals = (e) => {
+    e.preventDefault()
+    const gameKey = this.props.params.id
+    const game = this.props.games[gameKey]
+    game.home_team.offical_a = document.getElementById('home-offical-a-input').value
+    game.home_team.offical_b = document.getElementById('home-offical-b-input').value
+    game.away_team.offical_a = document.getElementById('away-offical-a-input').value
+    game.away_team.offical_b = document.getElementById('away-offical-b-input').value
+    console.log('updateTeamOfficals game:', game)
+    updateGame(gameKey, game)
+  }
+
+  updateGameComments = (e) => {
+    e.preventDefault()
+    const gameKey = this.props.params.id
+    const game = this.props.games[gameKey]
+    game.game_comments = document.getElementById('game-comments-input').value
+    updateGame(gameKey, game)
+  }
+
   render () {
     const game = this.props.games[this.props.params.id] || {}
     console.log('game', game)
@@ -14,11 +51,11 @@ class EditGame extends React.Component {
     const timekeeper = game.timekeeper
     const scorekeeper = game.scorekeeper
     const gameInitialized = game.status_initialized
-    const homeOfficalA = game.home_team && game.home_team.officialA || ''
-    const homeOfficalB = game.home_team && game.home_team.officialB || ''
-    const awayOfficalA = game.away_team && game.away_team.officialA || ''
-    const awayOfficalB = game.away_team && game.away_team.officialB || ''
-    const gameComments = game.comments || ''
+    const homeOfficalA = game.home_team && game.home_team.offical_a || ''
+    const homeOfficalB = game.home_team && game.home_team.offical_b || ''
+    const awayOfficalA = game.away_team && game.away_team.offical_a || ''
+    const awayOfficalB = game.away_team && game.away_team.offical_b || ''
+    const gameComments = game.game_comments || ''
     if(this.props.fetchingGames) {
       return <h1>Loading...</h1>
     }
@@ -26,7 +63,7 @@ class EditGame extends React.Component {
       <div className='container content edit-game'>
         <div className='row container'>
           <div className='block-header'>
-            <h3>Match</h3>
+            <h3>Match Details</h3>
           </div>
           <form>
             <div className='row form-group'>
@@ -53,11 +90,11 @@ class EditGame extends React.Component {
             <div className='row form-group'>
               <div className='col-md-3'>
                 <label htmlFor='ref-1-input'>referee #1</label>
-                <input className='form-control' type='text' id='ref-1-input' defaultValue={referee_1} />
+                <input className='form-control' type='text' id='referee_1-input' defaultValue={referee_1} />
               </div>
               <div className='col-md-3'>
                 <label htmlFor='ref-2-input'>referee #1</label>
-                <input className='form-control' type='text' id='ref-2-input' defaultValue={referee_2} />
+                <input className='form-control' type='text' id='referee_2-input' defaultValue={referee_2} />
               </div>
               <div className='col-md-3'>
                 <label htmlFor='scorekeeper-input'>ScoreKeeper</label>
@@ -69,7 +106,7 @@ class EditGame extends React.Component {
               </div>
             </div>
             <div className='form-group'>
-              <button type="submit" className="btn btn-primary center-block">Update</button>
+              <button type="submit" className="btn btn-primary center-block" onClick={this.updateMatchDetails}>Update</button>
             </div>
           </form>
         </div>
@@ -82,7 +119,7 @@ class EditGame extends React.Component {
               <div className='row'>
                 <div className='col-md-6'>
                   <div className='block-header'>
-                    <h4>Team Officals</h4>
+                    <h4>Home Team</h4>
                   </div>
                   <div className='form-group team-offical'>
                     <label htmlFor='home-offical-a-input'>A</label>
@@ -95,20 +132,20 @@ class EditGame extends React.Component {
                 </div>
                 <div className='col-md-6'>
                   <div className='block-header'>
-                    <h4>Team Officals</h4>
+                    <h4>Away Team</h4>
                   </div>
                   <div className='form-group team-offical'>
-                    <label htmlFor='home-offical-a-input'>A</label>
-                    <input className='form-control' type='text' id='home-offical-a-input' defaultValue={awayOfficalA} />
+                    <label htmlFor='away-offical-a-input'>A</label>
+                    <input className='form-control' type='text' id='away-offical-a-input' defaultValue={awayOfficalA} />
                   </div>
                   <div className='form-group team-offical'>
-                    <label htmlFor='home-offical-b-input'>B</label>
-                    <input className='form-control' type='text' id='home-offical-b-input' defaultValue={awayOfficalB} />
+                    <label htmlFor='away-offical-b-input'>B</label>
+                    <input className='form-control' type='text' id='away-offical-b-input' defaultValue={awayOfficalB} />
                   </div>
                 </div>
               </div>
               <div className='form-group'>
-                <button type="submit" className="btn btn-primary center-block">Update</button>
+                <button type="submit" className="btn btn-primary center-block" onClick={this.updateTeamOfficals}>Update</button>
               </div>
             </form>
           </div>
@@ -119,10 +156,10 @@ class EditGame extends React.Component {
           </div>
           <form>
             <div className='form-group'>
-              <textarea className='form-control' rows='2' defaultValue={gameComments} />
+              <textarea className='form-control' rows='2' id='game-comments-input' defaultValue={gameComments} />
             </div>
             <div className='form-group'>
-              <button type="submit" className="btn btn-primary center-block">Update</button>
+              <button type="submit" className="btn btn-primary center-block" onClick={this.updateGameComments}>Update</button>
             </div>
           </form>
         </div>
