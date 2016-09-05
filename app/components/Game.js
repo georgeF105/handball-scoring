@@ -29,7 +29,7 @@ class Game extends React.Component {
     const awayTeamScore = formatScore(game.current_score && game.current_score.away || 0)
     return (
       <div className='container content game-page'>
-        <div className='row'>
+        <div className='row game-page-header'>
           <div className='col-md-4 central-column'>
             <img src='http://placehold.it/250x120?text=LOGO' />
             <h1>{homeTeamName}</h1>
