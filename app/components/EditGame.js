@@ -46,8 +46,8 @@ class EditGame extends React.Component {
     const gender = game.gender || ''
     const date = game.date
     const time = game.time
-    const referee_1 = game.referee_1
-    const referee_2 = game.referee_2
+    const referee1 = game.referee_1
+    const referee2 = game.referee_2
     const timekeeper = game.timekeeper
     const scorekeeper = game.scorekeeper
     const gameInitialized = game.status_initialized
@@ -56,7 +56,7 @@ class EditGame extends React.Component {
     const awayOfficalA = game.away_team && game.away_team.offical_a || ''
     const awayOfficalB = game.away_team && game.away_team.offical_b || ''
     const gameComments = game.game_comments || ''
-    if(this.props.fetchingGames) {
+    if (this.props.fetchingGames) {
       return <h1>Loading...</h1>
     }
     return (
@@ -84,17 +84,17 @@ class EditGame extends React.Component {
               </div>
               <div className='col-md-3'>
                 <label htmlFor='time-input'>time</label>
-                <input className='form-control' type='time' id='time-input'  defaultValue={time} />
+                <input className='form-control' type='time' id='time-input' defaultValue={time} />
               </div>
             </div>
             <div className='row form-group'>
               <div className='col-md-3'>
                 <label htmlFor='ref-1-input'>referee #1</label>
-                <input className='form-control' type='text' id='referee_1-input' defaultValue={referee_1} />
+                <input className='form-control' type='text' id='referee_1-input' defaultValue={referee1} />
               </div>
               <div className='col-md-3'>
                 <label htmlFor='ref-2-input'>referee #1</label>
-                <input className='form-control' type='text' id='referee_2-input' defaultValue={referee_2} />
+                <input className='form-control' type='text' id='referee_2-input' defaultValue={referee2} />
               </div>
               <div className='col-md-3'>
                 <label htmlFor='scorekeeper-input'>ScoreKeeper</label>
@@ -106,7 +106,7 @@ class EditGame extends React.Component {
               </div>
             </div>
             <div className='form-group'>
-              <button type="submit" className="btn btn-primary center-block" onClick={this.updateMatchDetails}>Update</button>
+              <button type='submit' className='btn btn-primary center-block' onClick={this.updateMatchDetails}>Update</button>
             </div>
           </form>
         </div>
@@ -145,7 +145,7 @@ class EditGame extends React.Component {
                 </div>
               </div>
               <div className='form-group'>
-                <button type="submit" className="btn btn-primary center-block" onClick={this.updateTeamOfficals}>Update</button>
+                <button type='submit' className='btn btn-primary center-block' onClick={this.updateTeamOfficals}>Update</button>
               </div>
             </form>
           </div>
@@ -159,7 +159,7 @@ class EditGame extends React.Component {
               <textarea className='form-control' rows='2' id='game-comments-input' defaultValue={gameComments} />
             </div>
             <div className='form-group'>
-              <button type="submit" className="btn btn-primary center-block" onClick={this.updateGameComments}>Update</button>
+              <button type='submit' className='btn btn-primary center-block' onClick={this.updateGameComments}>Update</button>
             </div>
           </form>
         </div>

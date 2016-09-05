@@ -43,19 +43,19 @@ class Game extends React.Component {
         <div className=''>
           <div className='page-header expandable-header' onClick={this.toggleEditShow}>
             <h1>Edit Game</h1><h1>
-              {showEdit 
-                ? <i className="fa fa-caret-up" aria-hidden="true"/>
-                : <i className="fa fa-caret-down" aria-hidden="true"/>}
+              {showEdit
+                ? <i className='fa fa-caret-up' aria-hidden='true' />
+                : <i className='fa fa-caret-down' aria-hidden='true' />}
             </h1>
           </div>
           {showEdit ? <EditGameContainer {...this.props} /> : null }
         </div>
         <div className=''>
-          <div className='page-header expandable-header'  onClick={this.toggleReportShow}>
+          <div className='page-header expandable-header' onClick={this.toggleReportShow}>
             <h1>Match Report</h1><h1>
-              {showReport 
-                ? <i className="fa fa-caret-up" aria-hidden="true"/>
-                : <i className="fa fa-caret-down" aria-hidden="true"/>}
+              {showReport
+                ? <i className='fa fa-caret-up' aria-hidden='true' />
+                : <i className='fa fa-caret-down' aria-hidden='true' />}
             </h1>
           </div>
           {showReport ? <MatchReportContainer {...this.props} /> : null }

@@ -5,7 +5,7 @@ import EditGame from '../EditGame'
 const mapStateToProps = (state) => {
   return {
     games: state.games.get('games').toJS(),
-    fetchingGames: state.games.get('fetchingGames'),
+    fetchingGames: state.games.get('fetchingGames')
   }
 }
 
