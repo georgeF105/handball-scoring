@@ -141,7 +141,7 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>A</div>
-                    <div className='cell width-grow' />
+                    <div className='cell width-grow'>{homeTeam.offical_a}</div>
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
@@ -150,7 +150,7 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>B</div>
-                    <div className='cell width-grow' />
+                    <div className='cell width-grow'>{homeTeam.offical_b}</div>
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
@@ -194,7 +194,7 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>A</div>
-                    <div className='cell width-grow' />
+                    <div className='cell width-grow'>{awayTeam.offical_a}</div>
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
@@ -203,7 +203,7 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>B</div>
-                    <div className='cell width-grow' />
+                    <div className='cell width-grow'>{awayTeam.offical_a}</div>
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
@@ -234,7 +234,7 @@ class MatchReport extends React.Component {
                         <div className='cell width-2-2'>{game.scorekeeper}</div>
                       </div>
                     </div>
-                    <div className='cell four-rows width-grow' id='report-comments'>Comments (League Offical):</div>
+                    <div className='cell four-rows width-grow' id='report-comments'>Comments (League Offical):<p>{game.game_comments}</p></div>
                   </div>
                 </div>
               </div>
