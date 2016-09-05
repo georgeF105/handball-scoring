@@ -79,11 +79,11 @@ class MatchReport extends React.Component {
                     <div className='report-column'>
                       <div className='report-row'>
                         <div className='cell width-1-1  highlight-3'>HT Score</div>
-                        <div className='cell width-5-4'>{homeHalfScore + '  ' + awayHalfScore}</div>
+                        <div className='cell width-5-4'>{(homeHalfScore || '0') + ' / ' + (awayHalfScore || '0')}</div>
                       </div>
                       <div className='report-row'>
                         <div className='cell width-1-1  highlight-3'>Final Score</div>
-                        <div className='cell width-5-4'>{homeFullScore + '  ' + awayFullScore}</div>
+                        <div className='cell width-5-4'>{(homeFullScore || '0') + ' / ' + (awayFullScore || '0')}</div>
                       </div>
                     </div>
                     <div className='cell two-rows width-5-4  highlight-3'>Time Outs</div>
@@ -141,7 +141,7 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>A</div>
-                    <div className='cell width-grow' />
+                    <div className='cell width-grow'>{homeTeam.offical_a}</div>
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
@@ -150,7 +150,7 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>B</div>
-                    <div className='cell width-grow' />
+                    <div className='cell width-grow'>{homeTeam.offical_b}</div>
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
@@ -194,7 +194,7 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>A</div>
-                    <div className='cell width-grow' />
+                    <div className='cell width-grow'>{awayTeam.offical_a}</div>
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
@@ -203,7 +203,7 @@ class MatchReport extends React.Component {
                   </div>
                   <div className='report-row highlight-1'>
                     <div className='cell width-8-1'>B</div>
-                    <div className='cell width-grow' />
+                    <div className='cell width-grow'>{awayTeam.offical_a}</div>
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
                     <div className='cell width-5-6' />
@@ -234,7 +234,7 @@ class MatchReport extends React.Component {
                         <div className='cell width-2-2'>{game.scorekeeper}</div>
                       </div>
                     </div>
-                    <div className='cell four-rows width-grow' id='report-comments'>Comments (League Offical):</div>
+                    <div className='cell four-rows width-grow' id='report-comments'>Comments (League Offical):<p>{game.game_comments}</p></div>
                   </div>
                 </div>
               </div>

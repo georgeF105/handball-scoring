@@ -6,12 +6,14 @@ $bootstrap-sass-asset-helper: true;
 @import 'vendor/normalize';
 // @import 'vendor/skeleton';
 
+@import 'partials/general';
 @import 'partials/body';
 @import 'partials/dashboard';
 @import 'partials/overview';
 @import 'partials/header';
 @import 'partials/newGame';
 @import 'partials/editTeam';
+@import 'partials/editGame';
 @import 'partials/scoreGame';
 @import 'partials/teamTable';
 @import 'partials/card';
