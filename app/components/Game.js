@@ -53,7 +53,7 @@ class Game extends React.Component {
         <div className=''>
           <div className='page-header expandable-header'  onClick={this.toggleReportShow}>
             <h1>Match Report</h1><h1>
-              {showEdit 
+              {showReport 
                 ? <i className="fa fa-caret-up" aria-hidden="true"/>
                 : <i className="fa fa-caret-down" aria-hidden="true"/>}
             </h1>
