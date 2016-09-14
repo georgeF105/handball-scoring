@@ -12,7 +12,6 @@ class ScoreGameTimer extends React.Component {
       currentTime: this.props.game && this.props.game.current_time || 0,
       running: this.props.game && this.props.game.status_in_play || false,
       timeSet: false,
-      halfTimeSeconds: 1200,
       adjustClockSettings: false
     }
   }
@@ -41,7 +40,7 @@ class ScoreGameTimer extends React.Component {
     const game = this.props.game || {}
     const firstComp = game.status_firsthalf_completed || false
     const secondComp = game.status_secondhalf_completed || false
-    const halfTimeSeconds = this.state.halfTimeSeconds
+    const halfTimeSeconds = (game.half_mins || 20) * 60
     let newCurrentTime = this.state.currentTime
     if (this.state.running) {
       newCurrentTime++
