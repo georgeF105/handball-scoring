@@ -4,7 +4,6 @@ import MatchReportContainer from './containers/MatchReportContainer'
 import EditGameContainer from './containers/EditGameContainer'
 import { formatScore } from '../../lib/formatNumber'
 
-
 class Game extends React.Component {
   constructor (props) {
     super(props)
@@ -54,7 +53,7 @@ class Game extends React.Component {
           </div>
           <div className='col-md-4 central-column'>
             <img src='http://placehold.it/250x120?text=LOGO' />
-            <h1>{homeTeamName}</h1>
+            <h1>{awayTeamName}</h1>
           </div>
         </div>
 

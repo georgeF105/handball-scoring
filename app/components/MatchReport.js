@@ -19,12 +19,11 @@ class MatchReport extends React.Component {
 
   render () {
     const game = this.props.games[this.props.params.id] || {}
-    console.log('game', game)
     const homeTeam = game.home_team || {}
     const homeTeamPlayers = fillTheBlanks(convertToArray(homeTeam.players || {}), 16)
     const awayTeam = game.away_team || {}
     const awayTeamPlayers = fillTheBlanks(convertToArray(awayTeam.players || {}), 16)
-    const scoringEvents = formatEvents(game.events)
+    const scoringEvents = formatEvents(game.events, game.half_mins * 60)
     const homeHalfScore = game.halftime_score && game.halftime_score.home || ''
     const awayHalfScore = game.halftime_score && game.halftime_score.away || ''
     const homeFullScore = game.fulltime_score && game.fulltime_score.home || ''

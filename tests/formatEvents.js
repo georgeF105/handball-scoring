@@ -18,10 +18,6 @@ test('calculateScoreByTime()', (t) => {
     10: {type: EVENT_GOAL, team: 'home', time: 100}
   }
   const halfTimeLength = 55
-  const homeHalfTimeScoreExpected = 3
-  const awayHalfTimeScoreExpected = 2
-  const homeFullTimeScoreExpected = 6
-  const awayFullTimeScoreExpected = 4
   const expectedFromatedEvents = {}
   expectedFromatedEvents.first = fillTheBlanks([
     {homeScore: 1, awayScore: 0},
