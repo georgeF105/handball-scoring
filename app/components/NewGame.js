@@ -33,6 +33,7 @@ class NewGame extends React.Component {
     gameObj.status_secondhalf_started = false
     gameObj.status_secondhalf_completed = false
     gameObj.current_time = 0
+    gameObj.half_mins = 2
 
     saveGame(gameObj)
     hashHistory.push('/')
