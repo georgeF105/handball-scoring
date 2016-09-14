@@ -13,6 +13,7 @@ class NewGame extends React.Component {
     gameObj.date = document.getElementById('date-input').value
     gameObj.time = document.getElementById('time-input').value
     gameObj.gender = document.getElementById('gender-input').value
+    gameObj.half_mins = document.getElementById('half_mins-input').value
     gameObj.home_team_key = document.getElementById('home_team-input').value
     gameObj.away_team_key = document.getElementById('away_team-input').value
     gameObj.referee_1 = document.getElementById('referee_1-input').value
@@ -33,7 +34,6 @@ class NewGame extends React.Component {
     gameObj.status_secondhalf_started = false
     gameObj.status_secondhalf_completed = false
     gameObj.current_time = 0
-    gameObj.half_mins = 2
 
     saveGame(gameObj)
     hashHistory.push('/')
@@ -50,7 +50,7 @@ class NewGame extends React.Component {
       <div className='container content new-game'>
         <form className='new-game-form'>
           <div className='row form-group'>
-            <div className='col-md-6'>
+            <div className='col-md-4'>
               <label htmlFor='venue-input'>Venue</label><input className='form-control' type='text' name='venue' id='venue-input' />
             </div>
             <div className='col-md-2'>
@@ -65,6 +65,10 @@ class NewGame extends React.Component {
                 <option value='male'>Male</option>
                 <option value='female'>Female</option>
               </select>
+            </div>
+            <div className='col-md-2'>
+              <label htmlFor='time-input'>Half Length (mins)</label>
+              <input className='form-control' type='number' name='half_mins' id='half_mins-input' min='1' max='60' />
             </div>
           </div>
           <div className='row form-group'>
