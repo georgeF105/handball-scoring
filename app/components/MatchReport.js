@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { convertToArray } from '../../lib/filter'
+import formatEvents from '../../lib/formatEvents'
+
 class MatchReport extends React.Component {
   constructor (props) {
     super(props)
@@ -14,13 +16,6 @@ class MatchReport extends React.Component {
     return arr
   }
 
-  formatEvents = (events) => {
-    return {
-      first: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-      second: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
-    }
-  }
-
   render () {
     const game = this.props.games[this.props.params.id] || {}
     console.log('game', game)
@@ -28,7 +23,7 @@ class MatchReport extends React.Component {
     const homeTeamPlayers = this.fillTheBlanks(convertToArray(homeTeam.players || {}), 16)
     const awayTeam = game.away_team || {}
     const awayTeamPlayers = this.fillTheBlanks(convertToArray(awayTeam.players || {}), 16)
-    const scoringEvents = this.formatEvents(game.events)
+    const scoringEvents = formatEvents(game.events)
     const homeHalfScore = game.halftime_score && game.halftime_score.home || ''
     const awayHalfScore = game.halftime_score && game.halftime_score.away || ''
     const homeFullScore = game.fulltime_score && game.fulltime_score.home || ''
@@ -251,16 +246,16 @@ class MatchReport extends React.Component {
                   <div className='report-column width-half'>
                     {scoringEvents.first.map((event, key) => {
                       return <div key={key} className={`report-row ${key % 2 ? 'highlight-3' : ''}`}>
-                        <div className='cell width-half' />
-                        <div className='cell width-half' />
+                        <div className='cell width-half'>{event.homeScore}</div>
+                        <div className='cell width-half'>{event.awayScore}</div>
                       </div>
                     })}
                   </div>
                   <div className='report-column width-half'>
                     {scoringEvents.second.map((event, key) => {
                       return <div key={key} className={`report-row ${key % 2 ? 'highlight-3' : ''}`}>
-                        <div className='cell width-half' />
-                        <div className='cell width-half' />
+                        <div className='cell width-half'>{event.homeScore}</div>
+                        <div className='cell width-half'>{event.awayScore}</div>
                       </div>
                     })}
                   </div>
