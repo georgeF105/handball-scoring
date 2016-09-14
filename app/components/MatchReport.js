@@ -2,6 +2,7 @@ import React from 'react'
 
 import { convertToArray } from '../../lib/filter'
 import formatEvents from '../../lib/formatEvents'
+import fillTheBlanks from '../../lib/fillTheBlanks'
 
 class MatchReport extends React.Component {
   constructor (props) {
@@ -9,20 +10,20 @@ class MatchReport extends React.Component {
     this.state = {}
   }
 
-  fillTheBlanks = (arr, num) => {
-    for (let i = arr.length; i < num; i++) {
-      arr.push({})
-    }
-    return arr
-  }
+  // fillTheBlanks = (arr, num) => {
+  //   for (let i = arr.length; i < num; i++) {
+  //     arr.push({})
+  //   }
+  //   return arr
+  // }
 
   render () {
     const game = this.props.games[this.props.params.id] || {}
     console.log('game', game)
     const homeTeam = game.home_team || {}
-    const homeTeamPlayers = this.fillTheBlanks(convertToArray(homeTeam.players || {}), 16)
+    const homeTeamPlayers = fillTheBlanks(convertToArray(homeTeam.players || {}), 16)
     const awayTeam = game.away_team || {}
-    const awayTeamPlayers = this.fillTheBlanks(convertToArray(awayTeam.players || {}), 16)
+    const awayTeamPlayers = fillTheBlanks(convertToArray(awayTeam.players || {}), 16)
     const scoringEvents = formatEvents(game.events)
     const homeHalfScore = game.halftime_score && game.halftime_score.home || ''
     const awayHalfScore = game.halftime_score && game.halftime_score.away || ''
